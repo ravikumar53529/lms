@@ -1,0 +1,181 @@
+<!-- <div class="container" style="margin-top: 100px;margin-left: auto;">
+    <div class="card" style="width: 30rem;">
+        <h3 class="card-title text-center bold"
+            style="margin-top: 10px; color: black;font-style: normal;">
+            SIGN UP </h3>
+        <div class="card-body">
+
+            <form [formGroup]="formgroup">
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                    <input type="text" class="form-control" name="name" formControlName="name" id="userName"
+                        placeholder="User Name">
+
+                    <span
+                        *ngIf="formgroup.get('name')?.invalid && formgroup.get('name')?.touched"
+                        style="color: red;">User name is required</span>
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                    <input type="password" formControlName="pwd" class="form-control" id="pwd" placeholder="Password">
+                    <span *ngIf="formgroup.get('pwd')?.invalid && formgroup.get('pwd')?.touched"
+                        style="color: red;">Password is
+                        required</span>
+                </div>
+                <div class="text-center d-grid col-12 mb-3">
+                    <button type="button" (click)="onSubmit()" [disabled]="formgroup.invalid"
+                        class="btn btn-danger">SIGN UP</button>
+
+                </div>
+
+                <p class=" text-center"> OR </p>
+                
+                
+                <div class="text-center d-grid col-12 mb-4">
+                
+                    <p> Already a user ?<span style="cursor: pointer; color: blue;" routerLink="/login"> LOGIN</span> </p>
+                
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row">
+                        <h1>Welcome to Learn</h1>
+                        <!-- <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> -->
+                    </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                        <img
+                            src="https://t4.ftcdn.net/jpg/04/12/22/09/360_F_412220949_b05U6ue0CR4AwLykbPZIqithDXKHf5L7.jpg">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+                    <form [formGroup]="formgroup">
+                        <div class="row mb-4 px-3">
+                            <h1 class="mb-0 mr-4 mt-2">SIGN UP</h1>
+
+                        </div>
+                        <!-- <div class="row px-3 mb-4">
+                        <div class="line"></div>
+                        <small class="or text-center">Or</small>
+                        <div class="line"></div>
+                    </div> -->
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h6 class="mb-0 text-sm">User Name</h6>
+                            </label>
+                            <input class="mb-1" type="text" name="name" formControlName="name"
+                                [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+                                placeholder="Enter a valid user name ">
+                            <!-- <span *ngIf="formgroup.get('name')?.invalid && formgroup.get('name')?.touched"
+                                style="color: red;">User name
+                                required</span> -->
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                                <div *ngIf="name.errors?.['required']">
+                                    This user name is required.
+                                </div>
+                                <div *ngIf="name.errors?.['minlength']">
+                                    This user name must have at least 1 character.
+                                </div>
+                                <div *ngIf="name.errors?.['maxlength']">
+                                    This user name must have at most 20 characters.
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Email Address</h6>
+                            </label>
+                            <input class="mb-1" type="text" name="email" formControlName="email"
+                                [class.is-invalid]="email.invalid && (email.dirty || email.touched)"
+                                placeholder="Enter a valid email address">
+
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                <div *ngIf="email.errors?.['required']">
+                                    Email Address is required.
+                                </div>
+                                <!-- <div *ngIf="email.errors?.['minlength']">
+                                    This field must have at least 1 character.
+                                </div>
+                                <div *ngIf="email.errors?.['maxlength']">
+                                    This field must have at most 250 characters.
+                                </div> -->
+                                <div *ngIf="!email.errors?.['required'] &&  email.errors?.['emailValidator']">
+                                    Invalid email format.
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="row px-3">
+                            <label class="mb-1">
+                                <h6 class="mb-0 text-sm">Password</h6>
+                            </label>
+                            <input type="password" formControlName="pwd" name="pwd"
+                                [class.is-invalid]="pwd.invalid && (pwd.dirty || pwd.touched)"
+                                placeholder="Enter password">
+
+                            <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="invalid-feedback">
+                                <div *ngIf="pwd.errors?.['required']">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="pwd.errors?.['minlength']">
+                                    Password must have at least 8 characters.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-3 mb-4">
+                            <!-- <div class="custom-control custom-checkbox custom-control-inline">
+                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
+                            <label for="chk1" class="custom-control-label text-sm">Remember me</label>
+                        </div> -->
+                            <!-- <a href="#" style="text-align: end;" class="ml-auto mb-0 text-sm">Forgot Password?</a> -->
+                        </div>
+                        <div class="row mb-3 px-3">
+                            <button type="submit" class="btn btn-blue text-center" (click)="onSubmit()"
+                                [disabled]="formgroup.invalid">Sign up</button>
+                        </div>
+                        <div class="row mb-4 px-3">
+                            <small class="font-weight-bold">Already a user ? <a routerLink="/login"
+                                    class="text-danger ">Login</a></small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="bg-blue py-4">
+            <div class="row px-3">
+                <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
+                <div class="social-contact ml-4 ml-sm-auto">
+                    <span class="fa fa-facebook mr-4 text-sm"></span>
+                    <span class="fa fa-google-plus mr-4 text-sm"></span>
+                    <span class="fa fa-linkedin mr-4 text-sm"></span>
+                    <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
