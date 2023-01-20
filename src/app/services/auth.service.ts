@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class AuthService {
 
-  url = "https://blue-maps-shout-157-38-137-211.loca.lt";
+  url = "https://thick-mails-walk-157-38-137-211.loca.lt";
 
   constructor(
     private http:HttpClient

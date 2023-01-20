@@ -14,11 +14,11 @@ export class LoginComponent {
 
   formgroup!: FormGroup
 
-  role: any;
+  role: string;
 
-  body: any;
+  body!: {};
 
-  isErorr: boolean = false;
+  isError: boolean = false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
@@ -26,7 +26,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private aurhService: AuthService,
-    private snakeBar:MatSnackBar
+    private snakeBar: MatSnackBar
   ) {
     this.role = 'user';
   }
@@ -73,7 +73,7 @@ export class LoginComponent {
 
     })
 
-    
+
     // if (this.role === 'admin') {
     //   // alert('Welcome Admin');
     //   this.router.navigate(['admin']);

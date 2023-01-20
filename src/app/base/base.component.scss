@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #f6ffd9;
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+.wrap-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    background: url(https://www.communicationcrafts.com/wp-content/uploads/2021/06/CC-Blog_A-Complete-Guide-to-Learning-Management-System_main-banner.jpg);
+    background-size: cover;
+    background-position: center;
+}
