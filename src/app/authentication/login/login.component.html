@@ -6,9 +6,11 @@
         <div class="row d-flex">
             <div class="col-lg-6">
                 <div class="card1 pb-5">
-                    <div class="row">
+                    <div class="row px-3">
+                    <div class="d-flex align-items-center">
                         <h1>Welcome to LMS</h1>
                         <!-- <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> -->
+                    </div>
                     </div>
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                         <img
@@ -82,13 +84,13 @@
                             <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
                             <label for="chk1" class="custom-control-label text-sm">Remember me</label>
                         </div> -->
-                            <a href="#" style="text-align: end;" class="ml-auto mb-0 text-sm">Forgot Password?</a>
+                            <a href="#" style="text-align: end;" class="ml-auto p-0 mb-0 text-sm">Forgot Password?</a>
                         </div>
                         <div class="row mb-3 px-3">
                             <button type="submit" class="btn btn-blue text-center" (click)="onSubmit()"
                                 [disabled]="formgroup.invalid">Login</button>
                         </div>
-                        <div class="row mb-4 px-3">
+                        <div class="row mb-4 px-1">
                             <small class="font-weight-bold">Don't have an account? <a routerLink="/signup"
                                     class="text-danger ">Register</a></small>
                         </div>
