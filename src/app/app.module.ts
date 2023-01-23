@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {DialogModule} from 'primeng/dialog';
+import {TooltipModule} from 'primeng/tooltip';
+import {ButtonModule} from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,6 +29,7 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { UserGuard } from 'src/guards/user.guard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
 let module = [
   MatSlideToggleModule,
   MatButtonModule,
@@ -44,7 +47,10 @@ let module = [
   MatSelectModule,
   ReactiveFormsModule,
   FormsModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  DialogModule,
+  TooltipModule,
+  ButtonModule
   
 ]
 

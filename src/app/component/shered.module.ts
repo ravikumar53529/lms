@@ -15,6 +15,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MenuModule} from 'primeng/menu';
+import {DialogModule} from 'primeng/dialog';
+import {TooltipModule} from 'primeng/tooltip';
+import {ButtonModule} from 'primeng/button';
+
 
 
 let module = [
@@ -33,7 +38,11 @@ let module = [
   MatRippleModule,
   MatSelectModule,
   ReactiveFormsModule,
-  FormsModule
+  FormsModule,
+  MenuModule,
+  DialogModule,
+  TooltipModule,
+  ButtonModule
 
 ]
 
