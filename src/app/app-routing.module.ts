@@ -6,14 +6,14 @@ import { UserGuard } from 'src/guards/user.guard';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'base', pathMatch: 'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
   },
-  { path: 'base', loadChildren: () => import('./base/base.module').then(m => m.BaseModule) },
+  // { path: 'base', loadChildren: () => import('./base/base.module').then(m => m.BaseModule) },
   { path: 'login', loadChildren: () => import('./authentication/login/login.module').then(m => m.LoginModule) },
   { path: 'signup', loadChildren: () => import('./authentication/signup/signup.module').then(m => m.SignupModule) },
   {
     path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    //  canActivate: [AuthGuard],
+     canActivate: [AuthGuard],
     data: {
       role: 'admin'
     }

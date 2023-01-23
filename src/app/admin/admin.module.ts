@@ -18,6 +18,7 @@ import {ButtonModule} from 'primeng/button';
   ],
   imports: [
     CommonModule,
+    SheredModule,
     AdminRoutingModule,MatIconModule,SheredModule,MenuModule,DialogModule,TooltipModule,ButtonModule
   ]
 })

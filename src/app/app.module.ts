@@ -28,6 +28,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { UserGuard } from 'src/guards/user.guard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SheredModule } from './component/shered.module';
 
 
 let module = [
@@ -50,7 +51,8 @@ let module = [
   MatSnackBarModule,
   DialogModule,
   TooltipModule,
-  ButtonModule
+  ButtonModule,
+  SheredModule
   
 ]
 
