@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class AuthService {
 
-  url = "https://thick-mails-walk-157-38-137-211.loca.lt";
+  // url = "https://c628-117-234-39-140.in.ngrok.io";
 
   constructor(
     private http:HttpClient
@@ -16,11 +16,11 @@ export class AuthService {
 
   // login
   loginUser(login: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/api/auth/local`, login);
+    return this.http.post<any>(`api/auth/local`, login);
   }
 
   signupUser(signup:any) : Observable<any> {
-    return this.http.post<any>(`${this.url}/api/auth/local/register`,signup);
+    return this.http.post<any>(`api/auth/local/register`, signup);
   }
 
 }

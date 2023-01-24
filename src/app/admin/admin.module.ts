@@ -9,6 +9,10 @@ import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TooltipModule} from 'primeng/tooltip';
 import {ButtonModule} from 'primeng/button';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from '../interceptor/token-interceptor.service';
+import { ApiService } from '../services/api.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +23,16 @@ import {ButtonModule} from 'primeng/button';
   imports: [
     CommonModule,
     SheredModule,
+    ReactiveFormsModule,
     AdminRoutingModule,MatIconModule,SheredModule,MenuModule,DialogModule,TooltipModule,ButtonModule
+  ],
+  providers:[
+    ApiService,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true
+    // }
   ]
 })
 export class AdminModule { }

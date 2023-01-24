@@ -33,7 +33,7 @@
             <i class="pi  pi-caret-down ml-1 cursor-pointer color-blue-light" (click)="menu.toggle($event)"></i>
             <p-menu #menu [popup]="true" [model]="items"></p-menu>
 
-            
+
         </div>
 
     </div>
@@ -45,215 +45,123 @@
 
 <div class="container">
     <div class="d-flex justify-content-end">
+        <!-- Add dialog start -->
         <p-dialog header="Add Courses" [(visible)]="display" [style]="{width: '50vw'}" styleClass="active">
-        <hr>
-            <div class="p-fluid grid">
-                <div class="field mt-4">
-                    <span class="p-float-label">
-                      <input type="text"  class="bg-light-grey input-shadow w-100 p-inputtext" pInputText
-                         placeholder="Course Name">
-                      <label for="CourseName">Course Name</label>
-                    </span>
-                  </div>
-                  <div class="field mt-4">
-                    <span class="p-float-label">
-                        <textarea inputId="textarea"   class="bg-light-grey input-shadow w-100 p-inputtext" rows="3" style="resize: none;" cols="30"  pInputTextarea></textarea>
-                        <label for="textarea">Discription</label>
-                    </span>
-                  </div>
-                  <div class="row  mt-4">
-                    <div class="col-lg-6">
-                        <div class="field ">
-                            <span class="p-float-label">
-                              <input type="text"  class="bg-light-grey input-shadow w-100 p-inputtext" pInputText
-                                  >
-                              <label for="CourseName">Start Date</label>
-                            </span>
-                          </div>
+            <form [formGroup]="courseGroup">
+                <hr>
+                <div class="p-fluid grid form">
+                    <div class="field mt-4">
+                        <span class="p-float-label">
+                            <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="title"
+                                formControlName="title" pInputText placeholder="Course Name">
+                            <label for="CourseName">Course Name</label>
+                            <!-- <span severity="error" text="CourseName is required"
+                                *ngIf="!courseGroup.controls['title'].valid && courseGroup.controls['title'].dirty">
+                            </span> -->
+                        </span>
+<!-- 
+                        <div id="title"
+                            *ngIf="formControls.title.invalid && formControls.title.dirty" class="help-block">
+                            <small *ngIf="formControls.title.errors.required">requiredValidationMessage</small>
+                            <small
+                                *ngIf="formControls.title.errors.max || formControls.title.errors.min">MaxMinErrorMessage</small>
+                        </div> -->
+
                     </div>
-                    <div class="col-lg-6">
-                        <div class="field ">
-                            <span class="p-float-label">
-                              <input type="text"  class="bg-light-grey input-shadow w-100 p-inputtext" pInputText
-                                 >
-                              <label for="CourseName">End Date</label>
-                            </span>
-                          </div>
+                    <div class="field mt-4">
+                        <span class="p-float-label">
+                            <textarea inputId="textarea" class="bg-light-grey input-shadow w-100 p-inputtext" rows="3"
+                                style="resize: none;" cols="30" pInputTextarea></textarea>
+                            <label for="textarea">Discription</label>
+                        </span>
                     </div>
-                  </div>
-                
+                    <div class="row  mt-4">
+                        <div class="col-lg-6">
+                            <div class="field ">
+                                <span class="p-float-label">
+                                    <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
+                                    <label for="CourseName">Start Date</label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="field ">
+                                <span class="p-float-label">
+                                    <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
+                                    <label for="CourseName">End Date</label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="d-flex justify-content-end mt-2">
-                    <button type="button" class="btn btn-success me-2"><i class="pi pi-save me-2 cursor-pointer"></i>Save</button>
-                    <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
+                    <button type="button" class="btn btn-success me-2"><i
+                            class="pi pi-save me-2 cursor-pointer"></i>Save</button>
+                    <button type="button" class="btn btn-dark"><i
+                            class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
                 </div>
+            </form>
         </p-dialog>
-        <button class="btn btn-primary mb-2"  type="button" (click)="showDialog()" icon="pi pi-info-circle" label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add</button>
-        </div>
-       
-    
-    <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMILHW0TBZGAIMTmF3XH8vYfV73XUhtPtpqA&usqp=CAU"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3 class="card-title mb-2" style="font-weight: bold;">Web development Course</h3>
-                    <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
-                            fontIcon="person"></mat-icon> Muller</span>
-                    <p class="card-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti ipsam in ex
-                        dolorum obcaecati nesciunt repellendus.</p>
-                    <div class="row align-items-center">
-                        <div class="col-lg-4">
-                            <span class="d-flex align-items-center">
-                                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                                    fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
-                            </span>
-                        </div>
-                        <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary"> $ 25</button>
-                        </div>
-                        <div class="col-lg-4 d-flex justify-content-end"><a   class="btn btn-primary">Buy</a>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-2">
-                        <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil" class="p-button-rounded p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                       
-                        <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times" class="p-button-rounded ms-1 p-button-danger p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                        <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
-                            edit
-                        </span>
-                        <span pTooltip="Delete Course"  class="material-icons cursor-pointer text-danger"
-                         >
-                        delete_outline
-                      </span> -->
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMILHW0TBZGAIMTmF3XH8vYfV73XUhtPtpqA&usqp=CAU"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3 class="card-title mb-2" style="font-weight: bold;">Web development Course</h3>
-                    <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
-                            fontIcon="person"></mat-icon> Muller</span>
-                    <p class="card-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti ipsam in ex
-                        dolorum obcaecati nesciunt repellendus.</p>
-                    <div class="row align-items-center">
-                        <div class="col-lg-4">
-                            <span class="d-flex align-items-center">
-                                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                                    fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
-                            </span>
-                        </div>
-                        <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary"> $ 25</button>
-                        </div>
-                        <div class="col-lg-4 d-flex justify-content-end"><a   class="btn btn-primary">Buy</a>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-2">
-                        <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil" class="p-button-rounded p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                       
-                        <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times" class="p-button-rounded ms-1 p-button-danger p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                        <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
-                            edit
-                        </span>
-                        <span pTooltip="Delete Course"  class="material-icons cursor-pointer text-danger"
-                         >
-                        delete_outline
-                      </span> -->
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMILHW0TBZGAIMTmF3XH8vYfV73XUhtPtpqA&usqp=CAU"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3 class="card-title mb-2" style="font-weight: bold;">Web development Course</h3>
-                    <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
-                            fontIcon="person"></mat-icon> Muller</span>
-                    <p class="card-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti ipsam in ex
-                        dolorum obcaecati nesciunt repellendus.</p>
-                    <div class="row align-items-center">
-                        <div class="col-lg-4">
-                            <span class="d-flex align-items-center">
-                                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                                    fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
-                            </span>
-                        </div>
-                        <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary"> $ 25</button>
-                        </div>
-                        <div class="col-lg-4 d-flex justify-content-end"><a   class="btn btn-primary">Buy</a>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-2">
-                        <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil" class="p-button-rounded p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                       
-                        <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times" class="p-button-rounded ms-1 p-button-danger p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                        <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
-                            edit
-                        </span>
-                        <span pTooltip="Delete Course"  class="material-icons cursor-pointer text-danger"
-                         >
-                        delete_outline
-                      </span> -->
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mt-2">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMILHW0TBZGAIMTmF3XH8vYfV73XUhtPtpqA&usqp=CAU"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h3 class="card-title mb-2" style="font-weight: bold;">Web development Course</h3>
-                    <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
-                            fontIcon="person"></mat-icon> Muller</span>
-                    <p class="card-text"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti ipsam in ex
-                        dolorum obcaecati nesciunt repellendus.</p>
-                    <div class="row align-items-center">
-                        <div class="col-lg-4">
-                            <span class="d-flex align-items-center">
-                                <mat-icon aria-hidden="false" aria-label="Example home icon"
-                                    fontIcon="visibility"></mat-icon> <span class="ms-1">14</span>
+        <!-- Add dialog end -->
 
-                            </span>
-                        </div>
-                        <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary"> $ 25</button>
-                        </div>
-                        <div class="col-lg-4 d-flex justify-content-end"><a   class="btn btn-primary">Buy</a>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-end mt-2">
-                        <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil" class="p-button-rounded p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                       
-                        <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times" class="p-button-rounded ms-1 p-button-danger p-button-outlined" style="height: 2rem; width: 2rem;"></button>
-                        <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
+        <button class="btn btn-primary mb-2" type="button" (click)="showDialog()" icon="pi pi-info-circle"
+            label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
+    </div>
+
+
+    <div>
+        <div class="row">
+            <div>
+                <div class="col-lg-4" *ngFor="let data of loopData">
+                    <div class="card">
+
+
+                        <img style="height: 250px;" src="{{url}}" class="card-img-top" alt="...">
+
+                        <div class="card-body">
+                            <h3 class="card-title mb-2" style="font-weight: bold;">{{data.name}}</h3>
+                            <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
+                                    fontIcon="person"></mat-icon> {{data.author}}</span>
+                            <p class="card-text"> {{data.description}}.</p>
+                            <div class="row align-items-center">
+                                <div class="col-lg-4">
+                                    <span class="d-flex align-items-center">
+                                        <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                            fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
+                                    </span>
+                                </div>
+                                <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary">
+                                        {{data.price | currency : 'INR'}}</button>
+                                </div>
+                                <div class="col-lg-4 d-flex justify-content-end"><a class="btn btn-primary">Buy</a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end mt-2">
+                                <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
+                                    class="p-button-rounded p-button-outlined"
+                                    style="height: 2rem; width: 2rem;"></button>
+
+                                <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
+                                    class="p-button-rounded ms-1 p-button-danger p-button-outlined"
+                                    style="height: 2rem; width: 2rem;"></button>
+                                <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
                             edit
                         </span>
                         <span pTooltip="Delete Course"  class="material-icons cursor-pointer text-danger"
                          >
                         delete_outline
                       </span> -->
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
             </div>
+
+
         </div>
     </div>
 </div>
-
