@@ -1,0 +1,20 @@
+.progress-spinner {
+    margin: auto;
+    width: 50%;
+    // padding: auto;
+
+}
+.sizes {
+    .p-inputtext {
+        display: block;
+        margin-bottom: .5rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.p-field * {
+    display: block;
+}

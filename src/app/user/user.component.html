@@ -1,29 +1,43 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary" style="height: 80px;">
-    <div class="container-fluid">
-        <a class="navbar-brand" style="font-size: 24px;" href="#">LMS</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="font-size: 24px;">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Content Library</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container" style="background-color: aqua;">
-    <h3> </h3>
+<div class="container text-center bg-blue border  my-4 justify-content-center d-flex align-items-center ">
+    <h3 class="m-0 my-2">Welcome to LMS</h3>
 </div>
 
 <!-- <h1 class="text-center mt-3">Welcome User</h1> -->
+<div class="progress-spinner text-center mt-4" *ngIf="isLoading == true">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="container">
+    <div class="row">
+        <h3>All Courses</h3>
+        <span class="p-input-icon-left mb-2">
+            <i class="pi pi-search"></i>
+            <input type="search" pInputText placeholder="Search" />
+        </span>
+
+        <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
+            <div class="card" style="height: 450px;">
+                <img style="height: 250px;" src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
+                    class="card-img-top" alt="...">
+
+                <div class="card-body">
+                    <h3 class="card-title mb-2" style="font-weight: bold;">{{data.attributes.name}}</h3>
+                    <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
+                            fontIcon="person"></mat-icon> {{data.attributes.author}}</span>
+                    <p class="card-text"> {{data.attributes.description}}.</p>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <span class="d-flex align-items-center">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                    fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
+                            </span>
+                        </div>
+                        <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary">
+                                {{data.attributes.price | currency : 'INR'}}</button>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-end"><a class="btn btn-primary">Buy</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>

@@ -9,30 +9,70 @@ import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TooltipModule} from 'primeng/tooltip';
 import {ButtonModule} from 'primeng/button';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from '../interceptor/token-interceptor.service';
+// import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { TokenInterceptor } from '../interceptor/token-interceptor.service';
 import { ApiService } from '../services/api.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgxUiLoaderRouterModule, NgxUiLoaderConfig, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { RippleModule } from 'primeng/ripple';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
+import { ProgressSpinnerModule }
+  from 'primeng/progressspinner';
+import { HeaderComponent } from '../header/header.component';
 
 
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  "bgsColor": "red",
+  "bgsOpacity": 0.5,
+  "bgsPosition": "bottom-right",
+  "bgsSize": 60,
+  "bgsType": "ball-spin-clockwise",
+  "blur": 5,
+  "delay": 0,
+  "fastFadeOut": true,
+  "fgsColor": "red",
+  "fgsPosition": "center-center",
+  "fgsSize": 60,
+  "fgsType": "ball-spin-clockwise",
+  "gap": 24,
+  "logoPosition": "center-center",
+  "logoSize": 170,
+  "logoUrl": "https://raw.githubusercontent.com/t-ho/ngx-ui-loader/master/src/assets/angular.png",
+  "masterLoaderId": "master",
+
+  "overlayBorderRadius": "0",
+  "overlayColor": "rgba(40, 40, 40, 0.8)",
+  "pbColor": "red",
+  "pbDirection": "ltr",
+  "pbThickness": 3,
+  "hasProgressBar": true,
+  "text": "",
+  "textColor": "#FFFFFF",
+  "textPosition": "center-center",
+  "maxTime": -1,
+  "minTime": 300
+}
 
 @NgModule({
   declarations: [
-    AdminComponent
+    AdminComponent,
+    
   ],
   imports: [
     CommonModule,
     SheredModule,
     ReactiveFormsModule,
-    AdminRoutingModule,MatIconModule,SheredModule,MenuModule,DialogModule,TooltipModule,ButtonModule
+    MatProgressSpinnerModule,
+    RippleModule,
+    ConfirmDialogModule,
+    MessagesModule,
+    ProgressSpinnerModule,
+    AdminRoutingModule,MatIconModule,MenuModule,DialogModule,TooltipModule,ButtonModule
   ],
   providers:[
-    ApiService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptor,
-    //   multi: true
-    // }
+    ApiService
   ]
 })
 export class AdminModule { }

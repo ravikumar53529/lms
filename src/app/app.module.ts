@@ -29,10 +29,12 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { UserGuard } from 'src/guards/user.guard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SheredModule } from './component/shered.module';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { HeaderComponent } from './header/header.component';
+import { MenuModule } from 'primeng/menu';
 
 
 let module = [
-  MatSlideToggleModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
@@ -66,7 +68,12 @@ let module = [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmDialogModule,
+    MenuModule,
+    SheredModule,
+    TooltipModule, ButtonModule
+    // NgxUiLoaderModule
     
   ],
   providers: [

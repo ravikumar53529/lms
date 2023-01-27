@@ -18,7 +18,15 @@ export class ApiService {
     return this.http.get<any>(`/api/content-libraries?populate=*`);
   }
 
-  postContent(): Observable<Content> {
-    return this.http.get<Content>(`api/content-libraries`);
+  postContent(item:any): Observable<Content> {
+    return this.http.post<Content>(`api/content-libraries`,item);
+  }
+
+  updateContent(id:string,item:any) : Observable<any>{
+    return this.http.put<any>(`api/content-libraries/${id}`,item);
+  }
+
+  deleteContent(id:any) :Observable<any>{
+    return this.http.delete<any>(`api/content-libraries/${id}`);
   }
 }

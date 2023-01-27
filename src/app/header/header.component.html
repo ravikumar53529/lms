@@ -1,0 +1,54 @@
+<!-- <h1 class="text-center mt-3">Welcome Admin</h1> -->
+<nav class="navbar sticky-top bg-white navbar-expand-lg navbar-light shadow-sm"
+    style="height: auto; box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);">
+    <div class="container-fluid">
+        <div class="col-lg-4">
+            <a class="navbar-brand" style="font-size: 24px;" href="#">LMS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="col-lg-4">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="font-size: 24px;">
+                <ul class="navbar-nav" *ngIf="isAdmin == 'admin'">
+                    <li class="nav-item" >
+                        <a class="nav-link active" aria-current="page" routerLink="/admin">Home</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link"  routerLink="/admin">Content</a>
+                    </li> -->
+                    <li class="nav-item ">
+                        <a class="nav-link"  routerLink="/admin">About</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav" *ngIf="isAdmin == 'user'">
+                    <li class="nav-item" >
+                        <a class="nav-link active" aria-current="page" routerLink="/user">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  routerLink="/user/library">My Libraries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  routerLink="/user">About</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 d-flex justify-content-end">
+            <!-- <span class="material-symbols-outlined cursor-pointer" (click)="menu.toggle($event)">
+                account_circle
+            </span> -->
+            <i class="pi pi-user ml-1 cursor-pointer" (click)="menu.toggle($event)"></i>
+            <i class="pi  pi-caret-down ml-1 cursor-pointer color-blue-light" (click)="menu.toggle($event)"></i>
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+
+        </div>
+
+    </div>
+</nav>

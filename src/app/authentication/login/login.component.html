@@ -18,6 +18,9 @@
                     </div>
                 </div>
             </div>
+            <div class="progress-spinner text-center mt-4" *ngIf="isLoading == true">
+                <p-progressSpinner></p-progressSpinner>
+            </div>
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
                     <form [formGroup]="formgroup">
@@ -111,3 +114,4 @@
         </div> -->
     </div>
 </div>
+<!-- <ngx-ui-loader></ngx-ui-loader> -->
