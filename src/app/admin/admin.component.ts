@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ConfirmationService, Message } from 'primeng/api';
+import { ConfirmationService, Message, MessageService } from 'primeng/api';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { ApiService } from '../services/api.service';
             margin-right: .25em;
         }
   `],
-    providers: [ConfirmationService]
+    providers: [ConfirmationService, MessageService]
 })
 export class AdminComponent implements OnInit {
     display: boolean = false;
@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
     contentData!: any;
     public _id!: string;
     _data!: any;
-    loadingSpinner= false;
+    loadingSpinner = false;
 
     msgs: Message[] = [];
 
@@ -47,7 +47,8 @@ export class AdminComponent implements OnInit {
         private apiService: ApiService,
         private fb: FormBuilder,
         private snackBar: MatSnackBar,
-        private confirmationService: ConfirmationService
+        private confirmationService: ConfirmationService,
+        private messageService: MessageService
 
     ) {
     }
@@ -62,10 +63,41 @@ export class AdminComponent implements OnInit {
     }
     public items: any
     ngOnInit() {
-
+        this.iconMenu();
         this.getContent();
         this.courseValidate();
         this.courseUpdateValidate();
+    }
+
+
+
+    iconMenu(): void {
+        this.items = [{
+            label: 'Action',
+            items: [{
+                label: 'Logout',
+                icon: 'pi pi-sign-out mt-0 text-danger',
+                command: () => {
+                    this.onLogout();
+                }
+            },
+            {
+                label: 'Change Password',
+                icon: 'pi pi-key ',
+                command: () => {
+
+                }
+            }
+            ]
+        },
+
+        ];
+    }
+
+    onLogout(): void {
+        this.router.navigateByUrl('/login');
+        localStorage.clear();
+        location.reload();
     }
 
 
@@ -88,23 +120,26 @@ export class AdminComponent implements OnInit {
         })
     }
 
- 
+
+
+
+
 
 
 
     getContent(): void {
         this.loadingSpinner = true;
         this.apiService.getContent().subscribe((res) => {
-           if (!res) {
-            this.snackBar.open('Something went to wrong !!', 'Ok',{
-                duration:3000
-            })
-           }
+            if (!res) {
+                this.snackBar.open('Something went to wrong !!', 'Ok', {
+                    duration: 3000
+                })
+            }
             this.contentData = res.data;
             this.loadingSpinner = false;
 
         })
-       
+
     }
 
 
@@ -190,20 +225,18 @@ export class AdminComponent implements OnInit {
         this.apiService.postContent(this.contentBody).subscribe(res => {
             console.log(res);
             if (!res) {
-                this.snackBar.open('Something went to wrong !!', 'Ok',{
-                    duration:3000,
-                    verticalPosition: this.verticalPosition,
-                    horizontalPosition: this.horizontalPosition
-                })
+
+                this.messageService.add({
+                    severity: 'error', summary: 'Eorr !!', detail: 'Something went wrong !!'
+
+                });
             }
-            // this.msgs = [{ severity: 'sucess', summary: 'Confirmed', detail: 'Content added sucessfully' }];
             this.getContent();
 
             this.closeDialog();
-            this.snackBar.open('Content added sucessfully !!', 'Ok', {
-                duration: 3000,
-                verticalPosition: this.verticalPosition,
-                horizontalPosition: this.horizontalPosition
+
+            this.messageService.add({
+                severity: 'success', summary: 'Success', detail: 'Content added successfully !!'
             })
 
         });
@@ -249,20 +282,15 @@ export class AdminComponent implements OnInit {
         this.apiService.updateContent(this._data.id, this.editContentBody).subscribe(res => {
             console.log(res);
             if (!res) {
-                this.snackBar.open('Something went to wrong !!', 'Ok',{
-                    duration:3000,
-                    verticalPosition: this.verticalPosition,
-                    horizontalPosition: this.horizontalPosition
-                })
+
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Somthing went to wrong !!' })
             }
-            // this.msgs = [{ severity: 'sucess', summary: 'Confirmed', detail: 'Content added sucessfully' }];
             this.getContent();
 
             this.closeDialog();
-            this.snackBar.open('Content Updated sucessfully !!', 'Ok', {
-                duration: 3000,
-                verticalPosition: this.verticalPosition,
-                horizontalPosition: this.horizontalPosition
+
+            this.messageService.add({
+                severity: 'info', summary: 'Update', detail: 'Content updated successfully !!'
             })
 
         });
@@ -270,38 +298,42 @@ export class AdminComponent implements OnInit {
     }
 
 
-    deleteDialog(data:any) {
+    deleteDialog(data: any) {
         this.confirmationService.confirm({
             message: `Do you want to delete - ${data.attributes.name} ?`,
             header: 'Delete Confirmation',
             icon: 'pi pi-info-circle',
             accept: () => {
                 this.apiService.deleteContent(data.id).subscribe(res => {
-                    this.snackBar.open('Content sucessfully deleted !', 'Ok',{
-                        duration:3000,
-                        verticalPosition: this.verticalPosition,
-                        horizontalPosition: this.horizontalPosition
-                    });
+                    // this.snackBar.open('Content sucessfully deleted !', 'Ok', {
+                    //     duration: 3000,
+                    //     verticalPosition: this.verticalPosition,
+                    //     horizontalPosition: this.horizontalPosition
+                    // });
+
+                    this.messageService.add({
+                        severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
+                    })
                     if (!res) {
-                        this.snackBar.open('Something went wrong !!', 'Ok', {
-                            duration: 3000,
-                            verticalPosition: this.verticalPosition,
-                            horizontalPosition: this.horizontalPosition
+                        this.messageService.add({
+                            severity: 'error', summary: 'Error', detail: 'Something went to wrong !!'
                         })
                     }
                     this.getContent();
-                    // this.msgs = [{ severity: 'info', summary: 'Confirmed', detail: 'Record deleted' }];
                 })
-               
+
             },
             reject: () => {
-                // this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'You have rejected' }];
+
             }
         });
+    }
+
+    setData(data: any) {
+        localStorage.setItem('content', JSON.stringify(data));
     }
 
 
 }
 
 
-    

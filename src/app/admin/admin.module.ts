@@ -20,7 +20,13 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ProgressSpinnerModule }
   from 'primeng/progressspinner';
-import { HeaderComponent } from '../header/header.component';
+import { ContentDetailsComponent } from './content-details/content-details.component';
+import { HeaderComponent } from './header/header.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { AssessmentComponent } from './assessment/assessment.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { CardModule } from 'primeng/card';
+import { ToastModule } from 'primeng/toast';
 
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -58,6 +64,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 @NgModule({
   declarations: [
     AdminComponent,
+    ContentDetailsComponent,
+    HeaderComponent,
+    QuizComponent,
+    AssessmentComponent,
     
   ],
   imports: [
@@ -69,6 +79,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ConfirmDialogModule,
     MessagesModule,
     ProgressSpinnerModule,
+    PaginatorModule,
+    CardModule,
+    ToastModule,
     AdminRoutingModule,MatIconModule,MenuModule,DialogModule,TooltipModule,ButtonModule
   ],
   providers:[

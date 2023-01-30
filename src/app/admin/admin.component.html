@@ -1,3 +1,6 @@
+<!-- <h1 class="text-center mt-3">Welcome Admin</h1> -->
+<app-header></app-header>
+
 <div class="container text-center bg-blue border  my-4 justify-content-center d-flex align-items-center ">
     <h3 class="m-0 my-2 text-white">Welcome to LMS</h3>
 </div>
@@ -57,8 +60,8 @@
                 <div class="d-flex justify-content-end mt-2">
                     <button [disabled]="courseGroup.invalid" type="button" class="btn btn-success me-2"
                         (click)="onSubmitContent()"><i class="pi pi-save me-2 cursor-pointer"></i>Save</button>
-                    <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"
-                            (click)="closeDialog()"></i>Cancel</button>
+                    <button (click)="closeDialog()" type="button" class="btn btn-dark"><i
+                            class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
                 </div>
             </form>
         </p-dialog>
@@ -129,14 +132,12 @@
             label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
     </div>
 
-    <!-- <mat-spinner *ngIf="loadning == true"></mat-spinner> -->
     <div>
-
-
         <div class="row">
 
-            <div class="col-lg-4 mb-3"  *ngFor="let data of contentData">
-                <div class="card" style="height: 500px;">
+            <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
+                <div class="card" style="height: 500px;" (click)="setData(data)"
+                    [routerLink]="['/admin/content',data.id]">
                     <img style="height: 250px;" src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
                         class="card-img-top" alt="...">
 
@@ -166,13 +167,7 @@
                             <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
                                 class="p-button-rounded ms-1 p-button-danger p-button-outlined"
                                 style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
-                            <!-- <span pTooltip="Edit Course" class="material-icons cursor-pointer color-green">
-                            edit
-                        </span>
-                        <span pTooltip="Delete Course"  class="material-icons cursor-pointer text-danger"
-                         >
-                        delete_outline
-                      </span> -->
+
                         </div>
                     </div>
                     <!-- <div class="card-footer">
@@ -181,16 +176,14 @@
                 </div>
             </div>
 
+            <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
+                [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+
         </div>
         <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-        <p-messages [value]="msgs"></p-messages>
     </div>
-    <!-- <p-progressSpinner *ngIf="loadingSpinner === true" ></p-progressSpinner> -->
 
-
-    <!-- <p-progressSpinner *ngIf="loadingSpinner == true" strokeWidth="5" fill="#03fc24" animationDuration="30s"></p-progressSpinner> -->
-
-
+    <p-toast position="top-right"></p-toast>
 </div>
 <div class="progress-spinner text-center mt-4" *ngIf="loadingSpinner == true">
     <p-progressSpinner></p-progressSpinner>

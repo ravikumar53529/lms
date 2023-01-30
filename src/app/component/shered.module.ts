@@ -48,14 +48,14 @@ let module = [
 ]
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [],
   imports: [
     ...module,
     CommonModule,
   ],
   exports:[
     ...module,
-    HeaderComponent
+    
     
   ]
 })
