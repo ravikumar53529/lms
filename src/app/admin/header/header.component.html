@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top bg-white navbar-expand-lg navbar-light shadow-sm"
+<!-- <nav class="navbar sticky-top bg-white navbar-expand-lg navbar-light shadow-sm"
     style="height: auto; box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);">
     <div class="container-fluid">
         <div class="col-lg-4">
@@ -17,7 +17,6 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLinkActive="active" (click)="menu1.toggle($event)">Content<i
                                 class="pi  pi-angle-down color-blue-light" (click)="menu.toggle($event)"></i></a>
-                        <!-- <i class="pi  pi-caret-down cursor-pointer color-blue-light" (click)="menu.toggle($event)"></i> -->
                         <p-menu #menu1 routerLinkActive="active" [popup]="true" [model]="contentItems"></p-menu>
                     </li>
                     <li class="nav-item ">
@@ -31,9 +30,7 @@
 
 
         <div class="col-lg-4 d-flex justify-content-end">
-            <!-- <span class="material-symbols-outlined cursor-pointer" (click)="menu.toggle($event)">
-                account_circle
-            </span> -->
+
             <i class="pi pi-user ml-1 cursor-pointer" (click)="menu.toggle($event)"></i>
             <i class="pi  pi-caret-down ml-1 cursor-pointer color-blue-light" (click)="menu.toggle($event)"></i>
             <p-menu #menu [popup]="true" [model]="items"></p-menu>
@@ -42,4 +39,15 @@
         </div>
 
     </div>
-</nav>
+</nav> -->
+
+<p-menubar [model]="mainItems">
+    <ng-template pTemplate="start">
+       <span style="color: rgb(44, 44, 226);"><i class="pi pi-bolt" style="font-size: 2rem"></i><br>LMS</span> 
+        <!-- <img src="/assets/images/logo.png" height="40" class="p-mr-2" alt="LMS"> -->
+    </ng-template>
+    &nbsp;&nbsp;&nbsp;
+    <p-avatar icon="pi pi-user" (click)="menu.toggle($event)" class="cursor-pointer" pBadge value="4" shape="circle"
+        severity="danger" size="large"></p-avatar>
+    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+</p-menubar>

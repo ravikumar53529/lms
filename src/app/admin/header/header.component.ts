@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   public items: any;
+  public mainItems: any;
   public contentItems: any;
 
   constructor(private router: Router) { }
@@ -17,6 +18,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.contentMenu();
     this.iconMenu();
+    this.mainMenu();
   }
 
   iconMenu(): void {
@@ -48,6 +50,44 @@ export class HeaderComponent implements OnInit {
     location.reload();
   }
 
+  mainMenu() {
+    this.mainItems = [
+
+      {
+        label: 'Home',
+        command: () => {
+          this.router.navigateByUrl('/admin');
+        }
+      },
+      {
+        label: 'Content',
+        items: [{
+          label: 'Quiz',
+          icon: 'pi pi-fw pi-question-circle',
+          
+          command: () =>{
+            this.router.navigateByUrl('/admin/quiz')
+          }
+        },
+        {
+          label: 'Assessments',
+          icon:'pi pi-fw pi-hourglass',
+          command: () => {
+            this.router.navigateByUrl('/admin/assessment')
+          }
+        }
+        ]
+      },
+      {
+        label: 'About',
+        command: () => {
+          this.router.navigateByUrl('/admin')
+        }
+
+      }
+    ];
+  }
+
 
   contentMenu(): void {
     this.contentItems = [{
@@ -76,6 +116,8 @@ export class HeaderComponent implements OnInit {
   assessmentNavigate(): void {
     this.router.navigateByUrl('/admin/assessment');
   }
+
+
 
 }
 

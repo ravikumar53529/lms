@@ -39,11 +39,12 @@
       
 
     </div>
-    <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+    <!-- Pagination -->
+    <!-- <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
 
 
     <!-- Add dialog start -->
-    <p-dialog header="Add Questions" [(visible)]="addDisplay" [style]="{width: '50vw'}" styleClass="active">
+    <p-dialog header="Add Question" [(visible)]="addDisplay" [style]="{width: '50vw'}" styleClass="active">
 
         <hr>
         <form [formGroup]="addQuizGroup" (ngSubmit)="onSubmitQuestion()">

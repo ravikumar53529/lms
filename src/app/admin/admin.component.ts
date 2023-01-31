@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
     display: boolean = false;
     editDisply: boolean = false;
     contentData!: any;
+    totalCourse: number = 0;
     public _id!: string;
     _data!: any;
     loadingSpinner = false;
@@ -135,7 +136,11 @@ export class AdminComponent implements OnInit {
                     duration: 3000
                 })
             }
+
+
             this.contentData = res.data;
+            this.totalCourse = this.contentData.length;
+            console.log('content', this.totalCourse);
             this.loadingSpinner = false;
 
         })

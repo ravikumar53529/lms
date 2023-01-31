@@ -1,11 +1,139 @@
 <!-- <h1 class="text-center mt-3">Welcome Admin</h1> -->
 <app-header></app-header>
 
-<div class="container text-center bg-blue border  my-4 justify-content-center d-flex align-items-center ">
+<!-- <div class="container text-center bg-blue border  my-4 justify-content-center d-flex align-items-center ">
     <h3 class="m-0 my-2 text-white">Welcome to LMS</h3>
+</div> -->
+
+<div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Orders</span>
+                        <div class="text-900 font-medium text-xl">0</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                </div>
+                <!-- <span class="text-green-500 font-medium">24 new </span>
+                <span class="text-500">since last visit</span> -->
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Revenue</span>
+                        <div class="text-900 font-medium text-xl">{{0 | currency : 'INR'}}</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-wallet text-orange-500 text-xl"></i>
+                    </div>
+                </div>
+                <!-- <span class="text-green-500 font-medium">%52+ </span>
+                <span class="text-500">since last week</span> -->
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Customers</span>
+                        <div class="text-900 font-medium text-xl">0</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-users text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+                <!-- <span class="text-green-500 font-medium">520 </span>
+                <span class="text-500">newly registered</span> -->
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Total Courses </span>
+                        <div class="text-900 font-medium text-xl">{{totalCourse}} Added</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-book text-purple-500 text-xl"></i>
+                    </div>
+                </div>
+                <!-- <span class="text-green-500 font-medium">85 </span>
+                <span class="text-500">responded</span> -->
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="progress-spinner text-center mt-4"  *ngIf="loadingSpinner == true"  data-backdrop="static">
+            <p-progressSpinner ></p-progressSpinner>
+        </div>
+        <p-divider></p-divider>
+        <div class="text-right">
+            <button class="btn btn-primary mb-2 " type="button" (click)="showDialog()" icon="pi pi-info-circle"
+                label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
+        </div>
+        <div class="row">
+
+            <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
+                <div class="card" style="height: 500px;" (click)="setData(data)">
+                    <!--  [routerLink]="['/admin/content',data.id]" -->
+                    <img style="height: 250px;" src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
+                        class="card-img-top" alt="...">
+
+                    <div class="card-body">
+                        <h3 class="card-title mb-2" style="font-weight: bold;">{{data.attributes.name}}</h3>
+                        <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
+                                fontIcon="person"></mat-icon> {{data.attributes.author}}</span>
+                        <p class="card-text"> {{data.attributes.description}}.</p>
+                        <div class="row align-items-center">
+                            <div class="col-lg-4">
+                                <span class="d-flex align-items-center">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                        fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
+                                </span>
+                            </div>
+                            <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary">
+                                    {{data.attributes.price | currency : 'INR'}}</button>
+                            </div>
+                            <!-- <div class="col-lg-4 d-flex justify-content-end"><a class="btn btn-primary">Buy</a> -->
+                            <!-- </div> -->
+                        </div>
+                        <div class="d-flex justify-content-end mt-2">
+                            <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
+                                class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
+                                style="height: 2rem; width: 2rem;"></button>
+
+                            <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
+                                class="p-button-rounded ms-1 p-button-danger p-button-outlined"
+                                style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
+
+                        </div>
+
+                    </div>
+                    <!-- <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div> -->
+                </div>
+            </div>
+
+            <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
+                [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+
+        </div>
+        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+    </div>
 </div>
 
-<div class="container">
+<div class=" container">
 
     <div class="d-flex justify-content-end">
         <!-- Add dialog start -->
@@ -14,7 +142,7 @@
             <hr>
             <form [formGroup]="courseGroup" (ngSubmit)="onSubmitContent()">
                 <div class="p-fluid grid">
-                    <div class="field mt-4">
+                    <div class="field mt-4 w-100">
                         <label for="title">Course Name</label>
                         <span class="p-float-label">
 
@@ -28,7 +156,7 @@
                         </span>
 
                     </div>
-                    <div class="field mt-4">
+                    <div class="field mt-4 w-100">
                         <label for="title">Description</label>
                         <span class="p-float-label">
                             <textarea inputId="textarea" required class="bg-light-grey input-shadow w-100 p-inputtext"
@@ -41,7 +169,7 @@
                         </span>
                     </div>
 
-                    <div class="field mt-4">
+                    <div class="field mt-4 w-100">
                         <label for="title">Price</label>
                         <span class="p-float-label">
                             <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
@@ -75,7 +203,7 @@
             <hr>
             <form [formGroup]="courseUpdateGroup">
                 <div class="p-fluid grid">
-                    <div class="field mt-4">
+                    <div class="field mt-2 w-100">
                         <label for="title">Course Name</label>
                         <span class="p-float-label">
 
@@ -89,7 +217,7 @@
 
 
                     </div>
-                    <div class="field mt-4">
+                    <div class="field mt-2 w-100">
                         <label for="title">Description</label>
                         <span class="p-float-label">
                             <textarea inputId="textarea" class="bg-light-grey input-shadow w-100 p-inputtext" rows="3"
@@ -101,7 +229,7 @@
                             name is required</small>
                     </div>
 
-                    <div class="field mt-4">
+                    <div class="field mt-1 w-100">
                         <label for="title">Price</label>
                         <span class="p-float-label">
                             <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext"
@@ -112,7 +240,7 @@
                                 name is required</small>
                         </span>
                     </div>
-                    <div class="row  mt-4">
+                    <div class="row  mt-1">
 
                     </div>
 
@@ -128,63 +256,9 @@
 
         <!-- Edit dialog ends here-->
 
-        <button class="btn btn-primary mb-2" type="button" (click)="showDialog()" icon="pi pi-info-circle"
-            label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
+
     </div>
 
-    <div>
-        <div class="row">
-
-            <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
-                <div class="card" style="height: 500px;" (click)="setData(data)"
-                    [routerLink]="['/admin/content',data.id]">
-                    <img style="height: 250px;" src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
-                        class="card-img-top" alt="...">
-
-                    <div class="card-body">
-                        <h3 class="card-title mb-2" style="font-weight: bold;">{{data.attributes.name}}</h3>
-                        <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
-                                fontIcon="person"></mat-icon> {{data.attributes.author}}</span>
-                        <p class="card-text"> {{data.attributes.description}}.</p>
-                        <div class="row align-items-center">
-                            <div class="col-lg-4">
-                                <span class="d-flex align-items-center">
-                                    <mat-icon aria-hidden="false" aria-label="Example home icon"
-                                        fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
-                                </span>
-                            </div>
-                            <div class="col-lg-4"><button type="button" class="btn btn-outline-secondary">
-                                    {{data.attributes.price | currency : 'INR'}}</button>
-                            </div>
-                            <!-- <div class="col-lg-4 d-flex justify-content-end"><a class="btn btn-primary">Buy</a> -->
-                            <!-- </div> -->
-                        </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
-                                class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
-                                style="height: 2rem; width: 2rem;"></button>
-
-                            <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
-                                class="p-button-rounded ms-1 p-button-danger p-button-outlined"
-                                style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
-
-                        </div>
-                    </div>
-                    <!-- <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div> -->
-                </div>
-            </div>
-
-            <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
-                [rowsPerPageOptions]="[10,20,30]"></p-paginator>
-
-        </div>
-        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
-    </div>
 
     <p-toast position="top-right"></p-toast>
-</div>
-<div class="progress-spinner text-center mt-4" *ngIf="loadingSpinner == true">
-    <p-progressSpinner></p-progressSpinner>
 </div>

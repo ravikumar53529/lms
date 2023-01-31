@@ -27,39 +27,13 @@ import { AssessmentComponent } from './assessment/assessment.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { CardModule } from 'primeng/card';
 import { ToastModule } from 'primeng/toast';
+import { MenubarModule } from 'primeng/menubar';
+import { AvatarModule } from 'primeng/avatar';
+import { DividerModule } from 'primeng/divider';
+import { EditorModule } from 'primeng/editor';
 
 
-const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  "bgsColor": "red",
-  "bgsOpacity": 0.5,
-  "bgsPosition": "bottom-right",
-  "bgsSize": 60,
-  "bgsType": "ball-spin-clockwise",
-  "blur": 5,
-  "delay": 0,
-  "fastFadeOut": true,
-  "fgsColor": "red",
-  "fgsPosition": "center-center",
-  "fgsSize": 60,
-  "fgsType": "ball-spin-clockwise",
-  "gap": 24,
-  "logoPosition": "center-center",
-  "logoSize": 170,
-  "logoUrl": "https://raw.githubusercontent.com/t-ho/ngx-ui-loader/master/src/assets/angular.png",
-  "masterLoaderId": "master",
 
-  "overlayBorderRadius": "0",
-  "overlayColor": "rgba(40, 40, 40, 0.8)",
-  "pbColor": "red",
-  "pbDirection": "ltr",
-  "pbThickness": 3,
-  "hasProgressBar": true,
-  "text": "",
-  "textColor": "#FFFFFF",
-  "textPosition": "center-center",
-  "maxTime": -1,
-  "minTime": 300
-}
 
 @NgModule({
   declarations: [
@@ -82,6 +56,10 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PaginatorModule,
     CardModule,
     ToastModule,
+    MenubarModule,
+    AvatarModule,
+    DividerModule,
+    EditorModule,
     AdminRoutingModule,MatIconModule,MenuModule,DialogModule,TooltipModule,ButtonModule
   ],
   providers:[
