@@ -43,11 +43,16 @@
 
 <p-menubar [model]="mainItems">
     <ng-template pTemplate="start">
-       <span style="color: rgb(44, 44, 226);"><i class="pi pi-bolt" style="font-size: 2rem"></i><br>LMS</span> 
+        <span style="color: rgb(44, 44, 226);"><i class="pi pi-bolt" style="font-size: 2rem"></i><br>LMS</span>
         <!-- <img src="/assets/images/logo.png" height="40" class="p-mr-2" alt="LMS"> -->
     </ng-template>
     &nbsp;&nbsp;&nbsp;
-    <p-avatar icon="pi pi-user" (click)="menu.toggle($event)" class="cursor-pointer" pBadge value="4" shape="circle"
-        severity="danger" size="large"></p-avatar>
-    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+    <ng-template pTemplate="end">
+
+        <p-avatar icon="pi pi-user" (click)="menu.toggle($event)" class="cursor-pointer" pBadge value="4" shape="circle"
+            severity="danger" size="large"></p-avatar>
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
+    </ng-template>
+
 </p-menubar>

@@ -9,15 +9,14 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TokenInterceptor implements HttpInterceptor {
- token:any;
+  token: any;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
-  constructor(private router: Router,private snackBar:MatSnackBar) { }
+  constructor(private router: Router, private snackBar: MatSnackBar) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.token = localStorage.getItem("token");
     if (request.url !== 'api/auth/local') {
-
       request = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${this.token}`).set("Access-Control-Allow-Origin", "*"),
       });
@@ -40,10 +39,10 @@ export class TokenInterceptor implements HttpInterceptor {
           });
         }
         else {
-          this.snackBar.open('Something went wrong', 'Login again',{
+          this.snackBar.open('Something went wrong', 'Login again', {
             duration: 3000,
-            horizontalPosition:this.horizontalPosition,
-            verticalPosition:this.verticalPosition
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition
           });
         }
         localStorage.clear();

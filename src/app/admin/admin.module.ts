@@ -5,10 +5,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { SheredModule } from '../component/shered.module';
-import {MenuModule} from 'primeng/menu';
-import {DialogModule} from 'primeng/dialog';
-import {TooltipModule} from 'primeng/tooltip';
-import {ButtonModule} from 'primeng/button';
+import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
+import { ButtonModule } from 'primeng/button';
 // import { HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { TokenInterceptor } from '../interceptor/token-interceptor.service';
 import { ApiService } from '../services/api.service';
@@ -31,6 +31,8 @@ import { MenubarModule } from 'primeng/menubar';
 import { AvatarModule } from 'primeng/avatar';
 import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
+import { TableModule } from 'primeng/table';
+import { CoursesComponent } from './courses/courses.component';
 
 
 
@@ -42,7 +44,8 @@ import { EditorModule } from 'primeng/editor';
     HeaderComponent,
     QuizComponent,
     AssessmentComponent,
-    
+    CoursesComponent,
+
   ],
   imports: [
     CommonModule,
@@ -60,9 +63,15 @@ import { EditorModule } from 'primeng/editor';
     AvatarModule,
     DividerModule,
     EditorModule,
-    AdminRoutingModule,MatIconModule,MenuModule,DialogModule,TooltipModule,ButtonModule
+    TableModule,
+    AdminRoutingModule,
+    MatIconModule,
+    MenuModule,
+    DialogModule,
+    TooltipModule,
+    ButtonModule
   ],
-  providers:[
+  providers: [
     ApiService
   ]
 })

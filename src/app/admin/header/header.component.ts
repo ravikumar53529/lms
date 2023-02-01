@@ -60,6 +60,12 @@ export class HeaderComponent implements OnInit {
         }
       },
       {
+        label: 'Courses',
+        command: () => {
+          this.router.navigateByUrl('/admin/courses');
+        }
+      },
+      {
         label: 'Content',
         items: [{
           label: 'Quiz',

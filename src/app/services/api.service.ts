@@ -8,25 +8,53 @@ import { Content } from '../models/content';
 })
 export class ApiService {
 
-  // url = "https://c628-117-234-39-140.in.ngrok.io";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getContent() : Observable<any>{
+  // Get content
+  getContent(): Observable<any> {
     return this.http.get<any>(`/api/content-libraries?populate=*`);
   }
 
-  postContent(item:any): Observable<Content> {
-    return this.http.post<Content>(`api/content-libraries`,item);
+  // File upload api
+  uploadFile(item: any): Observable<any> {
+    return this.http.post<any>(`api/upload`, item);
   }
 
-  updateContent(id:string,item:any) : Observable<any>{
-    return this.http.put<any>(`api/content-libraries/${id}`,item);
+  //Post content
+  postContent(item: any): Observable<Content> {
+    return this.http.post<Content>(`api/content-libraries`, item);
   }
 
-  deleteContent(id:any) :Observable<any>{
+  // update content
+  updateContent(id: string, item: any): Observable<any> {
+    return this.http.put<any>(`api/content-libraries/${id}`, item);
+  }
+
+  // Delete content
+  deleteContent(id: any): Observable<any> {
     return this.http.delete<any>(`api/content-libraries/${id}`);
+  }
+
+  // Post course
+  postCourse(item: any): Observable<any> {
+    return this.http.post<any>(`api/courses`, item);
+  }
+
+  // Get courses
+  getCourses(): Observable<any> {
+    return this.http.get(`api/courses`);
+  }
+
+  // update courses
+  updateCourse(id: any, item: any): Observable<any> {
+    return this.http.put(`api/courses/${id}`, item);
+  }
+
+  // Delete course
+  deleteCourse(id: any): Observable<any> {
+    return this.http.delete<any>(`api/courses/${id}`);
   }
 }

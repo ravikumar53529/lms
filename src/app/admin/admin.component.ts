@@ -334,9 +334,11 @@ export class AdminComponent implements OnInit {
         });
     }
 
-    setData(data: any) {
-        localStorage.setItem('content', JSON.stringify(data));
-    }
+    // setData(data: any) {
+    //     console.log('rrrr',data);
+    //     this.router.navigate(['/admin/content',data.id]);
+    //     localStorage.setItem('content', JSON.stringify(data));
+    // }
 
 
 }

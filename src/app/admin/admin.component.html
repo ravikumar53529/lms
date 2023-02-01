@@ -73,18 +73,18 @@
         </div>
     </div>
     <div>
-        <div class="progress-spinner text-center mt-4"  *ngIf="loadingSpinner == true"  data-backdrop="static">
-            <p-progressSpinner ></p-progressSpinner>
+        <div class="progress-spinner text-center mt-4" *ngIf="loadingSpinner == true" data-backdrop="static">
+            <p-progressSpinner></p-progressSpinner>
         </div>
         <p-divider></p-divider>
         <div class="text-right">
             <button class="btn btn-primary mb-2 " type="button" (click)="showDialog()" icon="pi pi-info-circle"
-                label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
+                label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add content</button>
         </div>
         <div class="row">
 
             <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
-                <div class="card" style="height: 500px;" (click)="setData(data)">
+                <div class="card" style="height: 500px;">
                     <!--  [routerLink]="['/admin/content',data.id]" -->
                     <img style="height: 250px;" src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
                         class="card-img-top" alt="...">
@@ -107,6 +107,9 @@
                             <!-- <div class="col-lg-4 d-flex justify-content-end"><a class="btn btn-primary">Buy</a> -->
                             <!-- </div> -->
                         </div>
+
+
+
                         <div class="d-flex justify-content-end mt-2">
                             <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
                                 class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
@@ -115,6 +118,9 @@
                             <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
                                 class="p-button-rounded ms-1 p-button-danger p-button-outlined"
                                 style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
+
+                            <button pButton pRipple type="button" class="p-button-outlined p-button-primary"
+                                [routerLink]="['/admin/content',data.id]" label="Details"></button>
 
                         </div>
 
