@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {InputTextModule} from 'primeng/inputtext';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
@@ -69,7 +69,8 @@ import { CoursesComponent } from './courses/courses.component';
     MenuModule,
     DialogModule,
     TooltipModule,
-    ButtonModule
+    ButtonModule,
+    InputTextModule
   ],
   providers: [
     ApiService
