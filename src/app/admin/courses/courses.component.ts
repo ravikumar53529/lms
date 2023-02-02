@@ -126,9 +126,11 @@ export class CoursesComponent implements OnInit {
       if (!res) {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went to wrong !!' });
       }
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Course Added successfully !' })
+
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Course Added successfully !' });
+      this.getCourses();
     });
-    this.getCourses();
+
 
     this.addDialogDisplay = false;
 
@@ -178,9 +180,10 @@ export class CoursesComponent implements OnInit {
           if (!res) {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong !!' })
           }
+          this.getCourses();
+          this.messageService.add({ severity: 'error', summary: 'Delete', detail: 'Deleted successfully !' });
         });
-        this.getCourses();
-        this.messageService.add({ severity: 'error', summary: 'Delete', detail: 'Deleted successfully !' });
+
       },
       reject: () => {
 

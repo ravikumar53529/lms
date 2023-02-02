@@ -1,47 +1,53 @@
 <app-header></app-header>
-<div>
-    <!-- <div class="grid mt-1">
-        <div class="col surface-600">
-
-            <div class="grid" style="color: white;">
-                <div class="col-8 text-center pl-4">
-                    <h1>{{singleContent.attributes.name}}</h1>
-                    <h3>{{singleContent.attributes.description}}</h3>
-                </div>
-                <div class="col-4"><img style="height: 150px;width: 250px;"
-                        src="{{singleContent.attributes.media.data[0].attributes.formats.small.url}}"></div>
-            </div>
-
-        </div>
-    </div> -->
-
-
+<div class="container-fluid my-3">
+    <h2>Courses</h2>
 </div>
-<!--  [value]="" -->
-<p-table [value]="courseData">
+<!-- style="background-color: #fff;" -->
+<p-table [value]="courseData" [rowHover]="true" [rows]="5" [paginator]="true" [responsive]="true" [autoLayout]="true">
     <ng-template pTemplate="caption">
-        <div class="p-d-flex p-ai-center p-jc-between">
-            Courses
-            <div class="text-right">
-                <button (click)="addDialog()" class="btn btn-primary mb-2 " type="button" icon="pi pi-info-circle"
-                    label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
-            </div>
-
-            <!-- <p-button icon="pi pi-refresh"></p-button> -->
+        <div class="table-header d-flex justify-content-between">
+            <span class="p-input-icon-left">
+        
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" placeholder=" Search Courses" />
+            </span>
+            <button (click)="addDialog()" class="btn btn-primary mb-2 " type="button" icon="pi pi-info-circle" label="Add"><i
+                    class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
         </div>
     </ng-template>
+
     <ng-template pTemplate="header">
         <tr>
-            <th>Course Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-
+            <th style="min-width: 14rem">Course Name</th>
+            <th style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+                    Description
+                </div>
+            </th>
+            <!-- <th style="min-width: 14rem">
+                            <div class="flex justify-content-between align-items-center">
+                                Price
+                            </div>
+                        </th> -->
+            <th style="min-width: 14rem">
+                <div class="flex justify-content-between align-items-center">
+                    Actions
+                </div>
+            </th>
         </tr>
     </ng-template>
+    <div>{{courseData}}</div>
     <ng-template pTemplate="body" let-course>
+
         <tr>
             <td>{{course.attributes.title}}</td>
-            <td>{{course.attributes.courseDescription}}</td>
+            <td>
+                <!-- <div class="des"> -->
+                {{course.attributes.courseDescription}}
+                <!-- </div> -->
+            
+            </td>
+            <!-- <td> $100</td> -->
             <td>
                 <div class="d-flex mt-2 text-center">
                     <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
@@ -49,7 +55,7 @@
                         style="height: 2rem; width: 2rem;"></button>&nbsp;
 
                     <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
-                     (click)="deleteCourse(course)"   class="p-button-rounded p-button-danger p-button-outlined"
+                        (click)="deleteCourse(course)" class="p-button-rounded p-button-danger p-button-outlined"
                         style="height: 2rem; width: 2rem;"></button>
 
                 </div>
@@ -59,7 +65,7 @@
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            <!-- In total there are {{products ? products.length : 0 }} products. -->
+            In total there are {{courseData ? courseData.length : 0 }} products.
         </div>
     </ng-template>
 </p-table>
@@ -173,7 +179,6 @@
                 <span class="p-float-label">
                     <input type="file" (change)="onAssignFileSelect($event)"
                         class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
-
                 </span>
             </div> -->
             <div class="row  mt-1">

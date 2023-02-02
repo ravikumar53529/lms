@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
     public _id!: string;
     _data!: any;
     loadingSpinner = false;
+    contentFileData: any;
 
     msgs: Message[] = [];
 
@@ -109,6 +110,8 @@ export class AdminComponent implements OnInit {
             title: new FormControl('', [Validators.required, Validators.minLength(8), Validators.min(1)]),
             description: new FormControl('', [Validators.required, Validators.minLength(10)]),
             price: new FormControl('', [Validators.required, Validators.minLength(2)]),
+            img: new FormControl('', Validators.required)
+
         })
     }
 
@@ -147,6 +150,18 @@ export class AdminComponent implements OnInit {
 
     }
 
+    onFileSelect(event: any) {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.courseGroup.get('img')?.setValue(file);
+            const formData = new FormData();
+            formData.append('files', this.courseGroup.get('img')?.value);
+            this.apiService.uploadFile(formData).subscribe(res => {
+                console.log(res);
+                this.contentFileData = res;
+            });
+        }
+    }
 
 
     onSubmitContent() {
@@ -158,72 +173,73 @@ export class AdminComponent implements OnInit {
                 "description": this.courseGroup.value.description,
                 "author": author,
                 "price": this.courseGroup.value.price,
-                "media": [{
-                    "createdAt": "2023-01-25T08:20:02.102Z",
-                    "id": 2,
-                    "name": "karim-manjra-4euubO4CasU-unsplash.jpg",
-                    "alternativeText": null,
-                    "caption": null,
-                    "width": 3648,
-                    "height": 5472,
-                    "formats": {
-                        "large": {
-                            "ext": ".jpg",
-                            "url": "/uploads/large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                            "hash": "large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                            "mime": "image/jpeg",
-                            "name": "large_karim-manjra-4euubO4CasU-unsplash.jpg",
-                            "path": null,
-                            "size": 79.54,
-                            "width": 667,
-                            "height": 1000
-                        },
-                        "small": {
-                            "ext": ".jpg",
-                            "url": "/uploads/small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                            "hash": "small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                            "mime": "image/jpeg",
-                            "name": "small_karim-manjra-4euubO4CasU-unsplash.jpg",
-                            "path": null,
-                            "size": 27.77,
-                            "width": 333,
-                            "height": 500
-                        },
-                        "medium": {
-                            "ext": ".jpg",
-                            "url": "/uploads/medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                            "hash": "medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                            "mime": "image/jpeg",
-                            "name": "medium_karim-manjra-4euubO4CasU-unsplash.jpg",
-                            "path": null,
-                            "size": 51.36,
-                            "width": 500,
-                            "height": 750
-                        },
-                        "thumbnail": {
-                            "ext": ".jpg",
-                            "url": "/uploads/thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                            "hash": "thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                            "mime": "image/jpeg",
-                            "name": "thumbnail_karim-manjra-4euubO4CasU-unsplash.jpg",
-                            "path": null,
-                            "size": 4.9,
-                            "width": 104,
-                            "height": 156
-                        }
-                    },
-                    "hash": "karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                    "ext": ".jpg",
-                    "mime": "image/jpeg",
-                    "size": 2143.93,
-                    "url": "/uploads/karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                    "previewUrl": null,
-                    "provider": "local",
-                    "provider_metadata": null,
-                    "folderPath": "/",
-                    "updatedAt": "2023-01-25T08:20:02.102Z",
-                    "folder": null
-                }]
+                "media": this.contentFileData
+                // "media": [{
+                //     "createdAt": "2023-01-25T08:20:02.102Z",
+                //     "id": 2,
+                //     "name": "karim-manjra-4euubO4CasU-unsplash.jpg",
+                //     "alternativeText": null,
+                //     "caption": null,
+                //     "width": 3648,
+                //     "height": 5472,
+                //     "formats": {
+                //         "large": {
+                //             "ext": ".jpg",
+                //             "url": "/uploads/large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
+                //             "hash": "large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
+                //             "mime": "image/jpeg",
+                //             "name": "large_karim-manjra-4euubO4CasU-unsplash.jpg",
+                //             "path": null,
+                //             "size": 79.54,
+                //             "width": 667,
+                //             "height": 1000
+                //         },
+                //         "small": {
+                //             "ext": ".jpg",
+                //             "url": "/uploads/small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
+                //             "hash": "small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
+                //             "mime": "image/jpeg",
+                //             "name": "small_karim-manjra-4euubO4CasU-unsplash.jpg",
+                //             "path": null,
+                //             "size": 27.77,
+                //             "width": 333,
+                //             "height": 500
+                //         },
+                //         "medium": {
+                //             "ext": ".jpg",
+                //             "url": "/uploads/medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
+                //             "hash": "medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
+                //             "mime": "image/jpeg",
+                //             "name": "medium_karim-manjra-4euubO4CasU-unsplash.jpg",
+                //             "path": null,
+                //             "size": 51.36,
+                //             "width": 500,
+                //             "height": 750
+                //         },
+                //         "thumbnail": {
+                //             "ext": ".jpg",
+                //             "url": "/uploads/thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
+                //             "hash": "thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
+                //             "mime": "image/jpeg",
+                //             "name": "thumbnail_karim-manjra-4euubO4CasU-unsplash.jpg",
+                //             "path": null,
+                //             "size": 4.9,
+                //             "width": 104,
+                //             "height": 156
+                //         }
+                //     },
+                //     "hash": "karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
+                //     "ext": ".jpg",
+                //     "mime": "image/jpeg",
+                //     "size": 2143.93,
+                //     "url": "/uploads/karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
+                //     "previewUrl": null,
+                //     "provider": "local",
+                //     "provider_metadata": null,
+                //     "folderPath": "/",
+                //     "updatedAt": "2023-01-25T08:20:02.102Z",
+                //     "folder": null
+                // }]
             }
         }
         // Post api call here
@@ -310,21 +326,17 @@ export class AdminComponent implements OnInit {
             icon: 'pi pi-info-circle',
             accept: () => {
                 this.apiService.deleteContent(data.id).subscribe(res => {
-                    // this.snackBar.open('Content sucessfully deleted !', 'Ok', {
-                    //     duration: 3000,
-                    //     verticalPosition: this.verticalPosition,
-                    //     horizontalPosition: this.horizontalPosition
-                    // });
-
-                    this.messageService.add({
-                        severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
-                    })
                     if (!res) {
                         this.messageService.add({
                             severity: 'error', summary: 'Error', detail: 'Something went to wrong !!'
                         })
                     }
                     this.getContent();
+                    this.messageService.add({
+                        severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
+                    })
+
+
                 })
 
             },
