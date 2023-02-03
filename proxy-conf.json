@@ -4,7 +4,7 @@
             "/api",
             "/uploads"
         ],
-        "target": "https://7ded7a57d1019d5cbdd2094b910241b0.loophole.site/",
+        "target": "https://a63026b5ec23217652701a69b5f0d560.loophole.site/",
         "secure": true,
         "changeOrigin": true
     }
