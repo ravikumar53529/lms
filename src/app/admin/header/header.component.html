@@ -1,8 +1,8 @@
-<nav class="navbar  bg-blue navbar-expand-lg navbar-light shadow-sm" style="height: auto; background-color: #2188d9;">
+<nav class="navbar  bg-blue navbar-expand-lg navbar-light shadow-sm" style="height: auto;">
     <div class="container-fluid">
         <div class="col-lg-2 cursor-pointer" routerLink="/admin">
             <span class="d-flex align-items-center" style="color:  #fff;"><i class="pi pi-bolt"
-                    style="font-size: 2rem"></i>LMS</span>
+                    style="font-size: 2rem"></i> <span style="font-size: 24px;"> LMS</span> </span>
             <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
         </div>
         <div class="col-lg-2 d-flex justify-content-end">
             <p-avatar
-                size="large" icon="pi pi-user" (click)="menu.toggle($event)" [style]="{'background-color':'#2188d9', 'color': '#ffffff'}"></p-avatar>
+                size="large" icon="pi pi-user" class="cursor-pointer" (click)="menu.toggle($event)" [style]="{'background-color':'transparent', 'color': '#ffffff'}"></p-avatar>
             <p-menu #menu [popup]="true" [model]="items"></p-menu>
         </div>
         </div>

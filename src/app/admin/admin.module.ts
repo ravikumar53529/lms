@@ -33,6 +33,7 @@ import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 import { TableModule } from 'primeng/table';
 import { CoursesComponent } from './courses/courses.component';
+import { TagModule } from 'primeng/tag';
 
 
 
@@ -70,7 +71,8 @@ import { CoursesComponent } from './courses/courses.component';
     DialogModule,
     TooltipModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    TagModule
   ],
   providers: [
     ApiService
