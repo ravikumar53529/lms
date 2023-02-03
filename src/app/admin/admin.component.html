@@ -114,24 +114,21 @@
                             <div class="col-lg-4"><button type="button" class="btn ">
                                     {{data.attributes.price | currency : 'INR'}}</button>
                             </div>
-                            <!-- <div class="col-lg-4 d-flex justify-content-end"> 
-                                <button pButton pRipple type="button" class="p-button-outlined p-button-primary"
-                                [routerLink]="['/admin/content',data.id]" label="Details"></button>
-                            </div> -->
-                        </div>
-                        <div class="d-flex justify-content-end mt-2">
-                            <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
-                                class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
-                                style="height: 2rem; width: 2rem;"></button>
+                            <div class="col-lg-4 d-flex justify-content-end">
+                                <div class="d-flex justify-content-end mt-2">
+                                    <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
+                                        style="height: 2rem; width: 2rem;"></button>
 
-                            <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
-                                class="p-button-rounded ms-1 p-button-danger p-button-outlined"
-                                style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
-
-                            <!-- <button pButton pRipple type="button" class="p-button-outlined p-button-primary"
+                                    <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
+                                        class="p-button-rounded ms-1 p-button-danger p-button-outlined"
+                                        style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
+                                </div>
+                                <!-- <button pButton pRipple type="button" class="p-button-outlined p-button-primary"
                                 [routerLink]="['/admin/content',data.id]" label="Details"></button> -->
-
+                            </div>
                         </div>
+
 
                     </div>
                     <!-- <div class="card-footer">
@@ -153,7 +150,6 @@
     <div class="d-flex justify-content-end">
         <!-- Add dialog start -->
         <p-dialog header="Add Content" [(visible)]="display" [style]="{width: '40vw'}" styleClass="active">
-
             <hr>
             <form [formGroup]="courseGroup" (ngSubmit)="onSubmitContent()">
                 <div class="p-fluid grid">
@@ -169,7 +165,6 @@
                                 Content
                                 name is required</small>
                         </span>
-
                     </div>
                     <div class="field mt-4 w-100">
                         <label for="title">Description</label>
@@ -183,7 +178,6 @@
                                 name is required</small>
                         </span>
                     </div>
-
                     <div class="field mt-4 w-100">
                         <label for="title">Price</label>
                         <span class="p-float-label">
@@ -207,9 +201,7 @@
                         </span>
                     </div>
                     <div class="row  mt-4">
-
                     </div>
-
                 </div>
                 <div class="d-flex justify-content-end mt-2">
                     <button [disabled]="courseGroup.invalid" type="button" class="btn btn-success me-2"
@@ -225,14 +217,12 @@
         <!-- Edit dialog start here -->
 
         <p-dialog header="Update Courses" [(visible)]="editDisply" [style]="{width: '40vw'}" styleClass="active">
-
             <hr>
             <form [formGroup]="courseUpdateGroup">
                 <div class="p-fluid grid">
                     <div class="field mt-2 w-100">
                         <label for="title">Course Name</label>
                         <span class="p-float-label">
-
                             <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext"
                                 formControlName="title" pInputText placeholder="Course Name">
                             <small class="p-error block"
@@ -240,8 +230,6 @@
                                 Course
                                 name is required</small>
                         </span>
-
-
                     </div>
                     <div class="field mt-2 w-100">
                         <label for="title">Description</label>
@@ -254,7 +242,6 @@
                             Description
                             name is required</small>
                     </div>
-
                     <div class="field mt-1 w-100">
                         <label for="title">Price</label>
                         <span class="p-float-label">
@@ -274,9 +261,7 @@
                         </span>
                     </div>
                     <div class="row  mt-1">
-
                     </div>
-
                 </div>
                 <div class="d-flex justify-content-end mt-2">
                     <button type="button" class="btn btn-success me-2" (click)="onUpdateContent()"><i
@@ -286,12 +271,7 @@
                 </div>
             </form>
         </p-dialog>
-
         <!-- Edit dialog ends here-->
-
-
     </div>
-
-
     <p-toast position="top-right"></p-toast>
 </div>
