@@ -13,6 +13,10 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav" style="font-size: 24px;">
                 <ul class="navbar-nav   mb-lg-0" style="gap: 35px;">
                     <li class="nav-item">
+                        <a class="nav-link nave-menu active" aria-current="page" routerLink="/admin/dashboard"
+                            routerLinkActive="active">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nave-menu active" aria-current="page" routerLink="/admin"
                             routerLinkActive="active">Home</a>
                     </li>
@@ -27,9 +31,9 @@
             </div>
         </div>
         <div class="col-lg-2 d-flex justify-content-end">
-            <p-avatar
-                size="large" icon="pi pi-user" (click)="menu.toggle($event)" [style]="{'background-color':'#2188d9', 'color': '#ffffff'}"></p-avatar>
+            <p-avatar size="large" icon="pi pi-user" (click)="menu.toggle($event)"
+                [style]="{'background-color':'#2188d9', 'color': '#ffffff'}"></p-avatar>
             <p-menu #menu [popup]="true" [model]="items"></p-menu>
         </div>
-        </div>
-    </nav>
+    </div>
+</nav>

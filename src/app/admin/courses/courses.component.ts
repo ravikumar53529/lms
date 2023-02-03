@@ -18,6 +18,8 @@ export class CoursesComponent implements OnInit {
 
   courseFileData: any;
   assignFileData: any;
+  updateAssignFileData: any;
+  updateFileData: any;
 
   courseData: any;
   editData: any;
@@ -58,7 +60,7 @@ export class CoursesComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       courseFile: new FormControl('', Validators.nullValidator),
       assignFile: new FormControl('', Validators.nullValidator)
-    })
+    });
   }
 
   onFileSelect(event: any) {
@@ -91,23 +93,57 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  getCourses() {
-    this.apiService.getCourses().subscribe(res => {
-      console.log('course data', res.data);
-      this.courseData = res.data;
-    })
-      ;
+
+  onUpdateFileSelect(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.editFormGroup.get('courseFile')?.setValue(file);
+
+      const formData = new FormData();
+      formData.append('files', this.editFormGroup.get('courseFile')?.value);
+
+      this.apiService.uploadFile(formData).subscribe(res => {
+        console.log(res[0].id);
+        this.updateFileData = res[0].id;
+      })
+    }
   }
 
-  addDialog(): void {
+  onUpdateAssignFileSelect(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.editFormGroup.get('assignFile')?.setValue(file);
+
+      const formData = new FormData();
+      formData.append('files', this.editFormGroup.get('assignFile')?.value);
+
+      this.apiService.uploadFile(formData).subscribe(res => {
+        console.log(res[0].id);
+        this.updateAssignFileData = res[0].id;
+      })
+    }
+  }
+
+  getCourses(): void {
+    this.apiService.getCourses().subscribe(res => {
+      console.log('course data', res.data);
+      try {
+        this.courseData = res.data;
+      } catch (error) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong !!' })
+      }
+    });
+  }
+
+  public addDialog(): void {
     this.addDialogDisplay = true;
   }
 
-  closeAddDialog(): void {
+ public closeAddDialog(): void {
     this.addDialogDisplay = false;
   }
 
-  onSubmit(): void {
+ public onSubmit(): void {
     console.log(this.addFormGrorup.value);
     const assignFile = this.assignFileData;
     const courseFile = this.courseFileData;
@@ -126,19 +162,14 @@ export class CoursesComponent implements OnInit {
       if (!res) {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went to wrong !!' });
       }
-
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Course Added successfully !' });
       this.getCourses();
     });
-
-
     this.addDialogDisplay = false;
-
   }
 
-
   editDialog(data: any): void {
-    console.log(data);
+    console.log('edit data',data);
     this.editData = data;
     this.editFormGroup = this.fb.group({
       title: new FormControl(data.attributes.title, [Validators.required]),
@@ -154,19 +185,40 @@ export class CoursesComponent implements OnInit {
   }
 
   onUpdate(): void {
-    this.editCourseBody = {
-      'data': {
-        // 'assignment': assignFile,
-        // 'courseContent': courseFile,
-        'courseDescription': this.editFormGroup.value.description,
-        'title': this.editFormGroup.value.title,
+    console.log('old one', this.editData.id);
+    console.log('update assign data', this.updateAssignFileData);
+    console.log('file data', this.updateFileData);
+    if (this.updateFileData == undefined  && this.updateAssignFileData == undefined) {
+      this.editCourseBody = {
+        'data': {
+          // 'assignment': this.updateFileData,
+          // 'courseContent': this.updateAssignFileData,
+          'courseDescription': this.editFormGroup.value.description,
+          'title': this.editFormGroup.value.title,
+        }
+      }
+    } else {
+      this.editCourseBody = {
+        'data': {
+          'assignment': this.updateFileData,
+          'courseContent': this.updateAssignFileData,
+          'courseDescription': this.editFormGroup.value.description,
+          'title': this.editFormGroup.value.title,
+        }
       }
     }
-    console.log('updated data', this.editFormGroup.value);
-    console.log(this.editData.id);
-    // this.apiService.updateCourse(this.editData.id, this.editCourseBody).subscribe(res => {
-    //   console.log('updted course', res);
-    // })
+
+
+    this.apiService.updateCourse(this.editData.id, this.editCourseBody).subscribe(res => {
+      try {
+        console.log('updted course', res);
+        this.getCourses();
+        this.messageService.add({severity:'success',summary:'Success',detail:'Course updated successfully !'})
+      } catch (error) {
+        this.messageService.add({severity:'error',summary:'Error',detail:'Something went to wrong !!'});
+      }
+ 
+    })
 
   }
 

@@ -167,20 +167,20 @@
                     name is required</small>
             </div>
 
-            <!-- <div class="field mt-1 w-100">
+            <div class="field mt-1 w-100">
                 <label for="title">Course content</label>
                 <span class="p-float-label">
-                    <input type="file" (change)="onFileSelect($event)"
+                    <input type="file" (change)="onUpdateFileSelect($event)"
                         class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
                 </span>
-            </div> -->
-            <!-- <div class="field mt-1 w-100">
+            </div>
+            <div class="field mt-1 w-100">
                 <label for="title">Assignment content</label>
                 <span class="p-float-label">
-                    <input type="file" (change)="onAssignFileSelect($event)"
+                    <input type="file" (change)="onUpdateAssignFileSelect($event)"
                         class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
                 </span>
-            </div> -->
+            </div>
             <div class="row  mt-1">
 
             </div>
@@ -188,7 +188,7 @@
         </div>
         <div class="d-flex justify-content-end mt-2">
             <button [disabled]="editFormGroup.invalid" type="button" class="btn btn-success me-2"
-                (click)="onSubmit()"><i class="pi pi-save me-2 cursor-pointer"></i>Update</button>
+                (click)="onUpdate()"><i class="pi pi-save me-2 cursor-pointer"></i>Update</button>
             <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"
                     (click)="closeEditDialog()"></i>Cancel</button>
         </div>

@@ -33,6 +33,7 @@ import { DividerModule } from 'primeng/divider';
 import { EditorModule } from 'primeng/editor';
 import { TableModule } from 'primeng/table';
 import { CoursesComponent } from './courses/courses.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -45,6 +46,7 @@ import { CoursesComponent } from './courses/courses.component';
     QuizComponent,
     AssessmentComponent,
     CoursesComponent,
+    DashboardComponent,
 
   ],
   imports: [

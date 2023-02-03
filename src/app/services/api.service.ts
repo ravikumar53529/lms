@@ -45,7 +45,7 @@ export class ApiService {
 
   // Get courses
   getCourses(): Observable<any> {
-    return this.http.get(`api/courses`);
+    return this.http.get(`api/courses?populate=*`);
   }
 
   // update courses

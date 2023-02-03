@@ -17,28 +17,27 @@ import { ApiService } from '../services/api.service';
     providers: [ConfirmationService, MessageService]
 })
 export class AdminComponent implements OnInit {
+
+    loadingSpinner: boolean = false;
+    contentFileData: string[] = [];
+    contentUpdateFileData: string[] = [];
     display: boolean = false;
     editDisply: boolean = false;
     contentData!: any;
     totalCourse: number = 0;
     public _id!: string;
+    public items: any
     _data!: any;
-    loadingSpinner = false;
-    contentFileData: any;
-
-    msgs: Message[] = [];
+    formData = new FormData();
 
     horizontalPosition: MatSnackBarHorizontalPosition = 'end';
     verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-
-    loopData: any = [];
     url: string = "";
     updateContent!: {}
     contentBody!: {};
     editContentBody!: {};
     bodyData!: {};
     edit!: {}
-
 
     courseGroup!: FormGroup;
 
@@ -48,7 +47,6 @@ export class AdminComponent implements OnInit {
         private router: Router,
         private apiService: ApiService,
         private fb: FormBuilder,
-        private snackBar: MatSnackBar,
         private confirmationService: ConfirmationService,
         private messageService: MessageService
 
@@ -56,45 +54,20 @@ export class AdminComponent implements OnInit {
     }
 
 
-
-    showDialog(): void {
-        this.display = true;
-    }
-    closeDialog(): void {
-        this.display = false;
-    }
-    public items: any
-    ngOnInit() {
-        this.iconMenu();
+   
+    ngOnInit(): void {
         this.getContent();
         this.courseValidate();
         this.courseUpdateValidate();
     }
 
-
-
-    iconMenu(): void {
-        this.items = [{
-            label: 'Action',
-            items: [{
-                label: 'Logout',
-                icon: 'pi pi-sign-out mt-0 text-danger',
-                command: () => {
-                    this.onLogout();
-                }
-            },
-            {
-                label: 'Change Password',
-                icon: 'pi pi-key ',
-                command: () => {
-
-                }
-            }
-            ]
-        },
-
-        ];
+   public showDialog(): void {
+        this.display = true;
     }
+   public closeDialog(): void {
+        this.display = false;
+    }
+
 
     onLogout(): void {
         this.router.navigateByUrl('/login');
@@ -105,52 +78,45 @@ export class AdminComponent implements OnInit {
 
     // form validation
 
-    courseValidate() {
+    courseValidate(): void {
         this.courseGroup = this.fb.group({
             title: new FormControl('', [Validators.required, Validators.minLength(8), Validators.min(1)]),
             description: new FormControl('', [Validators.required, Validators.minLength(10)]),
             price: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            img: new FormControl('', Validators.required)
+            img: new FormControl('', Validators.nullValidator)
 
         })
     }
 
     // update validations
-    courseUpdateValidate() {
+    courseUpdateValidate(): void {
         this.courseUpdateGroup = this.fb.group({
             title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.min(1)]),
             description: new FormControl("", [Validators.required, Validators.minLength(10)]),
             price: new FormControl('', [Validators.required, Validators.minLength(2)]),
+            img: new FormControl('', [Validators.nullValidator])
         })
     }
 
-
-
-
-
-
-
-
+    // get content
     getContent(): void {
         this.loadingSpinner = true;
         this.apiService.getContent().subscribe((res) => {
-            if (!res) {
-                this.snackBar.open('Something went to wrong !!', 'Ok', {
-                    duration: 3000
-                })
+            try {
+                this.contentData = res.data;
+                console.log(this.contentData);
+                this.totalCourse = this.contentData.length;
+                this.loadingSpinner = false;
+            } catch (error) {
+                this.messageService.add({
+                    severity: 'error', summary: 'Eorr !!', detail: 'Something went wrong !!'
+                });
             }
-
-
-            this.contentData = res.data;
-            this.totalCourse = this.contentData.length;
-            console.log('content', this.totalCourse);
-            this.loadingSpinner = false;
-
         })
-
     }
 
-    onFileSelect(event: any) {
+    // content upload
+    onFileSelect(event: any): void {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
             this.courseGroup.get('img')?.setValue(file);
@@ -163,10 +129,23 @@ export class AdminComponent implements OnInit {
         }
     }
 
+    // content upload
+    onFileSelectForUpdate(event: any): void {
+        if (event.target.files.length > 0) {
+            const file = event.target.files[0];
+            this.courseUpdateGroup.get('img')?.setValue(file);
+            //  this.formData = new FormData();
+            this.formData.append('files', this.courseUpdateGroup.get('img')?.value);
+            this.apiService.uploadFile(this.formData).subscribe(res => {
+                console.log(res);
+                this.contentUpdateFileData = res;
+            });
+        }
+    }
 
-    onSubmitContent() {
+    // On submit content
+    onSubmitContent(): void {
         const author = localStorage.getItem('role')
-
         this.contentBody = {
             "data": {
                 "name": this.courseGroup.value.title,
@@ -174,178 +153,110 @@ export class AdminComponent implements OnInit {
                 "author": author,
                 "price": this.courseGroup.value.price,
                 "media": this.contentFileData
-                // "media": [{
-                //     "createdAt": "2023-01-25T08:20:02.102Z",
-                //     "id": 2,
-                //     "name": "karim-manjra-4euubO4CasU-unsplash.jpg",
-                //     "alternativeText": null,
-                //     "caption": null,
-                //     "width": 3648,
-                //     "height": 5472,
-                //     "formats": {
-                //         "large": {
-                //             "ext": ".jpg",
-                //             "url": "/uploads/large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                //             "hash": "large_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                //             "mime": "image/jpeg",
-                //             "name": "large_karim-manjra-4euubO4CasU-unsplash.jpg",
-                //             "path": null,
-                //             "size": 79.54,
-                //             "width": 667,
-                //             "height": 1000
-                //         },
-                //         "small": {
-                //             "ext": ".jpg",
-                //             "url": "/uploads/small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                //             "hash": "small_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                //             "mime": "image/jpeg",
-                //             "name": "small_karim-manjra-4euubO4CasU-unsplash.jpg",
-                //             "path": null,
-                //             "size": 27.77,
-                //             "width": 333,
-                //             "height": 500
-                //         },
-                //         "medium": {
-                //             "ext": ".jpg",
-                //             "url": "/uploads/medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                //             "hash": "medium_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                //             "mime": "image/jpeg",
-                //             "name": "medium_karim-manjra-4euubO4CasU-unsplash.jpg",
-                //             "path": null,
-                //             "size": 51.36,
-                //             "width": 500,
-                //             "height": 750
-                //         },
-                //         "thumbnail": {
-                //             "ext": ".jpg",
-                //             "url": "/uploads/thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                //             "hash": "thumbnail_karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                //             "mime": "image/jpeg",
-                //             "name": "thumbnail_karim-manjra-4euubO4CasU-unsplash.jpg",
-                //             "path": null,
-                //             "size": 4.9,
-                //             "width": 104,
-                //             "height": 156
-                //         }
-                //     },
-                //     "hash": "karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2",
-                //     "ext": ".jpg",
-                //     "mime": "image/jpeg",
-                //     "size": 2143.93,
-                //     "url": "/uploads/karim_manjra_4euub_O4_Cas_U_unsplash_45f2eff5b2.jpg",
-                //     "previewUrl": null,
-                //     "provider": "local",
-                //     "provider_metadata": null,
-                //     "folderPath": "/",
-                //     "updatedAt": "2023-01-25T08:20:02.102Z",
-                //     "folder": null
-                // }]
             }
         }
         // Post api call here
         this.apiService.postContent(this.contentBody).subscribe(res => {
             console.log(res);
-            if (!res) {
+            try {
+                this.getContent();
+                this.display = false;
+                this.messageService.add({
+                    severity: 'success', summary: 'Success', detail: 'Content added successfully !!'
+                })
+            } catch (error) {
 
                 this.messageService.add({
-                    severity: 'error', summary: 'Eorr !!', detail: 'Something went wrong !!'
-
+                    severity: 'error', summary: 'Error', detail: 'Something went wrong !!'
                 });
             }
-            this.getContent();
-
-            this.closeDialog();
-
-            this.messageService.add({
-                severity: 'success', summary: 'Success', detail: 'Content added successfully !!'
-            })
-
         });
-
     }
 
     // Edit dialog open
-    editContentDialog(item: any) {
-        console.log('edit', item);
+   public editContentDialog(item: any): void {
+        console.log('edit', item.attributes.media.data[0].attributes);
         this._data = item;
-        // this._id = item.id;
         this.courseUpdateGroup = this.fb.group({
             title: new FormControl(item.attributes.name, [Validators.required, Validators.minLength(5), Validators.min(1)]),
             description: new FormControl(item.attributes.description, [Validators.required, Validators.minLength(10)]),
             price: new FormControl(item.attributes.price, [Validators.required, Validators.minLength(1)]),
-        })
+            img: new FormControl('', [Validators.nullValidator])
+        });
         this.editDisply = true;
-
     }
-
-    closeEditDialog() {
+    // close edit dialog
+    closeEditDialog(): void {
         this.editDisply = false;
     }
 
-    onUpdateContent() {
+    // update content
+   public onUpdateContent(): void {
         this.editDisply = false;
-        console.log(this._id);
-
-        console.log(this.courseUpdateGroup.value);
-
-
-        this.editContentBody = {
-            "data": {
-                "name": this.courseUpdateGroup.value.title,
-                "description": this.courseUpdateGroup.value.description,
-                "author": this._data.attributes.author,
-                "price": this.courseUpdateGroup.value.price,
-
-
+        // console.log(this.contentUpdateFileData?.length);
+        if (this.contentUpdateFileData?.length == 0) {
+            this.editContentBody = {
+                "data": {
+                    "name": this.courseUpdateGroup.value.title,
+                    "description": this.courseUpdateGroup.value.description,
+                    "author": this._data.attributes.author,
+                    "price": this.courseUpdateGroup.value.price,
+                    "media": this._data.attributes.media.data[0]
+                }
+            }
+        } else {
+            this.editContentBody = {
+                "data": {
+                    "name": this.courseUpdateGroup.value.title,
+                    "description": this.courseUpdateGroup.value.description,
+                    "author": this._data.attributes.author,
+                    "price": this.courseUpdateGroup.value.price,
+                    "media": this.contentUpdateFileData
+                }
             }
         }
+
+
         // Post api call here
         this.apiService.updateContent(this._data.id, this.editContentBody).subscribe(res => {
             console.log(res);
-            if (!res) {
-
+            try {
+                this.getContent();
+                this.closeDialog();
+                this.messageService.add({
+                    severity: 'info', summary: 'Update', detail: 'Content updated successfully !!'
+                })
+            } catch (error) {
                 this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Somthing went to wrong !!' })
             }
-            this.getContent();
-
-            this.closeDialog();
-
-            this.messageService.add({
-                severity: 'info', summary: 'Update', detail: 'Content updated successfully !!'
-            })
 
         });
-
     }
 
-
-    deleteDialog(data: any) {
+    // Delete content
+    deleteDialog(data: any): void {
         this.confirmationService.confirm({
             message: `Do you want to delete - ${data.attributes.name} ?`,
             header: 'Delete Confirmation',
             icon: 'pi pi-info-circle',
             accept: () => {
                 this.apiService.deleteContent(data.id).subscribe(res => {
-                    if (!res) {
+                    try {
+                        this.getContent();
+                        this.messageService.add({
+                            severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
+                        });
+                    } catch (error) {
                         this.messageService.add({
                             severity: 'error', summary: 'Error', detail: 'Something went to wrong !!'
                         })
                     }
-                    this.getContent();
-                    this.messageService.add({
-                        severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
-                    })
-
 
                 })
-
             },
-            reject: () => {
-
-            }
+            reject: () => { }
         });
     }
-
     // setData(data: any) {
     //     console.log('rrrr',data);
     //     this.router.navigate(['/admin/content',data.id]);
@@ -354,5 +265,3 @@ export class AdminComponent implements OnInit {
 
 
 }
-
-

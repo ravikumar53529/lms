@@ -140,8 +140,8 @@
                 </div>
             </div>
 
-            <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
-                [rowsPerPageOptions]="[10,20,30]"></p-paginator>
+            <!-- <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
+                [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
 
         </div>
         <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
@@ -199,11 +199,11 @@
                         <label for="title">Content</label>
                         <span class="p-float-label">
                             <input type="file" required class="bg-light-grey input-shadow w-100 p-inputtext"
-                               formControlName="img" (change)="onFileSelect($event)"  pInputText>
-                            <small class="p-error block"
+                                (change)="onFileSelect($event)" pInputText>
+                            <!-- <small class="p-error block"
                                 *ngIf="courseGroup.get('img')?.invalid && (courseGroup.get('img')?.touched)">
                                 Content
-                                name is required</small>
+                                name is required</small> -->
                         </span>
                     </div>
                     <div class="row  mt-4">
@@ -264,6 +264,13 @@
                                 *ngIf="courseUpdateGroup.get('price')?.invalid && courseUpdateGroup.get('price')?.dirty">
                                 Price
                                 name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-4 w-100">
+                        <label for="title">Content</label>
+                        <span class="p-float-label">
+                            <input type="file" required class="bg-light-grey input-shadow w-100 p-inputtext"
+                                (change)="onFileSelectForUpdate($event)" pInputText>
                         </span>
                     </div>
                     <div class="row  mt-1">
