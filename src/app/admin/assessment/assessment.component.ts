@@ -25,7 +25,7 @@ export class AssessmentComponent implements OnInit {
   }
 
   // Add form validation
-  addFormValidate(): void {
+  public addFormValidate(): void {
     this.addFormGroup = this.fb.group({
       question: new FormControl('', [Validators.required]),
       option1: new FormControl('', [Validators.required]),
@@ -37,7 +37,7 @@ export class AssessmentComponent implements OnInit {
 
 
   // Edit form validation
-  editFormValidate(): void {
+  public editFormValidate(): void {
     this.editFormGroup = this.fb.group({
       question: new FormControl('', [Validators.required]),
       option1: new FormControl('', [Validators.required]),
@@ -48,25 +48,23 @@ export class AssessmentComponent implements OnInit {
   }
 
   // open add dialog
-  addDialog(): void {
+  public addDialog(): void {
     this.addDisplay = true;
   }
 
   // close add dialog
-  closeDialog(): void {
+  public closeDialog(): void {
     this.addDisplay = false;
   }
 
   // On submit add from 
-  onSubmit(): void {
+  public onSubmit(): void {
     this.addDisplay = false;
     console.log('add form data', this.addFormGroup.value);
   }
 
   // open edit form
-  editFormDialog(): void {
-
-    // console.log('edit from data', item);
+  public editFormDialog(): void {
     this.editFormGroup = this.fb.group({
       question: new FormControl('', [Validators.required]),
       option1: new FormControl('', [Validators.required]),
@@ -78,11 +76,11 @@ export class AssessmentComponent implements OnInit {
   }
 
 
-  colseEditDialog(): void { 
+  public colseEditDialog(): void {
     this.editFormDisplay = false;
   }
 
-  onUpdate(){
+  public onUpdate(): void {
     this.editFormDisplay = false;
     console.log(this.editFormGroup.value);
   }

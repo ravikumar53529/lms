@@ -18,10 +18,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.contentMenu();
     this.iconMenu();
-    this.mainMenu();
   }
 
-  iconMenu(): void {
+  public iconMenu(): void {
     this.items = [{
       label: 'Action',
       items: [{
@@ -44,58 +43,15 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  onLogout(): void {
+  public onLogout(): void {
     this.router.navigateByUrl('/login');
     localStorage.clear();
     location.reload();
   }
 
-  mainMenu() {
-    this.mainItems = [
-
-      {
-        label: 'Home',
-        command: () => {
-          this.router.navigateByUrl('/admin');
-        }
-      },
-      {
-        label: 'Courses',
-        command: () => {
-          this.router.navigateByUrl('/admin/courses');
-        }
-      },
-      {
-        label: 'Content',
-        items: [{
-          label: 'Quiz',
-          icon: 'pi pi-fw pi-question-circle',
-          
-          command: () =>{
-            this.router.navigateByUrl('/admin/quiz')
-          }
-        },
-        {
-          label: 'Assessments',
-          icon:'pi pi-fw pi-hourglass',
-          command: () => {
-            this.router.navigateByUrl('/admin/assessment')
-          }
-        }
-        ]
-      },
-      {
-        label: 'About',
-        command: () => {
-          this.router.navigateByUrl('/admin')
-        }
-
-      }
-    ];
-  }
 
 
-  contentMenu(): void {
+  public contentMenu(): void {
     this.contentItems = [{
       // label: 'Action',
 
@@ -115,16 +71,13 @@ export class HeaderComponent implements OnInit {
     ]
   }
 
-  quizNavigate(): void {
+  public quizNavigate(): void {
     this.router.navigateByUrl('/admin/quiz');
   }
 
-  assessmentNavigate(): void {
+  public assessmentNavigate(): void {
     this.router.navigateByUrl('/admin/assessment');
   }
-
-
-
 }
 
 

@@ -7,12 +7,12 @@
     <ng-template pTemplate="caption">
         <div class="table-header d-flex justify-content-between">
             <span class="p-input-icon-left">
-        
+
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" placeholder=" Search Courses" />
             </span>
-            <button (click)="addDialog()" class="btn btn-primary mb-2 " type="button" icon="pi pi-info-circle" label="Add"><i
-                    class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
+            <button (click)="addDialog()" class="btn btn-primary mb-2 " type="button" icon="pi pi-info-circle"
+                label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
         </div>
     </ng-template>
 
@@ -45,7 +45,7 @@
                 <!-- <div class="des"> -->
                 {{course.attributes.courseDescription}}
                 <!-- </div> -->
-            
+
             </td>
             <!-- <td> $100</td> -->
             <td>
@@ -115,7 +115,6 @@
                 <span class="p-float-label">
                     <input type="file" (change)="onAssignFileSelect($event)"
                         class="bg-light-grey input-shadow w-100 p-inputtext" pInputText>
-
                 </span>
             </div>
             <div class="row  mt-1">
@@ -126,8 +125,8 @@
         <div class="d-flex justify-content-end mt-2">
             <button [disabled]="addFormGrorup.invalid" type="button" class="btn btn-success me-2"
                 (click)="onSubmit()"><i class="pi pi-save me-2 cursor-pointer"></i>Save</button>
-            <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"
-                    (click)="closeAddDialog()"></i>Cancel</button>
+            <button (click)="closeAddDialog()" type="button" class="btn btn-dark"><i
+                    class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
         </div>
     </form>
 </p-dialog>
@@ -182,19 +181,17 @@
                 </span>
             </div>
             <div class="row  mt-1">
-
             </div>
-
         </div>
         <div class="d-flex justify-content-end mt-2">
             <button [disabled]="editFormGroup.invalid" type="button" class="btn btn-success me-2"
                 (click)="onUpdate()"><i class="pi pi-save me-2 cursor-pointer"></i>Update</button>
-            <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"
-                    (click)="closeEditDialog()"></i>Cancel</button>
+            <button (click)="closeEditDialog()" type="button" class="btn btn-dark"><i
+                    class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
         </div>
     </form>
 </p-dialog>
 
 <!-- Edit dialog ends here-->
-
+<app-spinner *ngIf="isLoading==true"></app-spinner>
 <p-toast position="top-right"></p-toast>

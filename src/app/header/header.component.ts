@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  iconMenu(): void {
+  public iconMenu(): void {
     this.items = [{
       label: 'Action',
       items: [{
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
-  onLogout(): void {
+ public onLogout(): void {
     this.router.navigateByUrl('/login');
     localStorage.clear();
     location.reload();

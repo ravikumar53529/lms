@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -16,9 +17,9 @@ export class UserComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private snackBar: MatSnackBar,
-    private router: Router
-    ) {
+    private router: Router,
+    private messageService: MessageService
+  ) {
 
   }
 
@@ -28,7 +29,7 @@ export class UserComponent implements OnInit {
   }
 
 
-  iconMenu(): void {
+  public iconMenu(): void {
     this.items = [{
       label: 'Action',
       items: [{
@@ -51,25 +52,23 @@ export class UserComponent implements OnInit {
     ];
   }
 
-  onLogout(): void {
+  public onLogout(): void {
     this.router.navigateByUrl('/login');
     localStorage.clear();
     location.reload();
   }
 
-  getContent(): void {
+  public getContent(): void {
     this.isLoading = true;
     this.apiService.getContent().subscribe(res => {
-      if (!res) {
-        this.snackBar.open('Something went to wrong !!', 'Ok', {
-          duration: 3000
-        });
-
+      try {
+        this.contentData = res.data;
+        console.log(this.contentData);
+        this.isLoading = false;
+      } catch (error) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Somethinng went to wrong !!' });
       }
-      this.contentData = res.data;
-      console.log(this.contentData);
-      this.isLoading = false;
-    })
+    });
   }
 
 }

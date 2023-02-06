@@ -30,6 +30,10 @@ export class AdminComponent implements OnInit {
     _data!: any;
     formData = new FormData();
 
+    isProgressFile: boolean = false;
+
+    
+
     horizontalPosition: MatSnackBarHorizontalPosition = 'end';
     verticalPosition: MatSnackBarVerticalPosition = 'bottom';
     url: string = "";
@@ -53,53 +57,48 @@ export class AdminComponent implements OnInit {
     ) {
     }
 
-
-   
     ngOnInit(): void {
         this.getContent();
         this.courseValidate();
         this.courseUpdateValidate();
     }
 
-   public showDialog(): void {
+    public showDialog(): void {
         this.display = true;
     }
-   public closeDialog(): void {
+    public closeDialog(): void {
         this.display = false;
     }
 
 
-    onLogout(): void {
+    public onLogout(): void {
         this.router.navigateByUrl('/login');
         localStorage.clear();
         location.reload();
     }
 
-
     // form validation
-
-    courseValidate(): void {
+    public courseValidate(): void {
         this.courseGroup = this.fb.group({
             title: new FormControl('', [Validators.required, Validators.minLength(8), Validators.min(1)]),
             description: new FormControl('', [Validators.required, Validators.minLength(10)]),
             price: new FormControl('', [Validators.required, Validators.minLength(2)]),
             img: new FormControl('', Validators.nullValidator)
-
-        })
+        });
     }
 
     // update validations
-    courseUpdateValidate(): void {
+    public courseUpdateValidate(): void {
         this.courseUpdateGroup = this.fb.group({
             title: new FormControl('', [Validators.required, Validators.minLength(5), Validators.min(1)]),
             description: new FormControl("", [Validators.required, Validators.minLength(10)]),
             price: new FormControl('', [Validators.required, Validators.minLength(2)]),
             img: new FormControl('', [Validators.nullValidator])
-        })
+        });
     }
 
     // get content
-    getContent(): void {
+    public getContent(): void {
         this.loadingSpinner = true;
         this.apiService.getContent().subscribe((res) => {
             try {
@@ -109,42 +108,52 @@ export class AdminComponent implements OnInit {
                 this.loadingSpinner = false;
             } catch (error) {
                 this.messageService.add({
-                    severity: 'error', summary: 'Eorr !!', detail: 'Something went wrong !!'
+                    severity: 'error', summary: 'Error !!', detail: 'Something went wrong !!'
                 });
             }
-        })
+        });
     }
 
     // content upload
-    onFileSelect(event: any): void {
+    public onFileSelect(event: any): void {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
             this.courseGroup.get('img')?.setValue(file);
             const formData = new FormData();
             formData.append('files', this.courseGroup.get('img')?.value);
+            this.isProgressFile = true;
             this.apiService.uploadFile(formData).subscribe(res => {
-                console.log(res);
-                this.contentFileData = res;
+                try {
+                    this.isProgressFile = false;
+                    console.log(res);
+                    this.contentFileData = res;
+                } catch (error) {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went to wrong !!' });
+                }
             });
         }
     }
 
     // content upload
-    onFileSelectForUpdate(event: any): void {
+    public onFileSelectForUpdate(event: any): void {
         if (event.target.files.length > 0) {
             const file = event.target.files[0];
             this.courseUpdateGroup.get('img')?.setValue(file);
             //  this.formData = new FormData();
             this.formData.append('files', this.courseUpdateGroup.get('img')?.value);
             this.apiService.uploadFile(this.formData).subscribe(res => {
-                console.log(res);
-                this.contentUpdateFileData = res;
+                try {
+                    console.log(res);
+                    this.contentUpdateFileData = res;
+                } catch (error) {
+                    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went to wrong !!' });
+                }
             });
         }
     }
 
     // On submit content
-    onSubmitContent(): void {
+    public onSubmitContent(): void {
         const author = localStorage.getItem('role')
         this.contentBody = {
             "data": {
@@ -159,11 +168,12 @@ export class AdminComponent implements OnInit {
         this.apiService.postContent(this.contentBody).subscribe(res => {
             console.log(res);
             try {
-                this.getContent();
                 this.display = false;
                 this.messageService.add({
                     severity: 'success', summary: 'Success', detail: 'Content added successfully !!'
-                })
+                });
+                this.getContent();
+
             } catch (error) {
 
                 this.messageService.add({
@@ -174,7 +184,7 @@ export class AdminComponent implements OnInit {
     }
 
     // Edit dialog open
-   public editContentDialog(item: any): void {
+    public editContentDialog(item: any): void {
         console.log('edit', item.attributes.media.data[0].attributes);
         this._data = item;
         this.courseUpdateGroup = this.fb.group({
@@ -185,15 +195,15 @@ export class AdminComponent implements OnInit {
         });
         this.editDisply = true;
     }
+
     // close edit dialog
-    closeEditDialog(): void {
+    public closeEditDialog(): void {
         this.editDisply = false;
     }
 
     // update content
-   public onUpdateContent(): void {
+    public onUpdateContent(): void {
         this.editDisply = false;
-        // console.log(this.contentUpdateFileData?.length);
         if (this.contentUpdateFileData?.length == 0) {
             this.editContentBody = {
                 "data": {
@@ -216,25 +226,23 @@ export class AdminComponent implements OnInit {
             }
         }
 
-
         // Post api call here
         this.apiService.updateContent(this._data.id, this.editContentBody).subscribe(res => {
             console.log(res);
             try {
-                this.getContent();
-                this.closeDialog();
+                this.editDisply = false;
                 this.messageService.add({
                     severity: 'info', summary: 'Update', detail: 'Content updated successfully !!'
-                })
+                });
+                this.getContent();
             } catch (error) {
                 this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Somthing went to wrong !!' })
             }
-
         });
     }
 
     // Delete content
-    deleteDialog(data: any): void {
+    public deleteDialog(data: any): void {
         this.confirmationService.confirm({
             message: `Do you want to delete - ${data.attributes.name} ?`,
             header: 'Delete Confirmation',
@@ -242,26 +250,19 @@ export class AdminComponent implements OnInit {
             accept: () => {
                 this.apiService.deleteContent(data.id).subscribe(res => {
                     try {
-                        this.getContent();
                         this.messageService.add({
                             severity: 'error', summary: 'Delete', detail: 'Content deleted successfully !'
                         });
+                        this.getContent();
                     } catch (error) {
                         this.messageService.add({
                             severity: 'error', summary: 'Error', detail: 'Something went to wrong !!'
-                        })
+                        });
                     }
 
-                })
+                });
             },
             reject: () => { }
         });
     }
-    // setData(data: any) {
-    //     console.log('rrrr',data);
-    //     this.router.navigate(['/admin/content',data.id]);
-    //     localStorage.setItem('content', JSON.stringify(data));
-    // }
-
-
 }

@@ -8,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   isAuthenticated!: string | null;
+  isLoading: boolean = true;
 
   constructor(){
 
   }
   ngOnInit(): void {
+    this.isLoading = true;
+    setTimeout(()=> {
+      this.isLoading = false;
+    },3000)
    this.isAuthenticated =  localStorage.getItem('isAuthenticate');
   }
 }

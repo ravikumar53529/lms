@@ -50,7 +50,7 @@
 
 
 
-
+<!-- <app-spinner *ngIf="isLoading == true"></app-spinner> -->
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
     <div class="card card0 border-0">
         <div class="row d-flex">
@@ -58,7 +58,6 @@
                 <div class="card1 pb-5">
                     <div class="row px-3">
                         <h1>Welcome to LMS</h1>
-                        <!-- <img src="https://i.imgur.com/CXQmsmF.png" class="logo"> -->
                     </div>
                     <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
                         <img
@@ -73,11 +72,6 @@
                             <h1 class="mb-0 mr-4 mt-2">SIGN UP</h1>
 
                         </div>
-                        <!-- <div class="row px-3 mb-4">
-                        <div class="line"></div>
-                        <small class="or text-center">Or</small>
-                        <div class="line"></div>
-                    </div> -->
                         <div class="row px-3">
                             <label class="mb-1 p-0">
                                 <h6 class="mb-0 text-sm">User Name</h6>
@@ -85,9 +79,6 @@
                             <input class="mb-1" type="text" name="name" formControlName="name"
                                 [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
                                 placeholder="Enter a valid user name ">
-                            <!-- <span *ngIf="formgroup.get('name')?.invalid && formgroup.get('name')?.touched"
-                                style="color: red;">User name
-                                required</span> -->
                             <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
                                 <div *ngIf="name.errors?.['required']">
                                     This user name is required.
@@ -99,8 +90,6 @@
                                     This user name must have at most 20 characters.
                                 </div>
                             </div>
-
-
                         </div>
 
                         <div class="row px-3">
@@ -115,19 +104,11 @@
                                 <div *ngIf="email.errors?.['required']">
                                     Email Address is required.
                                 </div>
-                                <!-- <div *ngIf="email.errors?.['minlength']">
-                                    This field must have at least 1 character.
-                                </div>
-                                <div *ngIf="email.errors?.['maxlength']">
-                                    This field must have at most 250 characters.
-                                </div> -->
-                                <div class="p-0" *ngIf="!email.errors?.['required'] &&  email.errors?.['emailValidator']">
+                                <div class="p-0"
+                                    *ngIf="!email.errors?.['required'] &&  email.errors?.['emailValidator']">
                                     Invalid email format.
                                 </div>
                             </div>
-
-
-
                         </div>
 
                         <div class="row px-3">
@@ -148,11 +129,6 @@
                             </div>
                         </div>
                         <div class="row px-3 mb-4">
-                            <!-- <div class="custom-control custom-checkbox custom-control-inline">
-                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
-                            <label for="chk1" class="custom-control-label text-sm">Remember me</label>
-                        </div> -->
-                            <!-- <a href="#" style="text-align: end;" class="ml-auto mb-0 text-sm">Forgot Password?</a> -->
                         </div>
                         <div class="row mb-3 px-3">
                             <button type="submit" class="btn btn-blue text-center" (click)="onSubmit()"
@@ -166,16 +142,5 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="bg-blue py-4">
-            <div class="row px-3">
-                <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
-                <div class="social-contact ml-4 ml-sm-auto">
-                    <span class="fa fa-facebook mr-4 text-sm"></span>
-                    <span class="fa fa-google-plus mr-4 text-sm"></span>
-                    <span class="fa fa-linkedin mr-4 text-sm"></span>
-                    <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>

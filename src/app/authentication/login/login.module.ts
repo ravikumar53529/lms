@@ -5,7 +5,6 @@ import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxUiLoaderConfig } from 'ngx-ui-loader';
-import { NgxUiLoaderModule } from 'ngx-ui-loader/public-api';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -41,7 +40,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 }
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    // SpinnerComponent
   ],
   imports: [
     CommonModule,
