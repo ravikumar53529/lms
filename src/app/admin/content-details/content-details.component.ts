@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -7,20 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-details.component.scss'],
   
 })
-export class ContentDetailsComponent  {
+export class ContentDetailsComponent implements OnInit {
   value: number = 0;
-  messageService: any;
-  ngOnInit() {
-    let interval = setInterval(() => {
-        this.value = this.value + Math.floor(Math.random() * 10) + 1;
-        if (this.value >= 100) {
-            this.value = 100;
-            this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
-            clearInterval(interval);
-        }
-    }, 2000);
-}
-
-}
+  ngOnInit(): void {
+   this.value = 56
+  }
+ 
   
-
+}

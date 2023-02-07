@@ -40,6 +40,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {ProgressBarModule} from 'primeng/progressbar';
  
 import { SpinnerComponent } from '../component/spinner/spinner.component';
+import {TabViewModule} from 'primeng/tabview';
+import {MenuItem} from 'primeng/api';
 
 
 
@@ -85,7 +87,10 @@ import { SpinnerComponent } from '../component/spinner/spinner.component';
     SidebarModule,
     ChartModule,
     CalendarModule,
-    ProgressBarModule
+    ProgressBarModule,
+    TabViewModule,
+  
+    
   ],
   providers: [
     ApiService
