@@ -6,7 +6,6 @@ import {ButtonModule} from 'primeng/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -30,7 +29,6 @@ import { UserGuard } from 'src/guards/user.guard';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SheredModule } from './component/shered.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { HeaderComponent } from './header/header.component';
 import { MenuModule } from 'primeng/menu';
 
 
@@ -62,6 +60,7 @@ let module = [
   declarations: [
     AppComponent,
     EmailDirective,
+    // SpinnerComponent,
   ],
   imports: [
     ...module,
@@ -72,8 +71,8 @@ let module = [
     ConfirmDialogModule,
     MenuModule,
     SheredModule,
+    // SpinnerModule,
     TooltipModule, ButtonModule
-    // NgxUiLoaderModule
     
   ],
   providers: [

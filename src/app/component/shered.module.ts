@@ -19,7 +19,6 @@ import {MenuModule} from 'primeng/menu';
 import {DialogModule} from 'primeng/dialog';
 import {TooltipModule} from 'primeng/tooltip';
 import {ButtonModule} from 'primeng/button';
-import { HeaderComponent } from '../header/header.component';
 
 
 
@@ -44,19 +43,19 @@ let module = [
   DialogModule,
   TooltipModule,
   ButtonModule
-
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+// SpinnerComponent
+  ],
   imports: [
     ...module,
     CommonModule,
   ],
   exports:[
     ...module,
-    
-    
+// SpinnerComponent
   ]
 })
 export class SheredModule { }
