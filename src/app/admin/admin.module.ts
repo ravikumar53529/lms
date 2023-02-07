@@ -34,7 +34,11 @@ import { EditorModule } from 'primeng/editor';
 import { TableModule } from 'primeng/table';
 import { CoursesComponent } from './courses/courses.component';
 import { TagModule } from 'primeng/tag';
+import {SidebarModule} from 'primeng/sidebar';
+import { CalendarModule } from 'primeng/calendar';
+import {ChartModule} from 'primeng/chart';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 
 
@@ -74,7 +78,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TooltipModule,
     ButtonModule,
     InputTextModule,
-    TagModule
+    TagModule,
+    SidebarModule,
+    ChartModule,
+    CalendarModule,
+    ProgressBarModule
   ],
   providers: [
     ApiService

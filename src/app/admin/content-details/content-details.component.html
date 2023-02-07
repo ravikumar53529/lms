@@ -1,23 +1,128 @@
-<app-header></app-header>
-<div class="container my-3 pb-2">
+<!-- <app-header></app-header> -->
+<div class="sidebar">
+    <div class="sidebar-header">
+    <h2>About The Courses</h2>
+    <div class="card border-0">
+        <div class="auth-details d-flex align-items-center">
+            <p-avatar image="assets/img/user.jpg" styleClass="mr-3" size="large" shape="circle">
+            </p-avatar>
+            <div>
+                <h2 class="card-title m-0">Jhon Breaker</h2>
+                <p>PM Expert</p>
+            </div>
+        </div>
+        <div class="card-body p-0">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content...
+            .. <b>Read More</b>
+          </p>
+           
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="sidebar-content">
+        <h2>Course Completion</h2>
+        <p-progressBar [value]="value"></p-progressBar>
+        <ul class="listbox-list mt-1 d-flex justify-content-between align-items-center">
+            <li class="listbox-item">
+                <span>01</span>
+            </li>
+            <li class="listbox-item">
+                <span>Introduction To Project  Managment</span>
+            </li>
+            <li class="listbox-item">
+                <i class="pi pi-check" style="font-size: 1rem; color: green;"></i>
+            </li>
+        </ul>
+        <ul class="listbox-list mt-1 d-flex justify-content-between align-items-center">
+            <li class="listbox-item">
+                <span>02</span>
+            </li>
+            <li class="listbox-item">
+                <span>Introduction To Project  Managment</span>
+            </li>
+            <li class="listbox-item">
+                <i class="pi pi-check" style="font-size: 1rem; color: green;"></i>
+            </li>
+        </ul>
+        <ul class="listbox-list mt-1 d-flex justify-content-between align-items-center">
+            <li class="listbox-item">
+                <span>03</span>
+            </li>
+            <li class="listbox-item">
+                <span>Introduction To Project  Managment</span>
+            </li>
+            <li class="listbox-item">
+                <i class="pi pi-check" style="font-size: 1rem; color: green;"></i>
+            </li>
+        </ul>
+        <ul class="listbox-list mt-1 d-flex justify-content-between align-items-center">
+            <li class="listbox-item">
+                <span>04</span>
+            </li>
+            <li class="listbox-item">
+                <span>Introduction To Project  Managment</span>
+            </li>
+            <li class="listbox-item">
+                <i class="pi pi-check" style="font-size: 1rem; color: green;"></i>
+            </li>
+        </ul>
+        <!-- <div class="list-wrapper">
+            <ul class="listbox-list">
+                <li class="listbox-item">
+                    <span>  <i class="pi pi-palette me-2"></i>Dashboard</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-book me-2"></i>Course</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-calendar me-2"></i>Schedule</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-envelope me-2"></i>Messages</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-users me-2"></i>Groups</span>                  
+                </li>
+                <hr class="mt-4 mb-2">
+                <li class="listbox-item">
+                    <span><i class="pi pi-sign-out me-2"></i>Logout</span>                  
+                </li>
+            </ul>
+        </div> -->
+       
+    </div>
+    <div class="sidebar-footer">
+        <!-- <ul class="listbox-list">
+            <hr class="mb-2">
+            <li class="listbox-item">
+                <span>Privacy Statement</span>
+            </li>
+            <li class="listbox-item">
+                <span>Support</span>
+            </li>
+            <li class="listbox-item">
+                <span>Contact Us</span>
+            </li>
+        </ul> -->
+    </div>
+</div>
+<!-- <div class="container my-3 pb-2">
     <div class="border p-2">
         <div class="course_detail mb-3">
             <p-tag styleClass="mr-2" value="Course Details"></p-tag>
         </div>
         <div id="course_name">
             <div class="course_name mt-2">
-                
                 <h1>Python</h1>
             </div>
             <div class="sub-title border-bottom">
-                <p class="text-blue">Seeing Your Way to learning. How to Use Visioning to Create  Tomorrow</p>
+                <p class="text-blue">Seeing Your Way to learning. How to Use Visioning to Create Tomorrow</p>
             </div>
-    
-    
-    
             <div class="content-block">
                 <h2>Description</h2>
-                <p>Visioning is oftentimes used as the first step in a health or financial wellness plan. What comes to mind
+                <p>Visioning is oftentimes used as the first step in a health or financial wellness plan. What comes to
+                    mind
                     when you ask yourself:</p>
                 <ul>
                     <li>What do I most want to achieve?</li>
@@ -27,64 +132,55 @@
                 </ul>
                 <p>Exploring open-ended questions is just one of the practice opportunities you’ll find as you begin
                     crafting your vision for personal well-being.</p>
-                <p>In this short (approximately 20 minute) interactive course, you’ll find multiple avenues for beginning
+                <p>In this short (approximately 20 minute) interactive course, you’ll find multiple avenues for
+                    beginning
                     your visioning process, including audio meditations and visualization exercises. This is not
                     daydreaming; you’ll focus on what means the most to you in your life and how you envision your
-                    tomorrows. You can hone the visioning skills you already have, or learn from scratch about how visioning
+                    tomorrows. You can hone the visioning skills you already have, or learn from scratch about how
+                    visioning
                     can help you move forward.</p><br>
-                <p><span  class="text-blue">Duration</span> <br>Approximately 20 minutes</p>
+                <p><span class="text-blue">Duration</span> <br>Approximately 20 minutes</p>
             </div>
-    
-    
             <div class="content-block">
                 <h2>
                     User Guide:
                 </h2>
                 <div class="detail-block">
                     <p><span class="text-blue">Audio / Video</span><br> This course features video segments with audio
-                        narration. Turn your audio ON. Earphones or a headset may be necessary, depending on your viewing
+                        narration. Turn your audio ON. Earphones or a headset may be necessary, depending on your
+                        viewing
                         situation.</p>
                 </div>
-    
                 <div class="detail-block">
                     <p><span class="text-blue">Navigation</span><br> This course was designed for viewing sequentially
                         by clicking the NEXT button on the bottom right side of the viewer. However, the menu on the
                         left-hand side is available for self-selecting content.</p>
                 </div>
-    
                 <div class="detail-block">
                     <p><span class="text-blue">Personal Input</span><br> Throughout the course, you will find
-                        self-assessments and text fields that ask for your personal input. By entering relevant information,
-                        you will be better able to engage in the visioning process. Most of the interactions are optional;
+                        self-assessments and text fields that ask for your personal input. By entering relevant
+                        information,
+                        you will be better able to engage in the visioning process. Most of the interactions are
+                        optional;
                         however, a few require your input. On these few slides, the NEXT button is not visible until you
                         make a selection.</p>
                 </div>
-    
-    
                 <div class="detail-block">
                     <p><span class="text-blue">Your Information</span><br>Your personal input, whether answers to
-                        assessments/quizzes or text field entries, is NOT stored. It is for your use during an individual
+                        assessments/quizzes or text field entries, is NOT stored. It is for your use during an
+                        individual
                         session, and will need to be re-entered each time you re-launch the course. You will be able to
                         print the screen containing your Visioning process at the end of the course. </p>
                 </div>
-    
                 <div class="detail-block">
                     <p><span class="text-blue">Links to External Content</span><br>To ensure that links to content
-                        outside the course open correctly, change your browser preferences to “open links in a new window.”
+                        outside the course open correctly, change your browser preferences to “open links in a new
+                        window.”
                     </p>
                 </div>
-    
-    
-    
             </div>
-    
-    
-    
-    
             <div class="content-block">
-    
-                 
             </div>
         </div>
     </div>
-</div>
+</div> -->

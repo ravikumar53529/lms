@@ -1,1 +1,240 @@
-<p>dashboard works!</p>
+<div class="sidebar float-left">
+    <div class="sidebar-header">
+        <span class="d-flex align-items-center" style="color:  #20854e;">
+            <i class="pi pi-bolt" style="font-size: 2rem"></i>
+            <span style="font-size: 24px;"> LMS</span>
+        </span>
+        <i class="pi pi-bars" style="font-size: 20px"></i>
+    </div>
+    <div class="sidebar-content">
+        <div class="list-wrapper">
+            <ul class="listbox-list">
+                <li class="listbox-item">
+                    <span>  <i class="pi pi-palette me-2"></i>Dashboard</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-book me-2"></i>Course</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-calendar me-2"></i>Schedule</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-envelope me-2"></i>Messages</span>
+                </li>
+                <li class="listbox-item">
+                    <span><i class="pi pi-users me-2"></i>Groups</span>                  
+                </li>
+                <hr class="mt-4 mb-2">
+                <li class="listbox-item">
+                    <span><i class="pi pi-sign-out me-2"></i>Logout</span>                  
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+    <div class="sidebar-footer">
+        <ul class="listbox-list">
+            <hr class="mb-2">
+            <li class="listbox-item">
+                <span>Privacy Statement</span>
+            </li>
+            <li class="listbox-item">
+                <span>Support</span>
+            </li>
+            <li class="listbox-item">
+                <span>Contact Us</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="header float-left">
+    <div class="row">
+        <div class="col-lg-6 p-3">
+            <div class="search-bar ps-3" style="width: 40%;">
+                <span class="p-input-icon-left  ">
+                    <i class="pi pi-search"></i>
+                    <input type="text" class="search-text" pInputText placeholder="Search For Courses" />
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6 p-3 d-flex justify-content-end align-items-center">
+            <button pButton pRipple type="button" icon="pi pi-bell"
+            class="p-button-rounded   text-dark  p-button-text"></button>
+            <p-avatar size="large" icon="pi pi-user"  
+            [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center">
+                <h2 class="text-black">
+                    Overview
+                </h2>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                <div class="drop-button">
+                <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly" class="p-button-raised p-button-text"></button>
+            </div>
+            </div>
+        </div>
+        <div class="grid mt-1">
+            <div class="col-lg-2 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-2 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Orders</span>
+                            <div class="text-900 font-medium text-xl">0</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                            style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- <span class="text-green-500 font-medium">24 new </span>
+                    <span class="text-500">since last visit</span> -->
+                </div>
+            </div>
+            <div class="col-lg-2 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-2 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Revenue</span>
+                            <div class="text-900 font-medium text-xl">0 </div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                            style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-wallet text-orange-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- <span class="text-green-500 font-medium">%52+ </span>
+                    <span class="text-500">since last week</span> -->
+                </div>
+            </div>
+            <div class="col-lg-2 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-2 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Customers</span>
+                            <div class="text-900 font-medium text-xl">0</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                            style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-users text-cyan-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- <span class="text-green-500 font-medium">520 </span>
+                    <span class="text-500">newly registered</span> -->
+                </div>
+            </div>
+            <div class="col-lg-2 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-2 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Total Courses </span>
+                            <div class="text-900 font-medium text-xl"> 0</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                            style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-book text-purple-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- <span class="text-green-500 font-medium">85 </span>
+                    <span class="text-500">responded</span> -->
+                </div>
+            </div>
+            <div class="col-lg-2 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-2 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Total Courses </span>
+                            <div class="text-900 font-medium text-xl"> 0</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                            style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-book text-purple-500 text-xl"></i>
+                        </div>
+                    </div>
+                    <!-- <span class="text-green-500 font-medium">85 </span>
+                    <span class="text-500">responded</span> -->
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-6 ">
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-flex align-items-center">                   
+                        <h2 class="m-0">
+                            Overview
+                        </h2>                  
+                       </div>
+                    <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                        <div class="drop-button">
+                        <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly" class="p-button-raised p-button-text"></button>
+                    </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <!-- <h5>Basic</h5> -->
+                    <p-chart type="line" [data]="basicData" [style]="{'height':'300px'}"></p-chart>
+                </div>
+           </div>
+            <div class="col-lg-6">
+                <div class="row mb-3">
+                    <div class="col-lg-6 d-flex align-items-center">                   
+                        <h2 class=" m-0">
+                            Upcoming Classes
+                        </h2>                  
+                    </div>
+                </div>
+                <div class="card" style="height: 300px; overflow-y: auto;">
+                    <div class="class-content  mb-2 d-flex justify-content-between">
+                        <div>
+                            <span>List Of UX 2nd Sem</span>
+                        <h2 class=" m-0 pb-1">
+                            Upcoming Classes
+                        </h2>
+                        <span>9.00 AM To 12.00 PM </span>
+                        </div>
+                        <div>
+                            <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
+                        </div>
+                        
+                    </div>
+                    <div class="class-content-one mb-2 d-flex justify-content-between">
+                        <div>
+                            <span>List Of UX 2nd Sem</span>
+                        <h2 class=" m-0 pb-1">
+                            Upcoming Classes
+                        </h2>
+                        <span>9.00 AM To 12.00 PM </span>
+                        </div>
+                        <div>
+                            <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
+                        </div>
+                        
+                    </div>
+                    <div class="class-content-two d-flex justify-content-between">
+                        <div>
+                            <span>List Of UX 2nd Sem</span>
+                        <h2 class=" m-0 pb-1">
+                            Upcoming Classes
+                        </h2>
+                        <span>9.00 AM To 12.00 PM </span>
+                        </div>
+                        <div>
+                            <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
+                        </div>
+                        
+                    </div>
+                    <!-- <p-calendar  [inline]="true" [showWeek]="true" [style]="{'height':'258px'}"></p-calendar> -->
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+

@@ -1,3 +1,43 @@
 .text-blue{
     color: #0d6efd;
 }
+.sidebar{
+    // float: left;
+    background-color: #fff !important;
+    top: 0;
+    right: 0;
+    width: 20rem;
+    height: 100%;
+    position: fixed;
+    transition: transform .3s;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    color: #495057;
+    border: 0 none;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+}
+.sidebar-header{
+    padding: 1.25rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.sidebar-content{
+    padding: 1.25rem;
+ 
+}
+ 
+.listbox-list{
+    padding: 0.75rem 0.5rem;
+    border-radius: 10px;
+    list-style-type: none;
+    margin: 0;
+    gap: 15px;
+}
+.listbox-list:hover{
+    background-color: #eee;
+}
+.listbox-list:hover li{
+    background-color: #eee;
+    font-weight: 500;
+}
