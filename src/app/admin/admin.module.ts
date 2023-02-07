@@ -17,8 +17,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RippleModule } from 'primeng/ripple';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
-import { ProgressSpinnerModule }
-  from 'primeng/progressspinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+ 
 import { ContentDetailsComponent } from './content-details/content-details.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -37,13 +37,10 @@ import {SidebarModule} from 'primeng/sidebar';
 import { CalendarModule } from 'primeng/calendar';
 import {ChartModule} from 'primeng/chart';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import {ProgressBarModule} from 'primeng/progressbar';
-=======
-import { ProgressBarModule } from 'primeng/progressbar';
+ 
 import { SpinnerComponent } from '../component/spinner/spinner.component';
 
->>>>>>> 52140dc24047c82718db2d3b7d3583df7236994e
 
 
 
@@ -85,12 +82,9 @@ import { SpinnerComponent } from '../component/spinner/spinner.component';
     ButtonModule,
     InputTextModule,
     TagModule,
-<<<<<<< HEAD
     SidebarModule,
     ChartModule,
     CalendarModule,
-=======
->>>>>>> 52140dc24047c82718db2d3b7d3583df7236994e
     ProgressBarModule
   ],
   providers: [
