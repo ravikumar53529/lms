@@ -43,6 +43,8 @@ import { SpinnerComponent } from '../component/spinner/spinner.component';
 import { ContentComponent } from './content/content.component';
 import { MegaMenuModule } from 'primeng/megamenu';
 
+import {TabViewModule} from 'primeng/tabview';
+import {MenuItem} from 'primeng/api';
 
 
 
@@ -90,7 +92,10 @@ import { MegaMenuModule } from 'primeng/megamenu';
     ChartModule,
     CalendarModule,
     ProgressBarModule,
-    MegaMenuModule
+    MegaMenuModule,
+    TabViewModule,
+  
+    
   ],
   providers: [
     ApiService
