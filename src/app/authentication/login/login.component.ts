@@ -62,7 +62,7 @@ export class LoginComponent {
           this.isLoading = false;
           localStorage.setItem('isAuthenticate', 'true');
 
-          this.router.navigate(['admin']);
+          this.router.navigateByUrl('/admin/dashboard');
         } else if (data.role_id == "3") {
           localStorage.setItem('role', 'user');
           this.isLoading = false;

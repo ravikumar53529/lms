@@ -40,6 +40,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {ProgressBarModule} from 'primeng/progressbar';
  
 import { SpinnerComponent } from '../component/spinner/spinner.component';
+import { ContentComponent } from './content/content.component';
+import { MegaMenuModule } from 'primeng/megamenu';
+
 
 
 
@@ -54,7 +57,8 @@ import { SpinnerComponent } from '../component/spinner/spinner.component';
     AssessmentComponent,
     CoursesComponent,
     DashboardComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ContentComponent
 
   ],
   imports: [
@@ -85,7 +89,8 @@ import { SpinnerComponent } from '../component/spinner/spinner.component';
     SidebarModule,
     ChartModule,
     CalendarModule,
-    ProgressBarModule
+    ProgressBarModule,
+    MegaMenuModule
   ],
   providers: [
     ApiService

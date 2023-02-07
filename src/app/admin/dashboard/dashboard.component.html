@@ -1,71 +1,5 @@
-<div class="sidebar float-left">
-    <div class="sidebar-header">
-        <span class="d-flex align-items-center" style="color:  #20854e;">
-            <i class="pi pi-bolt" style="font-size: 2rem"></i>
-            <span style="font-size: 24px;"> LMS</span>
-        </span>
-        <i class="pi pi-bars" style="font-size: 20px"></i>
-    </div>
-    <div class="sidebar-content">
-        <div class="list-wrapper">
-            <ul class="listbox-list">
-                <li class="listbox-item">
-                    <span>  <i class="pi pi-palette me-2"></i>Dashboard</span>
-                </li>
-                <li class="listbox-item">
-                    <span><i class="pi pi-book me-2"></i>Course</span>
-                </li>
-                <li class="listbox-item">
-                    <span><i class="pi pi-calendar me-2"></i>Schedule</span>
-                </li>
-                <li class="listbox-item">
-                    <span><i class="pi pi-envelope me-2"></i>Messages</span>
-                </li>
-                <li class="listbox-item">
-                    <span><i class="pi pi-users me-2"></i>Groups</span>                  
-                </li>
-                <hr class="mt-4 mb-2">
-                <li class="listbox-item">
-                    <span><i class="pi pi-sign-out me-2"></i>Logout</span>                  
-                </li>
-            </ul>
-        </div>
-       
-    </div>
-    <div class="sidebar-footer">
-        <ul class="listbox-list">
-            <hr class="mb-2">
-            <li class="listbox-item">
-                <span>Privacy Statement</span>
-            </li>
-            <li class="listbox-item">
-                <span>Support</span>
-            </li>
-            <li class="listbox-item">
-                <span>Contact Us</span>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="header float-left">
-    <div class="row">
-        <div class="col-lg-6 p-3">
-            <div class="search-bar ps-3" style="width: 40%;">
-                <span class="p-input-icon-left  ">
-                    <i class="pi pi-search"></i>
-                    <input type="text" class="search-text" pInputText placeholder="Search For Courses" />
-                </span>
-            </div>
-        </div>
-        <div class="col-lg-6 p-3 d-flex justify-content-end align-items-center">
-            <button pButton pRipple type="button" icon="pi pi-bell"
-            class="p-button-rounded   text-dark  p-button-text"></button>
-            <p-avatar size="large" icon="pi pi-user"  
-            [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
-        </div>
-    </div>
-</div>
-<div class="content">
+
+
     <div class="container p-4">
         <div class="row">
             <div class="col-lg-6 d-flex align-items-center">
@@ -75,8 +9,9 @@
             </div>
             <div class="col-lg-6 d-flex justify-content-end align-items-center">
                 <div class="drop-button">
-                <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly" class="p-button-raised p-button-text"></button>
-            </div>
+                    <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly"
+                        class="p-button-raised p-button-text"></button>
+                </div>
             </div>
         </div>
         <div class="grid mt-1">
@@ -164,77 +99,73 @@
         <div class="row mt-3">
             <div class="col-lg-6 ">
                 <div class="row mb-3">
-                    <div class="col-lg-6 d-flex align-items-center">                   
+                    <div class="col-lg-6 d-flex align-items-center">
                         <h2 class="m-0">
                             Overview
-                        </h2>                  
-                       </div>
+                        </h2>
+                    </div>
                     <div class="col-lg-6 d-flex justify-content-end align-items-center">
                         <div class="drop-button">
-                        <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly" class="p-button-raised p-button-text"></button>
-                    </div>
+                            <button pButton pRipple type="button" icon="pi pi-chevron-down" label="Weekly"
+                                class="p-button-raised p-button-text"></button>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
                     <!-- <h5>Basic</h5> -->
                     <p-chart type="line" [data]="basicData" [style]="{'height':'300px'}"></p-chart>
                 </div>
-           </div>
+            </div>
             <div class="col-lg-6">
                 <div class="row mb-3">
-                    <div class="col-lg-6 d-flex align-items-center">                   
+                    <div class="col-lg-6 d-flex align-items-center">
                         <h2 class=" m-0">
                             Upcoming Classes
-                        </h2>                  
+                        </h2>
                     </div>
                 </div>
                 <div class="card" style="height: 300px; overflow-y: auto;">
                     <div class="class-content  mb-2 d-flex justify-content-between">
                         <div>
                             <span>List Of UX 2nd Sem</span>
-                        <h2 class=" m-0 pb-1">
-                            Upcoming Classes
-                        </h2>
-                        <span>9.00 AM To 12.00 PM </span>
+                            <h2 class=" m-0 pb-1">
+                                Upcoming Classes
+                            </h2>
+                            <span>9.00 AM To 12.00 PM </span>
                         </div>
                         <div>
                             <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
                         </div>
-                        
+
                     </div>
                     <div class="class-content-one mb-2 d-flex justify-content-between">
                         <div>
                             <span>List Of UX 2nd Sem</span>
-                        <h2 class=" m-0 pb-1">
-                            Upcoming Classes
-                        </h2>
-                        <span>9.00 AM To 12.00 PM </span>
+                            <h2 class=" m-0 pb-1">
+                                Upcoming Classes
+                            </h2>
+                            <span>9.00 AM To 12.00 PM </span>
                         </div>
                         <div>
                             <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
                         </div>
-                        
+
                     </div>
                     <div class="class-content-two d-flex justify-content-between">
                         <div>
                             <span>List Of UX 2nd Sem</span>
-                        <h2 class=" m-0 pb-1">
-                            Upcoming Classes
-                        </h2>
-                        <span>9.00 AM To 12.00 PM </span>
+                            <h2 class=" m-0 pb-1">
+                                Upcoming Classes
+                            </h2>
+                            <span>9.00 AM To 12.00 PM </span>
                         </div>
                         <div>
                             <i class="pi pi-ellipsis-h" style="font-size: 2rem"></i>
                         </div>
-                        
+
                     </div>
                     <!-- <p-calendar  [inline]="true" [showWeek]="true" [style]="{'height':'258px'}"></p-calendar> -->
                 </div>
             </div>
         </div>
-        
-
     </div>
-</div>
-
-

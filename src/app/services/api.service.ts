@@ -44,16 +44,45 @@ export class ApiService {
 
   // Get courses
   public getCourses(): Observable<any> {
-    return this.http.get(`api/courses?populate=*`);
+    return this.http.get<any>(`api/courses?populate=*`);
   }
 
   // update courses
   public updateCourse(id: any, item: any): Observable<any> {
-    return this.http.put(`api/courses/${id}`, item);
+    return this.http.put<any>(`api/courses/${id}`, item);
   }
 
   // Delete course
   public deleteCourse(id: any): Observable<any> {
     return this.http.delete<any>(`api/courses/${id}`);
   }
+
+  /**
+   * getQuiz
+   */
+  public getQuiz(): Observable<any> {
+    return this.http.get<any>(`api/quizzes`);
+  }
+
+/**
+ * postQuiz
+ */
+public postQuiz(item: any): Observable<any> {
+  return this.http.post<any>(`/api/quizzes`,item);
+}
+
+/**
+ * updateQuiz
+ */
+public updateQuiz(id:string,item:any): Observable<any> {
+  return this.http.put<any>(`/api/quizzes/${id}`,item);
+}
+
+/**
+ * deleteQuiz
+ */
+public deleteQuiz(id:string): Observable<any> {
+  return this.http.delete<any>(`/api/quizzes/${id}`);
+}
+
 }

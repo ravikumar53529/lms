@@ -1,0 +1,287 @@
+<div class="surface-ground px-4 p-4">
+    <!-- <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Orders</span>
+                        <div class="text-900 font-medium text-xl">0</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Revenue</span>
+                        <div class="text-900 font-medium text-xl">{{0 | currency : 'INR'}}</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-wallet text-orange-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Customers</span>
+                        <div class="text-900 font-medium text-xl">0</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-users text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 p-3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Total Courses </span>
+                        <div class="text-900 font-medium text-xl">{{totalCourse}} Added</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round"
+                        style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-book text-purple-500 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div>
+        <!-- <div class="progress-spinner text-center mt-4" *ngIf="loadingSpinner == true" data-backdrop="static">
+            <p-progressSpinner></p-progressSpinner>
+        </div> -->
+        <!-- <p-divider></p-divider> -->
+        <div class="row">
+            <div class="col-lg-6 d-flex align-items-center">
+                <h2 class="text-black">
+                    Content
+                </h2>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-end align-items-center">
+                <div class="drop-button">
+                    <button class="btn btn-primary mb-2 " type="button" (click)="showDialog()" icon="pi pi-info-circle"
+                        label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add content</button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="text-right">
+
+        </div> -->
+        <div class="row">
+
+            <div class="col-lg-4 mb-3" *ngFor="let data of contentData">
+                <div class="card" style="height: 420px;">
+                    <ng-container
+                        *ngIf="data.attributes.media.data[0].attributes.formats != null; then content  else video1"></ng-container>
+
+                    <ng-template #content>
+                        <img [routerLink]="['/admin/content',data.id]" style="height: 250px;cursor: pointer;"
+                            src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
+                            class="card-img-top" alt="...">
+                    </ng-template>
+                    <ng-template #video1>
+                        <video class="cursor-pointer" height="250px;" controls>
+                            <source src="{{data.attributes.media.data[0].attributes.url}}" type="video/mp4">
+                            <source src="{{data.attributes.media.data[0].attributes.url}}" type="video/ogg">
+                            <!-- <track src="fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English"> -->
+                            Your browser does not support the video tag.
+                        </video>
+                    </ng-template>
+
+                    <div class="card-body">
+                        <div class="row cursor-pointer" [routerLink]="['/admin/content',data.id]">
+                            <div class="col-lg-6">
+                                <h3 class="card-title mb-2" style="font-weight: bold;">{{data.attributes.name}}</h3>
+                            </div>
+                            <div class="col-lg-6 d-flex justify-content-end">
+                                <span class="d-flex mb-2 align-items-center"> <mat-icon style="font-size: 20px;"
+                                        fontIcon="person"></mat-icon> {{data.attributes.author}}</span>
+                            </div>
+                        </div>
+                        <p [routerLink]="['/admin/content',data.id]" class="card-text cursor-pointer">
+                            {{data.attributes.description}}.</p>
+                        <div class="row align-items-center cursor-pointer">
+                            <div class="col-lg-4">
+                                <span class="d-flex align-items-center" [routerLink]="['/admin/content',data.id]">
+                                    <mat-icon aria-hidden="false" aria-label="Example home icon"
+                                        fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
+                                </span>
+                            </div>
+                            <div class="col-lg-4"><button type="button" class="btn"
+                                    [routerLink]="['/admin/content',data.id]">
+                                    {{data.attributes.price | currency : 'INR'}}</button>
+                            </div>
+                            <div class="col-lg-4 d-flex justify-content-end">
+                                <div class="d-flex justify-content-end mt-2">
+                                    <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
+                                        class="p-button-rounded p-button-outlined" (click)="editContentDialog(data)"
+                                        style="height: 2rem; width: 2rem;"></button>
+
+                                    <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
+                                        class="p-button-rounded ms-1 p-button-danger p-button-outlined"
+                                        style="height: 2rem; width: 2rem;" (click)="deleteDialog(data)"></button>
+                                </div>
+                                <!-- <button pButton pRipple type="button" class="p-button-outlined p-button-primary"
+                                [routerLink]="['/admin/content',data.id]" label="Details"></button> -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="card-footer">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div> -->
+                </div>
+            </div>
+
+            <!-- <p-paginator *ngIf="contentData" [rows]="10" [totalRecords]="120"
+                [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
+
+        </div>
+        <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+    </div>
+</div>
+
+<div class=" container">
+
+    <div class="d-flex justify-content-end">
+        <!-- Add dialog start -->
+        <p-dialog header="Add Content" [(visible)]="display" [style]="{width: '40vw'}" styleClass="active">
+            <hr>
+            <form [formGroup]="courseGroup" (ngSubmit)="onSubmitContent()">
+                <div class="p-fluid grid">
+                    <div class="field mt-4 w-100">
+                        <label for="title">Content Name</label>
+                        <span class="p-float-label">
+
+                            <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="title"
+                                class="form-control" required formControlName="title" pInputText
+                                placeholder="Content Name">
+                            <small class="p-error block"
+                                *ngIf="courseGroup.get('title')?.invalid && (courseGroup.get('title')?.dirty && courseGroup.get('title')?.touched)">
+                                Content
+                                name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-4 w-100">
+                        <label for="title">Description</label>
+                        <span class="p-float-label">
+                            <textarea inputId="textarea" required class="bg-light-grey input-shadow w-100 p-inputtext"
+                                rows="3" style="resize: none;" cols="30" formControlName="description"
+                                pInputTextarea></textarea>
+                            <small class="p-error block"
+                                *ngIf="courseGroup.get('description')?.invalid && (courseGroup.get('description')?.dirty && courseGroup.get('description')?.touched)">
+                                Description
+                                name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-4 w-100">
+                        <label for="title">Price</label>
+                        <span class="p-float-label">
+                            <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
+                                formControlName="price" pInputText>
+                            <small class="p-error block"
+                                *ngIf="courseGroup.get('price')?.invalid && (courseGroup.get('price')?.dirty && courseGroup.get('price')?.touched)">
+                                Price
+                                name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-4 w-100">
+                        <label for="title">Content</label>
+                        <span class="p-float-label mb-1">
+                            <input type="file" required class="bg-light-grey input-shadow w-100 p-inputtext"
+                                (change)="onFileSelect($event)" pInputText>
+                            <!-- <small class="p-error block"
+                                *ngIf="courseGroup.get('img')?.invalid && (courseGroup.get('img')?.touched)">
+                                Content
+                                name is required</small> -->
+                        </span>
+                        <p-progressBar *ngIf="isProgressFile== true" mode="indeterminate"
+                            [style]="{'height': '6px'}"></p-progressBar>
+
+                    </div>
+                    <div class="row  mt-4">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button [disabled]="courseGroup.invalid" type="button" class="btn btn-success me-2"
+                        (click)="onSubmitContent()"><i class="pi pi-save me-2 cursor-pointer"></i>Save</button>
+                    <button (click)="closeDialog()" type="button" class="btn btn-dark"><i
+                            class="pi pi-delete-left me-2 cursor-pointer"></i>Cancel</button>
+                </div>
+            </form>
+        </p-dialog>
+        <!-- Add dialog end -->
+
+        <!-- Edit dialog start here -->
+        <p-dialog header="Update Courses" [(visible)]="editDisply" [style]="{width: '40vw'}" styleClass="active">
+            <hr>
+            <form [formGroup]="courseUpdateGroup">
+                <div class="p-fluid grid">
+                    <div class="field mt-2 w-100">
+                        <label for="title">Course Name</label>
+                        <span class="p-float-label">
+                            <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext"
+                                formControlName="title" pInputText placeholder="Course Name">
+                            <small class="p-error block"
+                                *ngIf="courseUpdateGroup.get('title')?.invalid && courseUpdateGroup.get('title')?.dirty">
+                                Course
+                                name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-2 w-100">
+                        <label for="title">Description</label>
+                        <span class="p-float-label">
+                            <textarea inputId="textarea" class="bg-light-grey input-shadow w-100 p-inputtext" rows="3"
+                                style="resize: none;" cols="30" formControlName="description" pInputTextarea></textarea>
+                        </span>
+                        <small class="p-error block"
+                            *ngIf="courseUpdateGroup.get('description')?.invalid && courseUpdateGroup.get('description')?.dirty">
+                            Description
+                            name is required</small>
+                    </div>
+                    <div class="field mt-1 w-100">
+                        <label for="title">Price</label>
+                        <span class="p-float-label">
+                            <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext"
+                                formControlName="price" pInputText>
+                            <small class="p-error block"
+                                *ngIf="courseUpdateGroup.get('price')?.invalid && courseUpdateGroup.get('price')?.dirty">
+                                Price
+                                name is required</small>
+                        </span>
+                    </div>
+                    <div class="field mt-4 w-100">
+                        <label for="title">Content</label>
+                        <span class="p-float-label">
+                            <input type="file" required class="bg-light-grey input-shadow w-100 p-inputtext"
+                                (change)="onFileSelectForUpdate($event)" pInputText>
+                        </span>
+                    </div>
+                    <div class="row  mt-1">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-2">
+                    <button type="button" class="btn btn-success me-2" (click)="onUpdateContent()"><i
+                            class="pi pi-save me-2 cursor-pointer"></i>Update</button>
+                    <button type="button" class="btn btn-dark"><i class="pi pi-delete-left me-2 cursor-pointer"
+                            (click)="closeEditDialog()"></i>Cancel</button>
+                </div>
+            </form>
+        </p-dialog>
+        <!-- Edit dialog ends here-->
+    </div>
+    <p-toast position="top-right"></p-toast>
+    <app-spinner *ngIf="loadingSpinner==true"></app-spinner>
+</div>
