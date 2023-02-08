@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
     }
 
     public isActive(base: string): boolean {
-        return this.router.url.includes(`/${base}`);
+            return this.router.url.includes(`${base}`);
     }
 
     public iconMenu(): void {
@@ -50,16 +50,12 @@ export class AdminComponent implements OnInit {
             }
             ]
         },
-
         ];
     }
-
+    // logout
     public onLogout(): void {
         this.router.navigateByUrl('/login');
         localStorage.clear();
         location.reload();
     }
-
-
-
 }

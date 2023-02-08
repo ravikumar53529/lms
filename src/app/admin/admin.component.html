@@ -10,12 +10,12 @@
         <div class="sidebar-content">
             <div class="list-wrapper">
                 <ul class="listbox-list">
-                    <li class="listbox-item" [class.active]="isActive('admin')" routerLink="/admin"
+                    <li class="listbox-item"  routerLink="/admin" 
                         routerLinkActive="active">
                         <span> <i class="pi pi-palette me-2"></i>Dashboard</span>
                     </li>
-                    <li [class.active]="isActive('admin/content')" class="listbox-item" routerLink="/admin/content"
-                        routerLinkActive="active">
+                    <li  class="listbox-item" routerLink="/admin/content"
+                       [class.active]="isActive('admin/content')" routerLinkActive="active">
                         <span><i class="pi pi-file-edit me-2"></i>Content library</span>
                     </li>
                     <li [class.active]="isActive('admin/courses')" class="listbox-item" routerLink="/admin/courses"

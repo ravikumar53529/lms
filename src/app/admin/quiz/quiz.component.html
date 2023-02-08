@@ -13,10 +13,10 @@
         </div>
     </div>
 
-    <div class="grid" *ngFor="let data of data">
+    <div class="grid" *ngFor="let data of quizData">
 
         <!-- <div class="col-fixed" style="width:100px">Questions</div> -->
-        <div class="col">
+        <div class="col" *ngIf="quizData">
 
             <p-card>
                 <div class="d-flex justify-content-end mt-2">
@@ -29,20 +29,35 @@
                         style="height: 2rem; width: 2rem;"></button>
 
                 </div>
-                <h2>Q: {{data.Q}}</h2><br>
+                <h1>{{data.attributes.syllabus | uppercase}}</h1>
+                <h2>Q: {{data.attributes.question}}</h2><br>
 
                 <div class="grid pl-2">
-                    <div class="col-6">A) {{data.op1}}</div>
-                    <div class="col-6">B) {{data.op2}}</div>
-                    <div class="col-6">C) {{data.op3}}</div>
-                    <div class="col-6">D) {{data.op4}}</div>
+                    <div class="col-6">A) {{data.attributes.all_answer.A}}</div>
+                    <div class="col-6">B) {{data.attributes.all_answer.B}}</div>
+                    <div class="col-6">C) {{data.attributes.all_answer.C}}</div>
+                    <div class="col-6">D) {{data.attributes.all_answer.D}}</div>
                 </div>
+
+                <h3>Correct answer: {{data.attributes.correct_answer}}</h3>
 
             </p-card>
         </div>
 
+        <div class="col" *ngIf="!quizData">
+            No data found
+        </div>
+
 
     </div>
+    <!-- video -->
+    <video #vid class="cursor-pointer" height="250px;" controls>
+        <source src="assets\img\videoplayback.mp4" type="video/mp4">
+        <source src="" type="video/ogg">
+        Your browser does not support the video tag.
+    </video>
+    <p-progressBar [value]="percentage"></p-progressBar>
+    <!--video  -->
     <!-- Pagination -->
     <!-- <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
 
@@ -53,6 +68,21 @@
         <hr>
         <form [formGroup]="addQuizGroup" (ngSubmit)="onSubmitQuestion()">
             <div class="p-fluid grid">
+
+                <div class="field mt-4 w-100">
+                    <label for="title">Syllabus</label>
+                    <span class="p-float-label">
+
+                        <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="syllabus"
+                            class="form-control" required formControlName="syllabus" pInputText placeholder="Syllabus">
+                        <small class="p-error block"
+                            *ngIf="addQuizGroup.get('syllabus')?.invalid && (addQuizGroup.get('syllabus')?.dirty && addQuizGroup.get('syllabus')?.touched)">
+                            Syllabus
+                            is required</small>
+                    </span>
+
+                </div>
+
                 <div class="field mt-4 w-100">
                     <label for="title">Question</label>
                     <span class="p-float-label">
@@ -67,46 +97,58 @@
 
                 </div>
                 <div class="field mt-4 w-50">
-                    <label for="title">Option1</label>
+                    <label for="title">Option(A)</label>
                     <span class="p-float-label">
                         <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
                             style="resize: none;" cols="30" formControlName="option1" pInputText>
                         <small class="p-error block"
                             *ngIf="addQuizGroup.get('option1')?.invalid && (addQuizGroup.get('option1')?.dirty && addQuizGroup.get('option1')?.touched)">
-                            Option1
+                            Option(A)
                             name is required</small>
                     </span>
                 </div>
 
                 <div class="field mt-4 w-50">
-                    <label for="title">Option2</label>
+                    <label for="title">Option(B)</label>
                     <span class="p-float-label">
                         <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
                             formControlName="option2" pInputText>
                         <small class="p-error block"
                             *ngIf="addQuizGroup.get('option2')?.invalid && (addQuizGroup.get('option2')?.dirty && addQuizGroup.get('option2')?.touched)">
-                            Option2 is required</small>
+                            Option(B) is required</small>
                     </span>
                 </div>
                 <div class="field mt-4 w-50">
-                    <label for="title">Option3</label>
+                    <label for="title">Option(C)</label>
                     <span class="p-float-label">
                         <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
                             formControlName="option3" pInputText>
                         <small class="p-error block"
                             *ngIf="addQuizGroup.get('option3')?.invalid && (addQuizGroup.get('option3')?.dirty && addQuizGroup.get('option3')?.touched)">
-                            Option3 is required</small>
+                            Option(C) is required</small>
                     </span>
                 </div>
                 <div class="field mt-4 w-50">
-                    <label for="title">Option4</label>
+                    <label for="title">Option(D)</label>
                     <span class="p-float-label">
                         <input type="text" required class="bg-light-grey input-shadow w-100 p-inputtext"
                             formControlName="option4" pInputText>
                         <small class="p-error block"
                             *ngIf="addQuizGroup.get('option4')?.invalid && (addQuizGroup.get('option4')?.dirty && addQuizGroup.get('option4')?.touched)">
-                            Option4 is required</small>
+                            Option(D) is required</small>
                     </span>
+                </div>
+                <div class="field mt-4 w-100">
+                    <label for="title">Answer</label>
+                    <span class="p-float-label">
+                        <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="answer"
+                            class="form-control" required formControlName="answer" pInputText placeholder="Answer">
+                        <small class="p-error block"
+                            *ngIf="addQuizGroup.get('answer')?.invalid && (addQuizGroup.get('answer')?.dirty && addQuizGroup.get('answer')?.touched)">
+                            Answer
+                            is required</small>
+                    </span>
+
                 </div>
                 <div class="row  mt-4">
 
@@ -205,4 +247,4 @@
 
     <p-toast position="top-right"></p-toast>
 
-</div>
+</div><app-spinner *ngIf="isLoading==true"></app-spinner>

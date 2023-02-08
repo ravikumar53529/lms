@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ContentDetailsComponent implements OnInit {
   value: number = 0;
   ngOnInit(): void {
-   this.value = 56
+   this.value = 62
   }
  
   

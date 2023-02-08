@@ -68,7 +68,7 @@ export class ApiService {
  * postQuiz
  */
 public postQuiz(item: any): Observable<any> {
-  return this.http.post<any>(`/api/quizzes`,item);
+  return this.http.post<any>(`/api/quizzes`,item)
 }
 
 /**
@@ -84,5 +84,6 @@ public updateQuiz(id:string,item:any): Observable<any> {
 public deleteQuiz(id:string): Observable<any> {
   return this.http.delete<any>(`/api/quizzes/${id}`);
 }
+
 
 }
