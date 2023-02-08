@@ -17,6 +17,11 @@ import { ApiService } from '../services/api.service';
     providers: [ConfirmationService, MessageService]
 })
 export class AdminComponent implements OnInit {
+   
+    visibleSidebar1!: boolean;
+
+
+
 
     items: any;
 
