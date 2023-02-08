@@ -109,8 +109,8 @@ input.p-inputtext.p-component.p-element.search-text {
 }
 
 .content {
-    width: calc(100% - 15rem) !important;
-    left: 15rem;
+    width: calc(100% - 15.1rem) !important;
+    left: 15.1rem;
     top: 80px;
     position: absolute;
     background-color: rgb(211 211 211 / 19%);
@@ -137,6 +137,7 @@ input.p-inputtext.p-component.p-element.search-text {
 }
 
 .layout-wrapper {
+    width: calc(100% - 20rem) !important;
     overflow-y: auto;
 }
 // a {
@@ -144,5 +145,6 @@ input.p-inputtext.p-component.p-element.search-text {
 // }
 .active {
     // color: #20854e;
-    color: #1FB6E5;
+    // color: #1FB6E5;
+    color: #20854e;
 }

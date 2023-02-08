@@ -161,3 +161,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .p-datatable-header.ng-star-inserted {
     background: #fff !important;
 }
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #20854e;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #20854e;
+}

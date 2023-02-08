@@ -5,11 +5,14 @@
                 <i class="pi pi-bolt" style="font-size: 2rem"></i>
                 <span style="font-size: 24px;"> LMS</span>
             </span>
-            <i class="pi pi-bars" style="font-size: 20px"></i>
+            <i class="pi pi-times close-menu" style="font-size: 20px"></i>
         </div>
         <div class="sidebar-content">
             <div class="list-wrapper">
                 <ul class="listbox-list">
+                    <li class="listbox-item d-none">
+                    <span> <i class="pi pi-bars me-2"></i></span>
+                    </li>
                     <li class="listbox-item" [class.active]="isActive('admin')" routerLink="/admin"
                         routerLinkActive="active">
                         <span> <i class="pi pi-palette me-2"></i>Dashboard</span>
@@ -71,8 +74,6 @@
             <div class="col-lg-6  d-flex justify-content-end align-items-center">
                 <button   pButton pRipple type="button" icon="pi pi-bell"
                     class="p-button-rounded   text-dark  p-button-text"></button>
-                <!-- <button pButton pRipple type="button" icon="pi pi-user"
-                    class="p-button-rounded   text-dark  p-button-text"></button> -->
                 <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user" [style]="{'background-color':'#fff', 'color': '#000'}"
                     ></p-avatar>
                 <p-menu #menu [popup]="true" [model]="items"></p-menu>

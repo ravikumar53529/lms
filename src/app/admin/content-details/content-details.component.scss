@@ -5,7 +5,7 @@
 .sidebar {
     // float: left;
     background-color: #fff !important;
-    top: 0;
+    top: 11.9%;
     right: 0;
     width: 20rem;
     height: 100%;
@@ -26,6 +26,7 @@
 
     .sidebar-content {
         padding: 1.25rem;
+        overflow-y: auto !important;
 
         .listbox-list {
             padding: 0.75rem 0.5rem;
