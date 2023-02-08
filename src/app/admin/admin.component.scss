@@ -89,7 +89,15 @@
     left: 15rem;
     position: fixed;
     background-color: #FFF !important;
-  
+
+    button.menu-button {
+        display: none;
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        border: 1px solid #000;
+    }
+
 }
 
 input.p-inputtext.p-component.p-element.search-text {
@@ -151,23 +159,33 @@ input.p-inputtext.p-component.p-element.search-text {
 }
 
 @media only screen and (max-width: 600px) {
-    .layout-wrapper{
+    .layout-wrapper {
         .sidebar {
             display: none !important;
         }
-        .header  {
+
+        .header {
             height: auto !important;
             box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
             width: 100% !important;
             float: left;
-            left: 0; 
+            left: 0;
             position: fixed;
             background-color: #FFF !important;
-            .none{
+
+            .none {
                 display: none !important;
             }
-          
+            button.menu-button {
+                display: block;
+                padding: 10px 15px;
+                background: #fff;
+                border-radius: 5px;
+                border: 1px solid #000;
+            }
+
         }
+
         .content {
             width: 100% !important;
             top: 80px;
