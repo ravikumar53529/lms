@@ -5,12 +5,15 @@
                 <i class="pi pi-bolt" style="font-size: 2rem"></i>
                 <span style="font-size: 24px;"> LMS</span>
             </span>
-            <i class="pi pi-bars" style="font-size: 20px"></i>
+            <i class="pi pi-times close-menu" style="font-size: 20px"></i>
         </div>
         <div class="sidebar-content">
             <div class="list-wrapper">
                 <ul class="listbox-list">
-                    <li class="listbox-item"  routerLink="/admin" 
+                    <li class="listbox-item d-none">
+                        <span> <i class="pi pi-bars me-2"></i></span>
+                    </li>
+                    <li class="listbox-item" [class.active]="isActive('admin')" routerLink="/admin"
                         routerLinkActive="active">
                         <span> <i class="pi pi-palette me-2"></i>Dashboard</span>
                     </li>
@@ -60,21 +63,21 @@
     </div>
     <div class="header float-left">
         <div class="row">
-            <div class="col-lg-6 p-3">
-                <div class="search-bar ps-3" style="width: 40%;">
+            <div class="col-lg-6 col-md-6 p-3">
+                <!-- <span> <i class="pi pi-bars me-2"></i></span> -->
+                <div class="search-bar d-flex align-items-center ps-3" style="width: 40%;">
+                    <p-button type="button" class="" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button>
                     <span class="p-input-icon-left  ">
                         <i class="pi pi-search"></i>
                         <input type="text" class="search-text" pInputText placeholder="Search For Courses" />
                     </span>
                 </div>
             </div>
-            <div class="col-lg-6  d-flex justify-content-end align-items-center">
-                <button   pButton pRipple type="button" icon="pi pi-bell"
+            <div class="col-lg-6 col-md-6 none d-flex justify-content-end align-items-center">
+                <button pButton pRipple type="button" icon="pi pi-bell"
                     class="p-button-rounded   text-dark  p-button-text"></button>
-                <!-- <button pButton pRipple type="button" icon="pi pi-user"
-                    class="p-button-rounded   text-dark  p-button-text"></button> -->
-                <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user" [style]="{'background-color':'#fff', 'color': '#000'}"
-                    ></p-avatar>
+                <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user"
+                    [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
                 <p-menu #menu [popup]="true" [model]="items"></p-menu>
             </div>
         </div>
@@ -83,3 +86,48 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+
+
+
+<!-- sidebar for mobile screen -->
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+    <ng-template pTemplate="header">
+        <span class="d-flex align-items-center" style="color:  #20854e;">
+            <i class="pi pi-bolt" style="font-size: 2rem"></i>
+            <span style="font-size: 24px;"> LMS</span>
+        </span>
+    </ng-template>
+    <ng-template pTemplate="content">
+        <li class="listbox-item" [class.active]="isActive('admin')" routerLink="/admin" routerLinkActive="active">
+            <span> <i class="pi pi-palette me-2"></i>Dashboard</span>
+        </li>
+        <li [class.active]="isActive('admin/content')" class="listbox-item" routerLink="/admin/content"
+            routerLinkActive="active">
+            <span><i class="pi pi-file-edit me-2"></i>Content library</span>
+        </li>
+        <li [class.active]="isActive('admin/courses')" class="listbox-item" routerLink="/admin/courses"
+            routerLinkActive="active">
+            <span><i class="pi pi-book me-2"></i>Course</span>
+        </li>
+        <li class="listbox-item" [class.active]="isActive('admin/quiz')" routerLink="/admin/quiz"
+            routerLinkActive="active">
+            <span><i class="pi pi-stopwatch me-2"></i>Quiz</span>
+        </li>
+        <li class="listbox-item">
+            <span><i class="pi pi-calendar me-2"></i>Schedule</span>
+        </li>
+        <li class="listbox-item">
+            <span><i class="pi pi-envelope me-2"></i>Messages</span>
+        </li>
+        <li class="listbox-item">
+            <span><i class="pi pi-users me-2"></i>Groups</span>
+        </li>
+
+
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <li class="listbox-item" (click)="onLogout()">
+            <span><i class="pi pi-sign-out me-2"></i>Logout</span>
+        </li>
+    </ng-template>
+</p-sidebar>
