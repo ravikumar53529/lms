@@ -2,43 +2,61 @@
 // body{
 //     background-color:#eeeeee30 !important;
 // }
+
+// sidebar close styles
+.small-sidebar li span{
+    display: none; 
+}
+.small-sidebar  {
+    .sidebar-header{
+        display: block !important;
+        text-align: center;
+    }
+    .pi {
+        font-size: 20px;
+    }
+    transition: all linear 0.3s;
+    .site-name{
+        display: none !important;
+    }
+    width: 10rem  ;
+    text-align: center;
+}
+.large-sidebar{
+    transition: all linear 0.3s;
+    width: 50rem !important;
+    .site-name1{
+        display: none !important;
+    }
+}
 .sidebar {
-    float: left;
     background-color: #fff !important;
     top: 0;
     left: 0;
-    width: 15rem;
-    height: 100%;
-    position: fixed;
-    transition: transform .3s;
+    height: 100vh;
+    position: sticky;
     display: flex;
     flex-direction: column;
     background: #ffffff;
     color: #495057;
     border: 0 none;
     box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
-
     .sidebar-header {
         padding: 1.25rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-
     .sidebar-content {
         padding: 1.25rem;
-        position: relative;
-        // overflow-y: auto;
-
+        position: relative;   
     }
 }
-
 .container-fluid {
     position: absolute;
     left: 15rem;
     width: calc(100% - 20rem);
 }
-
 .listbox-item {
     margin: 0;
     padding: 0.75rem 1.25rem;
@@ -53,43 +71,33 @@
     align-items: center;
     user-select: none;
 }
-
 .sidebar .sidebar-header+.sidebar-content {
     padding-top: 0;
 }
-
 .sidebar-footer {
     margin-top: auto;
 }
-
 .sidebar .sidebar-footer {
     padding: 1.25rem;
 }
-
 // listbox
 .listbox-list {
     padding: 0.75rem 0;
     list-style-type: none;
     margin: 0;
 }
-
 .listbox-item:hover {
     background-color: #bdedcf;
     color: #20854e;
     font-weight: 500;
     border-radius: 4px;
 }
-
 // header
 .header {
     height: auto !important;
     box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
-    width: calc(100% - 15rem) !important;
-    float: left;
-    left: 15rem;
-    position: fixed;
+    width: 100%;
     background-color: #FFF !important;
-
     button.menu-button {
         display: none;
         padding: 10px 15px;
@@ -97,13 +105,10 @@
         border-radius: 5px;
         border: 1px solid #000;
     }
-
 }
-
 input.p-inputtext.p-component.p-element.search-text {
     border: none !important;
 }
-
 .drop-button {
     button.p-element.p-button-raised.p-button-text.p-button.p-component {
         background: #fff;
@@ -111,59 +116,33 @@ input.p-inputtext.p-component.p-element.search-text {
         padding: 0.25rem 1rem !important;
     }
 }
-
 .col-lg-2 {
     flex: 0 0 auto;
     width: 20% !important;
 }
-
-.content {
-    width: calc(100% - 15.1rem) !important;
-    left: 15.1rem;
-    top: 80px;
-    position: absolute;
-    background-color: rgb(211 211 211 / 19%);
-    height: calc(100% - 84px) !important;
-    overflow-y: auto;
-}
-
 .class-content {
     padding: 15px;
     background: #FDF3EA;
     border-left: 5px solid orange;
 }
-
 .class-content-one {
     padding: 15px;
     background: #FEF6D2;
     border-left: 5px solid yellow;
 }
-
 .class-content-two {
     padding: 15px;
     background: #E9F8FF;
     border-left: 5px solid #1FB6E5;
 }
-
-// .layout-wrapper {
-//     width: calc(100% - 20rem) !important;
-//     overflow-y: auto;
-// }
-// a {
-//     text-decoration: none;
-// }
 .active {
-    // color: #20854e;
-    // color: #1FB6E5;
     color: #20854e;
 }
 
 @media only screen and (max-width: 760px) {
-    .layout-wrapper {
         .sidebar {
             display: none !important;
         }
-
         .header {
             height: auto !important;
             box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
@@ -183,9 +162,7 @@ input.p-inputtext.p-component.p-element.search-text {
                 border-radius: 5px;
                 border: 1px solid #000;
             }
-
         }
-
         .content {
             width: 100% !important;
             top: 80px;
@@ -193,8 +170,5 @@ input.p-inputtext.p-component.p-element.search-text {
             position: absolute;
             background-color: rgb(211 211 211 / 19%);
             height: calc(100% - 84px) !important;
-            overflow-y: auto;
         }
-    }
-
 }

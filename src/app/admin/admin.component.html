@@ -1,53 +1,53 @@
-<div class="layout-wrapper">
-    <div class="sidebar float-left">
+<div class="d-flex">
+    <div [ngClass]="{' small-sidebar': step === 1, ' large-sidebar' : step === 2 }" class="sidebar float-left">
         <div class="sidebar-header">
-            <span class="d-flex align-items-center" style="color:  #20854e;">
+            <span class="d-flex align-items-center ml-2 " style="color:  #20854e;">
                 <i class="pi pi-bolt" style="font-size: 2rem"></i>
-                <span style="font-size: 24px;"> LMS</span>
+                <span  class="site-name" style="font-size: 24px;"> LMS</span>
             </span>
-            <i class="pi pi-times close-menu" style="font-size: 20px"></i>
+            <i class="pi pi-times cursor-pointer site-name close-menu" style="font-size: 20px" (click)="step=1"></i>
         </div>
         <div class="sidebar-content">
             <div class="list-wrapper">
                 <ul class="listbox-list">
-                    <li class="listbox-item d-none">
-                        <span> <i class="pi pi-bars me-2"></i></span>
+                    <li class="listbox-item"  (click)="step=2" *ngIf="step==1">
+                        <i class="pi pi-bars site-name1 me-2" style="font-size: 20px"></i> <span> </span>
                     </li>
                     <li class="listbox-item" [class.active]="isActive('admin')" routerLink="/admin"
                         routerLinkActive="active">
-                        <span> <i class="pi pi-palette me-2"></i>Dashboard</span>
+                        <i class="pi pi-palette me-2"></i> <span> Dashboard</span>
                     </li>
                     <li  class="listbox-item" routerLink="/admin/content"
                        [class.active]="isActive('admin/content')" routerLinkActive="active">
-                        <span><i class="pi pi-file-edit me-2"></i>Content library</span>
+                       <i class="pi pi-file-edit me-2"></i> <span>Content library</span>
                     </li>
                     <li [class.active]="isActive('admin/courses')" class="listbox-item" routerLink="/admin/courses"
                         routerLinkActive="active">
-                        <span><i class="pi pi-book me-2"></i>Course</span>
+                        <i class="pi pi-book me-2"></i>  <span>Course</span>
                     </li>
                     <li class="listbox-item" [class.active]="isActive('admin/quiz')" routerLink="/admin/quiz"
                         routerLinkActive="active">
-                        <span><i class="pi pi-stopwatch me-2"></i>Quiz</span>
+                        <i class="pi pi-stopwatch me-2"></i>   <span>Quiz</span>
                     </li>
                     <li class="listbox-item">
-                        <span><i class="pi pi-calendar me-2"></i>Schedule</span>
+                        <i class="pi pi-calendar me-2"></i> <span>Schedule</span>
                     </li>
                     <li class="listbox-item">
-                        <span><i class="pi pi-envelope me-2"></i>Messages</span>
+                        <i class="pi pi-envelope me-2"></i> <span>Messages</span>
                     </li>
                     <li class="listbox-item">
-                        <span><i class="pi pi-users me-2"></i>Groups</span>
+                        <i class="pi pi-users me-2"></i> <span>Groups</span>
                     </li>
                     <hr class="mt-4 mb-2">
                     <li class="listbox-item" (click)="onLogout()">
-                        <span><i class="pi pi-sign-out me-2"></i>Logout</span>
+                        <i class="pi pi-sign-out me-2"></i>  <span>Logout</span>
                     </li>
                 </ul>
             </div>
 
         </div>
         <div class="sidebar-footer" style="overflow-y: auto;">
-            <ul class="listbox-list">
+            <!-- <ul class="listbox-list">
                 <hr class="mb-2">
                 <li class="listbox-item">
                     <span>Privacy Statement</span>
@@ -58,36 +58,41 @@
                 <li class="listbox-item">
                     <span>Contact Us</span>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
-    <div class="header float-left">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 p-3">
-                <!-- <span> <i class="pi pi-bars me-2"></i></span> -->
-                <div class="search-bar d-flex align-items-center ps-3" style="width: 40%;">
-                    <button type="button" class="menu-button"  (click)="visibleSidebar1 = true"> <i class="pi pi-bars"></i></button>
-                    <!-- <p-button type="button" class="" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button> -->
-                    <span class="p-input-icon-left  ">
-                        <i class="pi pi-search"></i>
-                        <input type="text" class="search-text" pInputText placeholder="Search For Courses" />
-                    </span>
+    <div class="content-inner overflow-hidden px-1">
+        <div class="header float-left">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 p-3">
+                    <!-- <span> <i class="pi pi-bars me-2"></i></span> -->
+                    <div class="search-bar d-flex align-items-center ps-3" style="width: 40%;">
+                        <button type="button" class="menu-button"  (click)="visibleSidebar1 = true"> <i class="pi pi-bars"></i></button>
+                        <!-- <p-button type="button" class="" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button> -->
+                        <span class="p-input-icon-left  ">
+                            <i class="pi pi-search"></i>
+                            <input type="text" class="search-text" pInputText placeholder="Search For Courses" />
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 none d-flex justify-content-end align-items-center">
+                    <button pButton pRipple type="button" icon="pi pi-bell"
+                        class="p-button-rounded   text-dark  p-button-text"></button>
+                    <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user"
+                        [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
+                    <p-menu #menu [popup]="true" [model]="items"></p-menu>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 none d-flex justify-content-end align-items-center">
-                <button pButton pRipple type="button" icon="pi pi-bell"
-                    class="p-button-rounded   text-dark  p-button-text"></button>
-                <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user"
-                    [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
-                <p-menu #menu [popup]="true" [model]="items"></p-menu>
-            </div>
         </div>
-    </div>
-    <div class="content">
-        <router-outlet></router-outlet>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
     </div>
 </div>
 
+
+
+ 
 
 
 <!-- sidebar for mobile screen -->

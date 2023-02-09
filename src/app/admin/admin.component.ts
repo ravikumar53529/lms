@@ -17,6 +17,7 @@ import { ApiService } from '../services/api.service';
     providers: [ConfirmationService, MessageService]
 })
 export class AdminComponent implements OnInit {
+    step:number=2
    
     visibleSidebar1!: boolean;
 
