@@ -168,11 +168,7 @@ a {
     text-decoration: none;
   }
 }
-.header{
-    button.p-ripple.p-element.p-button.p-component.p-button-icon-only {
-        display: none !important;
-    }
-}
+
 
 .content-details-wrapper {
     .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
@@ -207,12 +203,7 @@ a {
     background: #20854e;
 }
 
-@media only screen and (max-width: 600px) {
-    .header{
-        button.p-ripple.p-element.p-button.p-component.p-button-icon-only {
-            display: block !important;
-        }
-    }
+@media only screen and (max-width: 760px) {
     .p-sidebar-left {
         top: 0;
         left: 0;
