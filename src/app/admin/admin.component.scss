@@ -19,12 +19,12 @@
     .site-name{
         display: none !important;
     }
-    width: 10rem  ;
+    width: 6rem  ;
     text-align: center;
 }
 .large-sidebar{
     transition: all linear 0.3s;
-    width: 50rem !important;
+    width: 20rem !important;
     .site-name1{
         display: none !important;
     }
@@ -137,6 +137,9 @@ input.p-inputtext.p-component.p-element.search-text {
 }
 .active {
     color: #20854e;
+}
+.content-inner{
+    width: 100%;
 }
 
 @media only screen and (max-width: 760px) {
