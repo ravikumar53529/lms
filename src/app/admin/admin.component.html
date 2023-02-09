@@ -7,7 +7,7 @@
             </span>
             <i class="pi pi-times cursor-pointer site-name close-menu" style="font-size: 20px" (click)="step=1"></i>
         </div>
-        <hr class="p-0 m-0">
+        <!-- <hr class="p-0 m-0"> -->
         <div class="sidebar-content">
             <div class="list-wrapper">
                 <ul class="listbox-list">
@@ -40,14 +40,15 @@
                         <i class="pi pi-users me-2"></i> <span>Groups</span>
                     </li>
                     <hr class="mt-4 mb-2">
-                    <li class="listbox-item" (click)="onLogout()">
-                        <i class="pi pi-sign-out me-2"></i>  <span>Logout</span>
-                    </li>
+                 
                 </ul>
             </div>
 
         </div>
         <div class="sidebar-footer" style="overflow-y: auto;">
+            <li class="listbox-item" (click)="onLogout()">
+                <i class="pi pi-sign-out me-2"></i>  <span>Logout</span>
+            </li>
             <!-- <ul class="listbox-list">
                 <hr class="mb-2">
                 <li class="listbox-item">

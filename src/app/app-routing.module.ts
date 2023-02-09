@@ -13,10 +13,10 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./authentication/signup/signup.module').then(m => m.SignupModule) },
   {
     path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-     canActivate: [AuthGuard],
-    data: {
-      role: 'admin'
-    }
+    //  canActivate: [AuthGuard],
+    // data: {
+    //   role: 'admin'
+    // }
   },
   {
     path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule),
