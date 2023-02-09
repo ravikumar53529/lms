@@ -24,7 +24,6 @@ const routes: Routes = [
     data: {
       role: 'user'
     },
-    
   },
 
 
