@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ConfirmationService, Message, MessageService } from 'primeng/api';
-import { ApiService } from '../services/api.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+
 
 @Component({
     selector: 'app-admin',
@@ -17,15 +15,9 @@ import { ApiService } from '../services/api.service';
     providers: [ConfirmationService, MessageService]
 })
 export class AdminComponent implements OnInit {
-    step:number=2
-   
+    step: number = 2;
     visibleSidebar1!: boolean;
-
-
-
-
     items: any;
-
     constructor(private router: Router) { }
 
 
@@ -34,7 +26,7 @@ export class AdminComponent implements OnInit {
     }
 
     public isActive(base: string): boolean {
-            return this.router.url.includes(`${base}`);
+        return this.router.url === base;//.includes(`${base}`);
     }
 
     public iconMenu(): void {

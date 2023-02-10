@@ -13,12 +13,12 @@
         </div>
     </div>
 
-    <div class="grid" *ngFor="let data of quizData">
+    <div class="grid" *ngFor="let data of quizData?.data">
 
         <!-- <div class="col-fixed" style="width:100px">Questions</div> -->
-        <div class="col" *ngIf="quizData">
+        <div class="col">
 
-            <p-card>
+            <div class="container border-1 border-round-sm border-purple-200">
                 <div class="d-flex justify-content-end mt-2">
                     <button pButton pRipple type="button" pTooltip="Edit question" icon="pi pi-pencil"
                         (click)="editDialog(data)" class="p-button-rounded "
@@ -29,37 +29,32 @@
                         style="height: 2rem; width: 2rem;"></button>
 
                 </div>
-                <h1>{{data.attributes.syllabus | uppercase}}</h1>
-                <h2>Q: {{data.attributes.question}}</h2><br>
+                <h1>{{data.attributes?.syllabus | uppercase}}</h1>
+                <h2>Q: {{data.attributes?.question}}</h2><br>
 
                 <div class="grid pl-2">
-                    <div class="col-6">A) {{data.attributes.all_answer.A}}</div>
-                    <div class="col-6">B) {{data.attributes.all_answer.B}}</div>
-                    <div class="col-6">C) {{data.attributes.all_answer.C}}</div>
-                    <div class="col-6">D) {{data.attributes.all_answer.D}}</div>
+                    <div class="col-6">A) {{data.attributes?.all_answer?.A}}</div>
+                    <div class="col-6">B) {{data.attributes?.all_answer?.B}}</div>
+                    <div class="col-6">C) {{data.attributes?.all_answer?.C}}</div>
+                    <div class="col-6">D) {{data.attributes?.all_answer?.D}}</div>
                 </div>
 
-                <h3>Correct answer: {{data.attributes.correct_answer}}</h3>
+                <h3>Correct answer: {{data.attributes?.correct_answer}}</h3>
 
-            </p-card>
+
+            </div>
+            <p-divider></p-divider>
         </div>
 
-        <div class="col" *ngIf="!quizData">
+        <!-- <div class="col" *ngIf="!quizData">
             No data found
-        </div>
+        </div> -->
 
 
     </div>
-    <!-- video -->
-    <video #vid class="cursor-pointer" height="250px;" controls>
-        <source src="assets\img\videoplayback.mp4" type="video/mp4">
-        <source src="" type="video/ogg">
-        Your browser does not support the video tag.
-    </video>
-    <p-progressBar [value]="percentage"></p-progressBar>
-    <!--video  -->
+    <!-- <p>Page {{ quizData.meta?.pagination?.page }} of {{ quizData.meta?.pagination?.pageCount }}</p> -->
     <!-- Pagination -->
-    <!-- <p-paginator [rows]="10" [totalRecords]="120" [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
+    <!-- <p-paginator [rows]="pagesize"  [totalRecords]="total" [rowsPerPageOptions]="[10,20,30]"></p-paginator> -->
 
 
     <!-- Add dialog start -->
@@ -174,6 +169,19 @@
         <form [formGroup]="editQuizGroup" (ngSubmit)="onEditQuestion()">
             <div class="p-fluid grid">
                 <div class="field mt-4 w-100">
+                    <label for="title">Syllabus</label>
+                    <span class="p-float-label">
+
+                        <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="syllabus"
+                            class="form-control" required formControlName="syllabus" pInputText placeholder="Syllabus">
+                        <small class="p-error block"
+                            *ngIf="editQuizGroup.get('syllabus')?.invalid && (editQuizGroup.get('syllabus')?.dirty && editQuizGroup.get('syllabus')?.touched)">
+                            Syllabus
+                            is required</small>
+                    </span>
+
+                </div>
+                <div class="field mt-4 w-100">
                     <label for="title">Question</label>
                     <span class="p-float-label">
 
@@ -227,6 +235,18 @@
                             *ngIf="editQuizGroup.get('option4')?.invalid && (editQuizGroup.get('option4')?.dirty && editQuizGroup.get('option4')?.touched)">
                             Option4 is required</small>
                     </span>
+                </div>
+                <div class="field mt-4 w-100">
+                    <label for="title">Answer</label>
+                    <span class="p-float-label">
+                        <input type="text" class="bg-light-grey input-shadow w-100 p-inputtext" name="answer"
+                            class="form-control" required formControlName="answer" pInputText placeholder="Answer">
+                        <small class="p-error block"
+                            *ngIf="editQuizGroup.get('answer')?.invalid && (editQuizGroup.get('answer')?.dirty && editQuizGroup.get('answer')?.touched)">
+                            Answer
+                            is required</small>
+                    </span>
+
                 </div>
                 <div class="row  mt-4">
 

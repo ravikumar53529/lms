@@ -5,8 +5,8 @@
     <div class="content-details-wrapper mt-2">
     <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12">
-            <h1 class="mb-0">Project Managment process</h1>
-            <p> Prof. Jhon Breaker</p>
+            <h1 class="mb-0">{{singleContent.attributes.name | titlecase}}</h1>
+            <p> {{singleContent.attributes.author | titlecase}}</p>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-4 col-sm-12 d-flex justify-content-end">
             <button pButton pRipple type="button" icon="pi pi-share-alt" class="p-button-rounded p-button-outlined me-2"></button>
@@ -14,14 +14,31 @@
         </div>
         <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <div class="content-video mb-2">
-                <img src="assets/img/hero.png" alt="" class="img-fluid">
+                <!-- <img src="assets/img/hero.png" alt="" class="img-fluid"> -->
+                <ng-container
+                    *ngIf="singleContent.attributes.media.data[0].attributes.formats != null; then content  else video1"></ng-container>
+                
+                <ng-template #content>
+                    <img  style="height: 250px;cursor: pointer;"
+                        src="{{singleContent.attributes.media.data[0].attributes.formats.thumbnail.url}}" class="card-img-top" alt="...">
+                </ng-template>
+                <ng-template #video1>
+                
+                    <video #vid class="cursor-pointer" height="auto;" width="100%" controls>
+                        <source src="{{singleContent.attributes.media.data[0].attributes.url}}" type="video/mp4">
+                        <!-- <source src="assets/img/videoplayback.mp4" type="video/mp4"> -->
+                        <!-- <track src="fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English"> -->
+                        Your browser does not support the video tag.
+                    </video>
+                
+                
+                    <!-- <p-progressBar [value]="percentage"></p-progressBar> -->
+                </ng-template>
             </div>
             <div class="card">
                 <p-tabView>
                     <p-tabPanel header="Description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>{{singleContent.attributes.description}}</p>
                     </p-tabPanel>
                     <p-tabPanel header="Reviews">
                         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
@@ -44,14 +61,14 @@
         <div class="col-xl-4 col-lg-4 col-md-12 d-flex justify-content-end">
             <div class="sidebar">
                 <div class="sidebar-header">
-                <h2>About The Courses</h2>
+                <h2>About The Content</h2>
                 <div class="card border-0">
                     <div class="auth-details d-flex align-items-center">
                         <p-avatar image="assets/img/user.jpg" styleClass="mr-3" size="large" shape="circle">
                         </p-avatar>
                         <div>
-                            <h2 class="card-title m-0">Jhon Breaker</h2>
-                            <p>PM Expert</p>
+                            <h2 class="card-title m-0">{{singleContent.attributes.author | titlecase}}</h2>
+                            <p>Tech Expert</p>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -143,6 +160,7 @@
     </div>
 </div>
 </div>
+    <app-spinner *ngIf="isLoading==true"></app-spinner>
 <!-- <div class="container my-3 pb-2">
     <div class="border p-2">
         <div class="course_detail mb-3">
