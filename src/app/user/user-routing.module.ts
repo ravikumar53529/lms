@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: UserComponent,
-
   },
   {
     path: 'library', component: MyLibraryComponent

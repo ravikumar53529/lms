@@ -45,6 +45,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
 
 import {TabViewModule} from 'primeng/tabview';
 import {MenuItem} from 'primeng/api';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 
 
@@ -60,7 +62,8 @@ import {MenuItem} from 'primeng/api';
     CoursesComponent,
     DashboardComponent,
     SpinnerComponent,
-    ContentComponent
+    ContentComponent,
+    CourseDetailsComponent
 
   ],
   imports: [
@@ -94,8 +97,7 @@ import {MenuItem} from 'primeng/api';
     ProgressBarModule,
     MegaMenuModule,
     TabViewModule,
-  
-    
+    ToolbarModule
   ],
   providers: [
     ApiService

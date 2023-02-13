@@ -54,6 +54,5 @@ export class AdminComponent implements OnInit {
     public onLogout(): void {
         this.router.navigateByUrl('/login');
         localStorage.clear();
-        location.reload();
     }
 }

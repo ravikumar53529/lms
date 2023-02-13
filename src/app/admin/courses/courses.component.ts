@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -7,6 +8,13 @@ import { ApiService } from 'src/app/services/api.service';
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss'],
+  styles: [`
+        :host ::ng-deep .p-dialog .product-image {
+            width: 150px;
+            margin: 0 auto 2rem auto;
+            display: block;
+        }
+    `],
   providers: [MessageService, ConfirmationService]
 })
 export class CoursesComponent implements OnInit {
@@ -38,7 +46,9 @@ export class CoursesComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private apiService: ApiService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService) {
+    private confirmationService: ConfirmationService,
+    private router: Router
+  ) {
 
   }
 
@@ -143,6 +153,7 @@ export class CoursesComponent implements OnInit {
     this.apiService.getCourses().subscribe(res => {
       try {
         this.courseData = res.data;
+        console.log(this.courseData);
         this.isLoading = false;
       } catch (error) {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Something went wrong !!' })
@@ -272,6 +283,12 @@ export class CoursesComponent implements OnInit {
       },
       reject: () => { }
     })
+  }
+
+  goDetailPage(data: any) {
+    this.router.navigateByUrl(`/admin/courses/${data.id}`);
+    console.log(data);
+    localStorage.setItem('courseData', JSON.stringify(data));
   }
 
 

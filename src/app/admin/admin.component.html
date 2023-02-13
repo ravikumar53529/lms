@@ -45,7 +45,7 @@
             </div>
 
         </div>
-        <div class="sidebar-footer" style="overflow-y: auto;">
+        <div class="sidebar-footer cursor-pointer" style="overflow-y: auto;">
             <li class="listbox-item" (click)="onLogout()">
                 <i class="pi pi-sign-out me-2"></i> <span>Logout</span>
             </li>
@@ -82,7 +82,7 @@
                     <button pButton pRipple type="button" icon="pi pi-bell"
                         class="p-button-rounded   text-dark  p-button-text"></button>
                     <p-avatar size="large" (click)="menu.toggle($event)" icon="pi pi-user"
-                        [style]="{'background-color':'#fff', 'color': '#000'}"></p-avatar>
+                        [style]="{'background-color':'#fff', 'color': '#000','cursor':'pointer'}"></p-avatar>
                     <p-menu #menu [popup]="true" [model]="items"></p-menu>
                 </div>
             </div>

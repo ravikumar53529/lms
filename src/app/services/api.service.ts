@@ -55,6 +55,11 @@ export class ApiService {
     return this.http.get<any>(`api/courses?populate=*`);
   }
 
+  // Get courses
+  public getSingleCourse(id:string): Observable<any> {
+    return this.http.get<any>(`api/courses/${id}`);
+  }
+
   // update courses
   public updateCourse(id: any, item: any): Observable<any> {
     return this.http.put<any>(`api/courses/${id}`, item);

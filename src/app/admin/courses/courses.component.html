@@ -1,79 +1,70 @@
 <!-- <app-header></app-header> -->
-<div class="container-fluid my-3">
+<!-- <div class="container-fluid my-3">
     <h2>Courses</h2>
-</div>
+</div> -->
 <!-- style="background-color: #fff;" -->
-<p-table [value]="courseData" [rowHover]="true" [rows]="5" [paginator]="true" [responsive]="true" [autoLayout]="true">
-    <ng-template pTemplate="caption">
-        <div class="table-header d-flex justify-content-between">
-            <span class="p-input-icon-left">
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Create Course" icon="pi pi-plus" (click)="addDialog()"
+                class="p-button-success p-mr-2"></button>
+            <!-- <button pButton pRipple icon="pi pi-trash" class="p-button-danger"></button> -->
+        </ng-template>
 
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" placeholder=" Search Courses" />
-            </span>
-            <button (click)="addDialog()" class="btn btn-primary mb-2 " type="button" icon="pi pi-info-circle"
-                label="Add"><i class="pi pi-plus me-2 cursor-pointer"></i>Add course</button>
-        </div>
-    </ng-template>
+    </p-toolbar>
 
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="min-width: 14rem">Course Name</th>
-            <th style="min-width: 14rem">
-                <div class="flex justify-content-between align-items-center">
-                    Description
-                </div>
-            </th>
-            <!-- <th style="min-width: 14rem">
-                            <div class="flex justify-content-between align-items-center">
-                                Price
-                            </div>
-                        </th> -->
-            <th style="min-width: 14rem">
-                <div class="flex justify-content-between align-items-center">
-                    Actions
-                </div>
-            </th>
-        </tr>
-    </ng-template>
-    <div>{{courseData}}</div>
-    <ng-template pTemplate="body" let-course>
+    <p-table #dt [value]="courseData" [rows]="5" [paginator]="true" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h3 style="font-weight: 900;">Manage Courses</h3>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" placeholder="Search..." />
+                </span>
+            </div>
 
-        <tr>
-            <td>{{course.attributes.title}}</td>
-            <td>
-                <!-- <div class="des"> -->
-                {{course.attributes.courseDescription}}
-                <!-- </div> -->
 
-            </td>
-            <!-- <td> $100</td> -->
-            <td>
-                <div class="d-flex mt-2 text-center">
-                    <button pButton pRipple type="button" pTooltip="Edit Course" icon="pi pi-pencil"
-                        class="p-button-rounded p-button-outlined" (click)="editDialog(course)"
-                        style="height: 2rem; width: 2rem;"></button>&nbsp;
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="title" class="text-center">Title </th>
+                <!-- <p-sortIcon field="name"></p-sortIcon>-->
+                <th pSortableColumn="description" class="text-center">Description </th>
+                <th pSortableColumn="createdAt" class="text-center">Created time</th>
+                <th pSortableColumn="updatedAt" class="text-center">Updated time</th>
+                <th pSortableColumn="action" class="text-center">Action</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template style="width: auto;" pTemplate="body" let-course>
+            <tr>
+                <td (click)="goDetailPage(course)" class="text-center cursor-pointer">{{course.attributes.title}}</td>
+                <td (click)="goDetailPage(course)" class="text-center cursor-pointer">{{course.attributes.courseDescription}}</td>
+                <td (click)="goDetailPage(course)" class="text-center cursor-pointer">{{course.attributes.createdAt| date:'medium'}}</td>
 
-                    <button pButton pRipple type="button" pTooltip="Delete Course" icon="pi pi-times"
-                        (click)="deleteCourse(course)" class="p-button-rounded p-button-danger p-button-outlined"
-                        style="height: 2rem; width: 2rem;"></button>
+                <td (click)="goDetailPage(course)" class="text-center cursor-pointer">{{course.attributes.updatedAt | date:'medium'}}</td>
+                <td class="text-center">
+                    <button pButton pRipple icon="pi pi-pencil" (click)="editDialog(course)"
+                        class="p-button-rounded p-button-success p-mr-2"></button>
+                    <button pButton pRipple icon="pi pi-trash" (click)="deleteCourse(course)"
+                        class="p-button-rounded p-button-warning"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{courseData ? courseData.length : 0 }} Courses
+            </div>
+        </ng-template>
+    </p-table>
+</div>
 
-                </div>
-            </td>
-
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-        <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{courseData ? courseData.length : 0 }} Courses.
-        </div>
-    </ng-template>
-</p-table>
+<!-- confirmation dialog for delete-->
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
 
 <!-- Add dialog start -->
 <p-dialog header="Add Course" [(visible)]="addDialogDisplay" [style]="{width: '50vw'}" styleClass="active">
-
     <hr>
     <form [formGroup]="addFormGrorup">
         <div class="p-fluid grid">
