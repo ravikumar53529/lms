@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewChildren, } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -16,7 +16,10 @@ import { ApiService } from 'src/app/services/api.service';
   `],
   providers: [ConfirmationService, MessageService]
 })
-export class ContentComponent {
+export class ContentComponent implements OnInit, AfterViewInit {
+  @ViewChild('vid', { read: ElementRef }) tempRef!: ElementRef;
+
+  // @ViewChild('v1', { read: ElementRef, static: false }) videoPlayer!: ElementRef;
   loadingSpinner: boolean = false;
   contentFileData: string[] = [];
   contentUpdateFileData: string[] = [];
@@ -28,6 +31,7 @@ export class ContentComponent {
   public items: any
   _data!: any;
   formData = new FormData();
+  percentage: number = 0;
 
   isProgressFile: boolean = false;
 
@@ -41,6 +45,7 @@ export class ContentComponent {
   editContentBody!: {};
   bodyData!: {};
   edit!: {}
+  cId!: string | null;
 
   courseGroup!: FormGroup;
 
@@ -51,8 +56,7 @@ export class ContentComponent {
     private apiService: ApiService,
     private fb: FormBuilder,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
-
+    private messageService: MessageService,
   ) {
   }
 
@@ -60,6 +64,38 @@ export class ContentComponent {
     this.getContent();
     this.courseValidate();
     this.courseUpdateValidate();
+  }
+
+  ngAfterViewInit(): void {
+    // console.log('afetr init', this.tempRef);
+    // if (this.tempRef) {
+    //   console.log('afetr init', this.tempRef.nativeElement);
+    //   this.tempRef?.nativeElement.addEventListener('timeupdate', (event: any) => {
+    //     this.trackVideoProgress(event);
+    //     console.log(event);
+    //   });
+    // }
+
+
+
+  }
+
+  updateProgress(vid: HTMLVideoElement) {
+    const progress = (vid.currentTime / vid.duration) * 100;
+    this.percentage = Math.round(progress);
+    console.log(this.percentage, '%');
+
+  }
+
+  // onClick(id: string): void {
+  //   localStorage.setItem('cId', id);
+  // }
+  trackVideoProgress(event: any) {
+    const video = event.target;
+    const duartionPercentage = (video.currentTime / video.duration) * 100;
+    // console.log(duartionPercentage);
+    this.percentage = Math.ceil(duartionPercentage);
+    console.log(`Video progress: ${this.percentage}%`);
   }
 
   public showDialog(): void {
@@ -111,6 +147,10 @@ export class ContentComponent {
         });
       }
     });
+  }
+
+  public setContentData(data: any): void {
+    localStorage.setItem('contentData', JSON.stringify(data));
   }
 
   // content upload

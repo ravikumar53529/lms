@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Content } from '../models/content';
+import { Quiz, QuizData, QuizResponse } from '../models/quiz';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class ApiService {
   // Get content
   public getContent(): Observable<any> {
     return this.http.get<any>(`/api/content-libraries?populate=*`);
+  }
+
+  /**
+   * getSingleContent
+  */
+  public getSingleContent(id:string):Observable<any> {
+    return this.http.get(`/api/content-libraries/${id}`);
   }
 
   // File upload api
@@ -60,30 +68,30 @@ export class ApiService {
   /**
    * getQuiz
    */
-  public getQuiz(): Observable<any> {
-    return this.http.get<any>(`api/quizzes`);
+  public getQuiz(): Observable<QuizData> {
+    return this.http.get<QuizData>(`api/quizzes`);
   }
 
-/**
- * postQuiz
- */
-public postQuiz(item: any): Observable<any> {
-  return this.http.post<any>(`/api/quizzes`,item)
-}
+  /**
+   * postQuiz
+   */
+  public postQuiz(item: Quiz): Observable<Quiz> {
+    return this.http.post<Quiz>(`/api/quizzes`, item)
+  }
 
-/**
- * updateQuiz
- */
-public updateQuiz(id:string,item:any): Observable<any> {
-  return this.http.put<any>(`/api/quizzes/${id}`,item);
-}
+  /**
+   * updateQuiz
+   */
+  public updateQuiz(id: string, item: any): Observable<any> {
+    return this.http.put<any>(`/api/quizzes/${id}`, item);
+  }
 
-/**
- * deleteQuiz
- */
-public deleteQuiz(id:string): Observable<any> {
-  return this.http.delete<any>(`/api/quizzes/${id}`);
-}
+  /**
+   * deleteQuiz
+   */
+  public deleteQuiz(id: string): Observable<any> {
+    return this.http.delete<any>(`/api/quizzes/${id}`);
+  }
 
 
 }

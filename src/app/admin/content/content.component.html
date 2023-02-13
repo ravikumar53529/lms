@@ -86,21 +86,26 @@
                         *ngIf="data.attributes.media.data[0].attributes.formats != null; then content  else video1"></ng-container>
 
                     <ng-template #content>
-                        <img [routerLink]="['/admin/content',data.id]" style="height: 250px;cursor: pointer;"
+                        <img (click)="setContentData(data)" [routerLink]="['/admin/content',data.id]"
+                            style="height: 250px;cursor: pointer;"
                             src="{{data.attributes.media.data[0].attributes.formats.thumbnail.url}}"
                             class="card-img-top" alt="...">
                     </ng-template>
                     <ng-template #video1>
-                        <video class="cursor-pointer" height="250px;" controls>
+
+                        <video  #vid class="cursor-pointer"  height="250px;" (timeupdate)="updateProgress(vid)" controls>
                             <source src="{{data.attributes.media.data[0].attributes.url}}" type="video/mp4">
-                            <source src="{{data.attributes.media.data[0].attributes.url}}" type="video/ogg">
                             <!-- <track src="fgsubtitles_en.vtt" kind="subtitles" srclang="en" label="English"> -->
                             Your browser does not support the video tag.
                         </video>
+
                     </ng-template>
 
+
+
                     <div class="card-body">
-                        <div class="row cursor-pointer" [routerLink]="['/admin/content',data.id]">
+                        <div (click)="setContentData(data)" class="row cursor-pointer"
+                            [routerLink]="['/admin/content',data.id]">
                             <div class="col-lg-6">
                                 <h3 class="card-title mb-2" style="font-weight: bold;">{{data.attributes.name}}</h3>
                             </div>
@@ -109,16 +114,20 @@
                                         fontIcon="person"></mat-icon> {{data.attributes.author}}</span>
                             </div>
                         </div>
-                        <p [routerLink]="['/admin/content',data.id]" class="card-text cursor-pointer">
+                        <p-progressBar  [style]="{height: '8px',width:'150px'}" [class.hide]="true" [showValue]="false"
+                            [value]="percentage"></p-progressBar>
+                        <p style="font-size: small;">{{percentage}}% Completed</p>
+                        <p (click)="setContentData(data)" [routerLink]="['/admin/content',data.id]"
+                            class="card-text cursor-pointer">
                             {{data.attributes.description}}.</p>
                         <div class="row align-items-center cursor-pointer">
-                            <div class="col-lg-4">
+                            <div class="col-lg-4" (click)="setContentData(data)">
                                 <span class="d-flex align-items-center" [routerLink]="['/admin/content',data.id]">
                                     <mat-icon aria-hidden="false" aria-label="Example home icon"
                                         fontIcon="visibility"></mat-icon><span class="ms-1">14</span>
                                 </span>
                             </div>
-                            <div class="col-lg-4"><button type="button" class="btn"
+                            <div (click)="setContentData(data)" class="col-lg-4"><button type="button" class="btn"
                                     [routerLink]="['/admin/content',data.id]">
                                     {{data.attributes.price | currency : 'INR'}}</button>
                             </div>
