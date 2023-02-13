@@ -1,0 +1,77 @@
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+$font-size: 50px;
+.heading {
+  font-size: $font-size;
+  //   font-family: "Times New Roman", Times, serif;
+  color: black;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 50px;
+}
+.heading-2 {
+  //   font-family: "Times New Roman", Times, serif;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 50px;
+  color: black;
+}
+
+.about-paragraph {
+  font-size: 20px;
+  letter-spacing: 1px;
+  //   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+}
+.marketlpace-paragraph {
+  font-size: 20px;
+  letter-spacing: 1px;
+  //   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: black;
+  text-align: start;
+}
+.about-courses {
+  background-color: indigo;
+  padding: 10px;
+  h1 {
+    font-size: 50px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 10px;
+    // font-family: "Times New Roman", Times, serif;
+  }
+  p {
+    // font-family: "Times New Roman", Times, serif;
+    padding: 10px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+}
+.learn-more-btn {
+  margin-left: 10px;
+}
+.comment-cards {
+  p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: black;
+    text-align: start;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+.client-comments {
+  p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: black;
+    text-align: start;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+//cards

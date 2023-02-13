@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { MenuModule } from 'primeng/menu';
@@ -18,13 +17,11 @@ import { SheredModule } from '../component/shered.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { InputTextModule } from 'primeng/inputtext';
 import { MyLibraryComponent } from './my-library/my-library.component';
-
+import { AboutComponent } from './about/about.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
-  declarations: [
-    UserComponent,
-    MyLibraryComponent
-  ],
+  declarations: [UserComponent, MyLibraryComponent, AboutComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -36,7 +33,13 @@ import { MyLibraryComponent } from './my-library/my-library.component';
     MessagesModule,
     ProgressSpinnerModule,
     InputTextModule,
-    AdminRoutingModule, MatIconModule, MenuModule, DialogModule, TooltipModule, ButtonModule
-  ]
+    AdminRoutingModule,
+    MatIconModule,
+    MenuModule,
+    DialogModule,
+    TooltipModule,
+    ButtonModule,
+    CardModule,
+  ],
 })
-export class UserModule { }
+export class UserModule {}
