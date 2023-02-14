@@ -1,69 +1,115 @@
 * {
   font-family: "Times New Roman", Times, serif;
 }
+.about {
+  background-color: #f7f9fa;
+}
 $font-size: 50px;
 .heading {
-  font-size: $font-size;
-  //   font-family: "Times New Roman", Times, serif;
-  color: black;
-  font-weight: 800;
-  letter-spacing: 2px;
-  line-height: 50px;
+  font-size: 3.2rem;
+  color: #1c1d1f;
+  text-align: left;
+  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+  line-height: 1.17;
+  font-weight: 700;
 }
 .heading-2 {
-  //   font-family: "Times New Roman", Times, serif;
-  font-weight: 800;
-  letter-spacing: 2px;
-  line-height: 50px;
-  color: black;
+  font-size: 45px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+  color: #1c1d1f;
+  text-align: center;
 }
-
 .about-paragraph {
-  font-size: 20px;
-  letter-spacing: 1px;
-  //   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: black;
+  font-size: 23px;
+  line-height: 1.2;
+  color: #1c1d1f;
+  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+  margin: 0 auto 1.6rem;
+  text-align: center;
 }
 .marketlpace-paragraph {
   font-size: 20px;
   letter-spacing: 1px;
-  //   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: black;
   text-align: start;
 }
+.content-heading {
+  text-align: start;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1c1d1f;
+  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+}
+.content {
+  p {
+    color: #1c1d1f;
+    text-align: start;
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+}
+
 .about-courses {
-  background-color: indigo;
-  padding: 10px;
-  h1 {
+  background: #5624d0;
+  padding-top: 50px;
+  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+  color: #fff;
+  h2 {
     font-size: 50px;
     font-weight: 800;
     letter-spacing: 2px;
     text-align: center;
     padding: 10px;
-    // font-family: "Times New Roman", Times, serif;
+    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
   }
   p {
-    // font-family: "Times New Roman", Times, serif;
     padding: 10px;
     text-align: center;
     letter-spacing: 2px;
+    font-size: 1.9rem;
+    font-family: "Times New Roman", Times, serif;
+  }
+  .courses-statistics {
+    font-family: "Times New Roman", Times, serif;
+    span {
+      font-family: monospace;
+      font-size: 15px;
+    }
   }
 }
-.learn-more-btn {
-  margin-left: 10px;
+.about-lms {
+  color: #1c1d1f;
+  text-align: start;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 25px;
+  .learn-more-btn {
+    margin-left: 10px;
+  }
 }
+
 .comment-cards {
   p {
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: black;
+    font-size: 25px;
+    color: #1c1d1f;
     text-align: start;
+    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    letter-spacing: 2px;
+    line-height: 30px;
   }
   a {
     text-decoration: none;
   }
 }
 .client-comments {
+  h2 {
+    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    font-weight: bold;
+  }
   p {
     font-size: 20px;
     letter-spacing: 1px;
@@ -72,6 +118,7 @@ $font-size: 50px;
   }
   a {
     text-decoration: none;
+    color: #5624d0;
   }
 }
 //cards
