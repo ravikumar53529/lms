@@ -1,4 +1,6 @@
 @import "~primeicons/primeicons.css";
+@import url("https://fonts.googleapis.com/css2? family=Oswald:wght@300&family=Prata&display=swap");
+@import url("https://fonts.googleapis.com/css2? family=IBM+Plex+Sans+Arabic&family=Oswald:wght@300&family=Prata&display=swap");
 * {
   font-family: "Times New Roman", Times, serif;
 }
@@ -12,6 +14,7 @@ $font-size: 50px;
     font-size: 3.2rem;
     color: #1c1d1f;
     text-align: left;
+    // font-family: "Prata", serif;
     font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
     line-height: 1.17;
     font-weight: 700;
@@ -26,14 +29,20 @@ $font-size: 50px;
   color: #1c1d1f;
   text-align: center;
 }
-.about-paragraph {
-  font-size: 23px;
-  line-height: 1.2;
-  color: #1c1d1f;
-  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-  margin: 0 auto 1.6rem;
-  text-align: center;
+.improving {
+  width: 100%;
+  background-color: white;
+  .about-paragraph {
+    font-size: 20px;
+    line-height: 1.2;
+    color: #1c1d1f;
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    // font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    margin: 0 auto 1.6rem;
+    text-align: center;
+  }
 }
+
 .marketlpace-paragraph {
   font-size: 20px;
   letter-spacing: 1px;
@@ -51,8 +60,8 @@ $font-size: 50px;
   p {
     color: #1c1d1f;
     text-align: start;
-    font-size: 20px;
-    font-family: "Times New Roman", Times, serif;
+    font-size: 18px;
+    font-family: "IBM Plex Sans Arabic", sans-serif;
     letter-spacing: 1px;
     line-height: 1.2;
   }
@@ -86,20 +95,29 @@ $font-size: 50px;
     }
   }
 }
-.about-lms-section {
-  .about-lms {
-    color: #1c1d1f;
-    text-align: start;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
-    line-height: 25px;
-    .learn-more-btn {
-      margin-left: 10px;
+.about-lms-main {
+  width: 100%;
+  background-color: white;
+  .about-lms-section {
+    .about-lms {
+      color: #1c1d1f;
+      text-align: start;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      line-height: 25px;
+      font-family: "IBM Plex Sans Arabic", sans-serif;
+      .learn-more-btn {
+        margin-left: 10px;
+      }
+    }
+    .about-lms-button:hover {
+      background-color: #383b3b;
     }
   }
-  .about-lms-button:hover {
-    background-color: #383b3b;
-  }
+}
+.companies {
+  width: 100%;
+  background-color: #f7f9fa;
 }
 
 .comment-cards {
@@ -107,7 +125,7 @@ $font-size: 50px;
     font-size: 25px;
     color: #1c1d1f;
     text-align: start;
-    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    font-family: "Oswald", sans-serif;
     letter-spacing: 2px;
     line-height: 30px;
   }
@@ -121,21 +139,21 @@ $font-size: 50px;
     font-weight: bold;
   }
   p {
-    font-size: 20px;
+    font-size: 13px;
     letter-spacing: 1px;
     color: black;
     text-align: start;
+    font-family: "IBM Plex Sans Arabic", sans-serif;
   }
   a {
     text-decoration: none;
     color: #5624d0;
   }
 }
-//youtube icon
-.youtube {
-  .pi-youtube {
-    position: relative;
-    bottom: 230px;
-    left: 250px;
+.footer {
+  .h-line {
+    width: 100%;
+    height: 1px;
+    background-color: #f7f9fa;
   }
 }
