@@ -55,12 +55,8 @@
     </div>
 
     <div class="col-lg-4 d-flex justify-content-end">
-      <!-- <span class="material-symbols-outlined cursor-pointer" (click)="menu.toggle($event)">
-                account_circle
-            </span> -->
       <i class="pi pi-user ml-1 cursor-pointer"></i>
       <i class="pi pi-caret-down ml-1 cursor-pointer color-blue-light"></i>
-      <!-- <p-menu #menu [popup]="true" [model]="items"></p-menu> -->
     </div>
   </div>
 </nav>
@@ -70,7 +66,7 @@
 <div class="about">
   <div class="container">
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-6 main-heading">
         <h1 class="heading mt-5">
           We share <br />
           Knowledge<br />with the world
@@ -103,39 +99,43 @@
   <div class="container-fluid bg-light">
     <div class="row p-5 mt-5">
       <ng-container *ngFor="let data of aboutLmsContentResult; let i = index">
-        <div class="col-lg-6">
-          <video
-            width="550"
-            type="video/mp4"
-            height="350"
-            controls
-            src="https://www.youtube.com/watch?v=ezbJwaLmOeM"
-          ></video>
-          <button class="btn btn-danger" (click)="backwardAboutLms()">
-            BACK
-          </button>
-          <button class="btn btn-primary" (click)="forwardAboutLms()">
-            FORWARD
-          </button>
-          <p-dialog header="Title" [(visible)]="display"> content </p-dialog>
-          <button
-            type="button"
-            (click)="showDialog()"
-            icon="pi pi-info-circle"
-            label="Show"
-          >
-            click
-          </button>
+        <div class="col-lg-6 youtube">
+          <video width="550" height="350" controls>
+            <source src="{{ data.video }}" type="video/mp4" />
+          </video>
+          <div class="youtube-icon">
+            <i
+              class="pi pi-youtube fs-1 text-danger"
+              (click)="showDialog()"
+            ></i>
+          </div>
+          <div>
+            <span>
+              <i
+                class="pi pi-angle-left fs-1 fw-bold"
+                (click)="backwardAboutLms()"
+              ></i>
+              <i
+                class="pi pi-angle-right fs-1 fw-bold"
+                (click)="forwardAboutLms()"
+              ></i>
+            </span>
+          </div>
+
+          <p-dialog [(visible)]="display">
+            <video width="600" height="350" controls>
+              <source src="{{ data.video }}" type="video/mp4" />
+            </video>
+          </p-dialog>
+        </div>
+
+        <div class="col-lg-6 content">
+          <h2 class="content-heading">{{ data.title }}</h2>
+          <p class="content-paragraph mt-3 p-2">
+            {{ data.content }}
+          </p>
         </div>
       </ng-container>
-      <div class="col-lg-6 content">
-        <h2 class="content-heading">Our Marketplace</h2>
-        <p class="content-paragraph mt-3 p-2">
-          Whatever your learning style, we have a course that fits. Coming from
-          instructors all over the world, our courses span over 75 languages and
-          cover just about anything you’d want to know.
-        </p>
-      </div>
     </div>
   </div>
   <!-- about courses -->
@@ -185,7 +185,7 @@
     </div>
   </div>
 
-  <div class="container p-5">
+  <div class="container p-5 about-lms-section">
     <p class="about-lms mt-5 p-5">
       We help organizations of all types and sizes prepare for the path ahead —
       wherever it leads. Our curated collection of business and technical
@@ -193,7 +193,9 @@
       learning at the center of their strategies.
     </p>
     <div class="text-center">
-      <button class="btn btn-dark fs-5 fw-bold p-2">Learn More</button>
+      <button class="btn btn-dark about-lms-button fs-5 fw-bold p-2">
+        Learn More
+      </button>
     </div>
   </div>
 
@@ -226,17 +228,28 @@
       <div class="col-lg-4 p-5">
         <h2>Varun Patil</h2>
         <p class="fs-6">Senior Manager of HR Development</p>
-        <a class="fs-5" href="#">Read the Ahex case study</a>
+        <div class="d-inline">
+          <a class="fs-5" href="#"
+            >Read the Ahex case study
+            <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+          ></a>
+        </div>
       </div>
       <div class="col-lg-4 p-5">
         <h2>Alfred Helmerich</h2>
         <p class="fs-6">Executive Training Manager</p>
-        <a class="fs-5" href="#"> Read the NTT DATA case study</a>
+        <a class="fs-5" href="#">
+          Read the NTT DATA case study
+          <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+        ></a>
       </div>
       <div class="col-lg-4 p-5">
         <h2>Luz Santillana Romero</h2>
         <p class="fs-6">Development and Engagement Director</p>
-        <a class="fs-5" href="#"> Read the Indra case study</a>
+        <a class="fs-5" href="#">
+          Read the Indra case study
+          <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+        ></a>
       </div>
     </div>
   </div>
@@ -334,8 +347,8 @@
           </p>
           <ng-template pTemplate="footer">
             <a href="#" class="fs-4 text-decoration-none text-white fw-bold"
-              >Join our team</a
-            >
+              >Join our team <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+            ></a>
           </ng-template>
         </p-card>
       </div>
@@ -358,8 +371,8 @@
           </p>
           <ng-template pTemplate="footer">
             <a href="#" class="fs-4 p-3 text-decoration-none text-dark fw-bold"
-              >Learn more</a
-            >
+              >Learn more <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+            ></a>
           </ng-template>
         </p-card>
       </div>
@@ -381,8 +394,8 @@
           </p>
           <ng-template pTemplate="footer">
             <a class="fs-4 text-decoration-none fw-bold text-white" href="#"
-              >Read now</a
-            >
+              >Read now <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+            ></a>
           </ng-template>
         </p-card>
       </div>

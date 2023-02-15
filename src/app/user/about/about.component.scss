@@ -1,3 +1,4 @@
+@import "~primeicons/primeicons.css";
 * {
   font-family: "Times New Roman", Times, serif;
 }
@@ -5,15 +6,19 @@
   background-color: #f7f9fa;
 }
 $font-size: 50px;
-.heading {
-  font-size: 3.2rem;
-  color: #1c1d1f;
-  text-align: left;
-  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-  line-height: 1.17;
-  font-weight: 700;
+.main-heading {
+  margin-top: 50px;
+  .heading {
+    font-size: 3.2rem;
+    color: #1c1d1f;
+    text-align: left;
+    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    line-height: 1.17;
+    font-weight: 700;
+  }
 }
 .heading-2 {
+  margin-top: 40px;
   font-size: 45px;
   line-height: 1.2;
   font-weight: 700;
@@ -81,14 +86,19 @@ $font-size: 50px;
     }
   }
 }
-.about-lms {
-  color: #1c1d1f;
-  text-align: start;
-  font-size: 1.3rem;
-  letter-spacing: 1px;
-  line-height: 25px;
-  .learn-more-btn {
-    margin-left: 10px;
+.about-lms-section {
+  .about-lms {
+    color: #1c1d1f;
+    text-align: start;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    line-height: 25px;
+    .learn-more-btn {
+      margin-left: 10px;
+    }
+  }
+  .about-lms-button:hover {
+    background-color: #383b3b;
   }
 }
 
@@ -121,4 +131,11 @@ $font-size: 50px;
     color: #5624d0;
   }
 }
-//cards
+//youtube icon
+.youtube {
+  .pi-youtube {
+    position: relative;
+    bottom: 230px;
+    left: 250px;
+  }
+}

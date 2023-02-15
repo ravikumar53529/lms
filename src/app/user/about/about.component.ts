@@ -17,12 +17,11 @@ export class AboutComponent implements OnInit {
     this.aboutServiceRef.getAboutLmsData().subscribe((data) => {
       this.aboutLmsContent = data;
       this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);
-      console.log(this.aboutLmsContent);
     });
   }
   //aboutlmscontent(increment)
   public forwardAboutLms(): void {
-    if (this.count < this.aboutLmsContent.length) {
+    if (this.count < this.aboutLmsContent.length - 1) {
       this.aboutLmsContentResult.splice(0, 1);
       this.count++;
       this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);
@@ -30,7 +29,7 @@ export class AboutComponent implements OnInit {
   }
   //aboutlmscontent(decrement)
   public backwardAboutLms(): void {
-    if (this.count > -1) {
+    if (this.count > 0) {
       this.aboutLmsContentResult.splice(0, 1);
       this.count--;
       this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);

@@ -1,14 +1,17 @@
 [
     {
-        "video":"https://www.youtube.com/watch?v=ezbJwaLmOeM",
-        "content":"Whatever your learning style,we have a course that fits. Coming from instructors all over the world, our courses span over 75 languages and cover just about anything you’d want to know."
+        "video":"../assets/img/videoplayback.mp4",
+        "content":"Whatever your learning style,we have a course that fits. Coming from instructors all over the world, our courses span over 75 languages and cover just about anything you’d want to know.",
+        "title":"Our Marketplace"
     },
     {
-        "video":"",
-        "content":""
+        "video":"../assets/img/videoplayback.mp4",
+        "content":"LMS instructors are real people who are passionate about sharing what they know with students all over the world.",
+        "title":"Our Instructors"
     },
     {
-        "video":"",
-        "content":""
+        "video":"../assets/img/videoplayback.mp4",
+        "content":"Talented people are everywhere, but opportunities can be harder to find. With LMS, Mohammed — a Syrian refugee — was able to start a new career and a new life in Germany",
+        "title":"Transforming Lives"
     }
 ]
