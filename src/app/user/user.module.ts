@@ -22,6 +22,9 @@ import { CardModule } from 'primeng/card';
 import { MessageComponent } from './message/message.component';
 import { DropdownModule } from 'primeng/dropdown';
 import {  AvatarModule } from 'primeng/avatar';
+import { EditorModule } from 'primeng/editor';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent],
@@ -44,8 +47,10 @@ import {  AvatarModule } from 'primeng/avatar';
     ButtonModule,
     CardModule,
     DropdownModule,
-    AvatarModule
-    
+    AvatarModule,
+    EditorModule,
+    HttpClientModule,
+    TableModule
   ],
 })
 export class UserModule {}

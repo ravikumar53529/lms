@@ -8,7 +8,7 @@ import { Content } from '../../about/interfaces/content';
 export class AboutService {
   private aboutLms = '../../assets/data/about/aboutlms.json';
   constructor(private httpClientRef: HttpClient) {}
-  //get aboutlms dat
+  //get aboutlms data
   getAboutLmsData(): Observable<Content[]> {
     return this.httpClientRef.get<Content[]>(this.aboutLms);
   }

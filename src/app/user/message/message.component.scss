@@ -27,7 +27,6 @@
     
 }
 .messages-main-section-right{
-
     h1{
         color: #5624d0;
         font-size: 20px;
@@ -41,16 +40,11 @@
         height: 250px;
         overflow-y: scroll;
         overflow-x: hidden;
-        padding-left: 10px;
+        padding: 30px;
         
-      }.message-edit-table{
-        table{
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid;
-          }
+    .send-button{
+        float: right;
+    }
       }
 }
 }

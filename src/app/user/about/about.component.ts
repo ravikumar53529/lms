@@ -11,13 +11,17 @@ export class AboutComponent implements OnInit {
   public aboutLmsContent: Content[] = [];
   public aboutLmsContentResult: Content[] = [];
   public count: number = 0;
-  display: boolean = false;
+  public display: boolean = false;
   constructor(private aboutServiceRef: AboutService) {}
   public ngOnInit(): void {
+   try{
     this.aboutServiceRef.getAboutLmsData().subscribe((data) => {
       this.aboutLmsContent = data;
       this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);
     });
+   } catch(error){
+    console.log('error',error)
+   }
   }
   //aboutlmscontent(increment)
   public forwardAboutLms(): void {
