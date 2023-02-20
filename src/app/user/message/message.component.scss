@@ -1,50 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
-.message-section{
-    margin-top: 25px;
-    h1{
-        font-size: 42px;
-        font-family: 'Gentium Book Plus', serif;
-    }
-    h4{
-        font-size: 20px;
-    }
-    
+@import url("https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap");
+.message-section {
+  margin-top: 25px;
+  h1 {
+    font-size: 42px;
+    font-family: "Gentium Book Plus", serif;
+  }
+  h4 {
+    font-size: 20px;
+  }
 }
-.main-message{
-    border: 1px solid rgb(199, 194, 194);
-    .messages-main-section-left{
-      border-right: 1px solid rgb(199, 194, 194);
-      height: 100%;
-    }
-    input{
-        width: 100%;
-    }
-.messages-left-scroll{
+.main-message {
+  border: 1px solid rgb(199, 194, 194);
+  .messages-main-section-left {
+    border-right: 1px solid rgb(199, 194, 194);
+    height: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  .messages-left-scroll {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 400px;
     padding: 10px;
-    
-}
-.messages-main-section-right{
-    h1{
-        color: #5624d0;
-        font-size: 20px;
+  }
+  .messages-main-section-right {
+    h1 {
+      color: #5624d0;
+      font-size: 20px;
     }
     .h-line {
-        width: 100%;
-        height: 10px;
-        background-color: #f7f9fa;
-      }
-      .message-right-side-sec{
-        height: 250px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        padding: 30px;
-        
-    .send-button{
-        float: right;
+      width: 100%;
+      height: 10px;
+      background-color: #f7f9fa;
     }
+    .message-right-side-sec {
+      height: 250px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      padding: 30px;
+
+      .send-button {
+        float: right;
       }
-}
+     
+    }
+  }
 }

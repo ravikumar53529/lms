@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import {MessagesService}from '../message/services/messages.service'
-import{Messages} from '../message/interfaces/messages'
+import {MessagesService}from '../../services/messages.service'
+import{Messages} from '../../models/messages'
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
@@ -9,11 +9,15 @@ import{Messages} from '../message/interfaces/messages'
 export class MessageComponent implements OnInit{
   public textMessage:string=''; 
   public userMessages:Messages[]=[];
+  selectedCategory:string='';
+  composeStatus:boolean=false;
+  viewMessageStatus:boolean=false;
   selectedUserMessage:Messages={
     name:'' ,
     message: '',
     date: '',
-    image:''
+    image:'',
+    category:''
 
   }
   constructor(private messageServiceRef:MessagesService){}
@@ -40,6 +44,27 @@ export class MessageComponent implements OnInit{
   //viewmessage
   public viewMessage(message:Messages):void{
     this.selectedUserMessage=message;
+    this.viewMessageStatus=true;
+    this.composeStatus=false;
+  }
+  //showCategory
+  showCategory(category:string){
+    console.log(category)
+  }
+  //importantMessages
+  importantMessages(){
+    console.log("importnat message")
+
+  }
+  //compose
+  composeSection(){
+    this.composeStatus=true;
+    this.viewMessageStatus=false
+  }
+
+  //sendMessage
+  public sendMessage():void{
+    console.log(this.textMessage)
   }
 
    

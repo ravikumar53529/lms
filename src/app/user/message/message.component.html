@@ -2,7 +2,7 @@
 <div class="container">
   <div class="message-section">
     <h1>Messages</h1>
-    <h4>you have 0 unread messages.</h4>
+    <h4>You have 0 unread messages.</h4>
   </div>
 </div>
 <div class="container-fluid bg-light main-message">
@@ -16,16 +16,20 @@
                 pButton
                 type="button"
                 label="Compose"
+                (click)="composeSection()"
                 class="p-button-secondary bg-white text-dark"
               ></button>
             </div>
+            <!-- [options]="userMessages"
+            [(ngModel)]="selectedUserMessage"
+            (onChange)="getMessage(selectedUserMessage)" -->
             <div class="col-lg-9">
               <p-dropdown
                 placeholder="All Messages"
-                optionLabel="name"
+                optionLabel="category"
                 [options]="userMessages"
-                [(ngModel)]="selectedUserMessage"
-                (onChange)="getMessage(selectedUserMessage)"
+                [(ngModel)]="selectedCategory"
+                (onChange)="showCategory(selectedCategory)"
                 class="w-100"
                 [style]="{
                   width: '100%',
@@ -54,9 +58,8 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="messages-left-scroll">
-                <div class="messsage-card" >
+                <div class="messsage-card">
                   <p-table
-                  
                     #users
                     [value]="userMessages"
                     [globalFilterFields]="['name']"
@@ -70,7 +73,11 @@
                             shape="circle"
                           ></p-avatar
                           ><br />
-                          <i class="pi pi-star ml-2 mt-3"></i>
+                          <i
+                            class="pi pi-star ml-2 mt-3"
+                            [ngStyle]="{'color': 'green'}"
+                            (click)="importantMessages()"
+                          ></i>
                         </td>
                         <td>
                           <h1>{{ user.name }}</h1>
@@ -92,10 +99,11 @@
       </div>
       <div class="col-lg-7">
         <div class="messages-main-section-right">
-          <div class="container-fluid">
+          <!-- view  message  and send message -->
+          <div class="container-fluid" *ngIf="viewMessageStatus">
             <div class="row mt-2">
               <div class="col-lg-1">
-                <i class="pi pi-star mt-4"></i>
+                <i class="pi pi-star mt-4 "></i>
               </div>
               <div class="col-lg-2">
                 <p-avatar
@@ -125,9 +133,13 @@
             <hr class="w-100" />
             <div class="container-fluid">
               <div class="message-right-side-sec">
-                <div>
+                <div
+                  class="p-5 message-body"
+                  [ngStyle]="{ backgroundColor: 'var(--blue-50)' }"
+                >
                   <p>Hello</p>
                   <h1>{{ selectedUserMessage.name }}</h1>
+
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quidem quae vero qui aperiam provident laboriosam error
@@ -145,10 +157,16 @@
 
             <div class="conatiner-fluid">
               <div class="messages-edit-table mt-4">
-                <p-editor
-                  [(ngModel)]="textMessage"
-                  [style]="{ height: '50px' }"
-                ></p-editor>
+                <p-editor [(ngModel)]="textMessage" [style]="{'height':'100px'}" >
+                  <ng-template pTemplate="header">
+                      <span class="ql-formats">
+                        <button type="button" class="ql-bold" aria-label="Bold"></button>
+                        <button type="button" class="ql-italic" aria-label="Italic"></button>
+                        <button type="button" class="ql-underline" aria-label="Underline"></button>
+                        <button type="button" class="ql-image" aria-label="Image"></button>
+                      </span>
+                  </ng-template>
+              </p-editor>
               </div>
             </div>
             <div class="conatiner-fluid">
@@ -169,6 +187,7 @@
                   <div class="position-relative">
                     <button
                       class="btn btn-secondary text-white position-absolute top-0 end-0"
+                      (click)="sendMessage()"
                     >
                       Send
                     </button>
@@ -177,8 +196,77 @@
               </div>
             </div>
           </div>
+         
+          <!-- compose-->
+
+          <div class="container-fluid" *ngIf="composeStatus">
+            <div class="compose-section">
+            <div class="row mt-3">
+              <div class="col-lg-12">
+                <h1 class="text-dark fs-2 fw-bold">Compose</h1>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h3>What do you have in mind?</h3>
+                  <div class="p-2">
+                    <div class="mb-2">
+                      <p-card>
+                        <h1 class="text-dark">
+                          <a href="" class="text-decoration-none">Tecghnical,Payment or Other platforms issues</a> 
+                        </h1>
+                        <button
+                          pButton
+                          type="button"
+                          label="Visit the LMS help center"
+                          class="p-button-secondary"
+                        ></button>
+                      </p-card>
+                    </div>
+                    <div class="mb-2">
+                      <p-card>
+                        <h1 class="text-dark">
+                          <a href="" class="text-decoration-none"> Questions about course content</a> 
+                        </h1>
+                        <button
+                          pButton
+                          type="button"
+                          label="View course Q&A"
+                          class="p-button-secondary"
+                        ></button>
+                      </p-card>
+                    </div>
+                    <div class="mb-2">
+                      <p-card>
+                        <h1 class="text-dark">
+                          <a href="" class="text-decoration-none"> Private or public message to instructor</a>  
+                        </h1>
+                        <button
+                          pButton
+                          type="button"
+                          label="Send a new message"
+                          class="p-button-secondary"
+                        ></button>
+                      </p-card>
+                      <div class="mb-2"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<!-- text message  -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="container">
+      <div [innerHtml]="textMessage">
+    </div>
+   
     </div>
   </div>
 </div>

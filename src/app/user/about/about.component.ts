@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Content } from '../../user/about/interfaces/content';
-import { AboutService } from './services/about.service';
+import { Content } from '../../models/about-content';
+import { AboutService } from '../../services/about.service';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -14,14 +14,19 @@ export class AboutComponent implements OnInit {
   public display: boolean = false;
   constructor(private aboutServiceRef: AboutService) {}
   public ngOnInit(): void {
-   try{
-    this.aboutServiceRef.getAboutLmsData().subscribe((data) => {
-      this.aboutLmsContent = data;
-      this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);
-    });
-   } catch(error){
-    console.log('error',error)
-   }
+    this.getAboutLmsContent()
+  }
+
+  //getbaoutlmscontent
+  getAboutLmsContent(){
+    try{
+      this.aboutServiceRef.getAboutLmsData().subscribe((data) => {
+        this.aboutLmsContent = data;
+        this.aboutLmsContentResult.push(this.aboutLmsContent[this.count]);
+      });
+     } catch(error){
+      console.log('error',error)
+     }
   }
   //aboutlmscontent(increment)
   public forwardAboutLms(): void {
