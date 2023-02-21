@@ -66,13 +66,13 @@
 <div class="about">
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 main-heading">
+      <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12 main-heading">
         <h1 class="heading mt-5">
           We share <br />
           Knowledge<br />with the world
         </h1>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12">
         <img
           src="../../../assets/img/about/about-starting-sec-pic.png"
           alt=""
@@ -86,7 +86,7 @@
   <div class="improving">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 mt-5 p-5">
+        <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-xs-12 mt-5 p-5">
           <h2 class="heading-2">Improving lives through learning</h2>
           <p class="about-paragraph">
             Whether you want to learn or to share what you know, you’ve come to
@@ -101,8 +101,8 @@
   <div class="container-fluid bg-light">
     <div class="row p-5 mt-5">
       <ng-container *ngFor="let data of aboutLmsContentResult; let i = index">
-        <div class="col-lg-6">
-          <video width="550" height="350" controls autoplay>
+        <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12">
+          <video  width="auto" height="350" controls autoplay>
             <source src="{{ data.video }}" type="video/mp4" />
           </video>
           <div>
@@ -119,7 +119,7 @@
           </div>
         </div>
 
-        <div class="col-lg-6 content">
+        <div class="col-lg-6 col-xl-6 col-md-12 col-sm-12 col-xs-12 content">
           <h2 class="content-heading">{{ data.title }}</h2>
           <p class="content-paragraph mt-3 p-2">
             {{ data.content }}
@@ -131,42 +131,46 @@
   <!-- about courses -->
 
   <div class="container-fluid about-courses">
-    <h2 class="mt-4">We just keep growing</h2>
-    <p class="mt-2 fs-5">
-      Our global community and our course catalog get bigger every day.Check out
-      our latest numbers as of Febraury 2023
-    </p>
+    <div class="row">
+      <div class="col-lg-12 col-xl-12 col-md-12 col-xs-12">
+        <h2 class="mt-4">We just keep growing</h2>
+        <p class="mt-2 fs-5">
+          Our global community and our course catalog get bigger every day.Check
+          out our latest numbers as of Febraury 2023
+        </p>
+      </div>
+    </div>
     <div class="container p-5 courses-statistics">
       <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-xl-3">
           <h1 class="fs-1 p-3 fw-bold">
             53M+<br />
             <span class="fs-5">learners</span>
           </h1>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-xl-3 col-md-4">
           <h1 class="fs-1 p-3 fw-bold">
             74K+<br /><span class="fs-5">Instructors</span>
           </h1>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-xl-3 col-md-4">
           <h1 class="fs-1 p-3 fw-bold">
             213K+<br /><span class="fs-5">Courses</span>
           </h1>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-xl-3 col-md-4">
           <h1 class="fs-1 p-3 fw-bold">
             773M+<br /><span class="fs-5">Course Enrollments</span>
           </h1>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 text-center">
           <h1 class="fs-1 p-3 fw-bold">
             75+<br /><span class="fs-5">Lanquages</span>
           </h1>
         </div>
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-6 text-center">
           <h1 class="fs-1 p-3 fw-bold">
             13,400+<br /><span class="fs-5">Enterprise customers</span>
           </h1>
@@ -175,120 +179,129 @@
     </div>
   </div>
   <div class="about-lms-main">
-    <div class="container p-5 bg-white about-lms-section">
-      <p class="about-lms mt-5 p-5">
-        We help organizations of all types and sizes prepare for the path ahead
-        — wherever it leads. Our curated collection of business and technical
-        courses help companies, governments, and nonprofits go further by
-        placing learning at the center of their strategies.
-      </p>
-      <div class="text-center">
-        <button class="btn btn-dark about-lms-button fs-5 fw-bold p-2">
-          Learn More
-        </button>
-      </div>
-
-      <!--  comments -->
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 p-5 comment-cards">
-            <div class="text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="bi bi-quote"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
-                />
-              </svg>
-            </div>
-            <p>
-              Lms fit us like a glove. Their team curates fresh, up-to-date
-              courses from their marketplace and makes them available to
-              customers.
-            </p>
-          </div>
-          <div class="col-lg-4 p-5 comment-cards">
-            <div class="text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="bi bi-quote"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
-                />
-              </svg>
-            </div>
-            <p>
-              In total, it was a big success, I would get emails about what a
-              fantastic resource it was.
-            </p>
-          </div>
-          <div class="col-lg-4 p-5 comment-cards">
-            <div class="text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="bi bi-quote"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
-                />
-              </svg>
-            </div>
-            <p>
-              Lms responds to the needs of the business in an agile and global
-              manner. It’s truly the best solution for our employees and their
-              careers.
-            </p>
+    <div class="container-fluid p-5 bg-white about-lms-section">
+      <div class="row">
+        <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 col-xs-12">
+          <p class="about-lms mt-5 p-5">
+            We help organizations of all types and sizes prepare for the path
+            ahead — wherever it leads. Our curated collection of business and
+            technical courses help companies, governments, and nonprofits go
+            further by placing learning at the center of their strategies.
+          </p>
+          <div class="text-center">
+            <button class="btn btn-dark about-lms-button fs-5 fw-bold p-2">
+              Learn More
+            </button>
           </div>
         </div>
       </div>
-      <div class="container client-comments">
-        <div class="row">
-          <div class="col-lg-4 p-5">
+    </div>
+    <!-- new comments start -->
+    <div class="container">
+      <div class="row comment-cards">
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="text-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-quote"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
+              />
+            </svg>
+          </div>
+          <p class="comments-paragraph">
+            Lms fit us like a glove. Their team curates fresh, up-to-date
+            courses from their marketplace and makes them available to
+            customers.
+          </p>
+
+          <div class="row client-comments">
             <h2>Varun Patil</h2>
             <p>Senior Manager of HR Development</p>
-            <div class="d-inline">
+            <div class="d-inline mb-5">
               <a class="fs-5" href="#"
                 >Read the Ahex case study
                 <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
               ></a>
             </div>
           </div>
-          <div class="col-lg-4 p-5">
+        </div>
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="text-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-quote"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
+              />
+            </svg>
+          </div>
+          <p class="comments-paragraph">
+            In total, it was a big success, I would get emails about what a
+            fantastic resource it was.
+          </p>
+
+          <div class="row client-comments">
             <h2>Alfred Helmerich</h2>
             <p>Executive Training Manager</p>
-            <a class="fs-5" href="#">
-              Read the NTT DATA case study
-              <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
-            ></a>
+            <div class="d-inline mb-5">
+              <a class="fs-5" href="#">
+                Read the NTT DATA case study
+                <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+              ></a>
+            </div>
           </div>
-          <div class="col-lg-4 p-5">
+        </div>
+
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="text-primary">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-quote"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"
+              />
+            </svg>
+          </div>
+          <p class="comments-paragraph">
+            Lms responds to the needs of the business in an agile and global
+            manner. It’s truly the best solution for our employees and their
+            careers.
+          </p>
+
+          <div class="row client-comments">
             <h2>Luz Santillana Romero</h2>
             <p>Development and Engagement Director</p>
-            <a class="fs-5" href="#">
-              Read the Indra case study
-              <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
-            ></a>
+            <div class="d-inline mb-5">
+              <a class="fs-5" href="#">
+                Read the Indra case study
+                <i class="pi pi-angle-right fs-5 mt-3 fw-bold"></i
+              ></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- new comments end -->
+
     <div class="companies">
-      <div class="container bg-light mt-5">
-        <div class="row p-5 text-center">
+      <div class="container-fluid bg-light mt-5">
+        <div class="row text-center">
           <div class="col-lg-2">
             <img
               src="https://surveymonkey-assets.s3.amazonaws.com/survey/299280910/38baa5bb-0918-4eb8-baaf-f645ec76cedc.png"
@@ -362,7 +375,7 @@
     <!-- cards section -->
     <div class="container mt-5">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
           <p-card
             [style]="{
               'background-color': '#a435f0',
@@ -387,7 +400,7 @@
             </ng-template>
           </p-card>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
           <p-card
             [style]="{
               'background-color': '#dddb36',
@@ -413,7 +426,7 @@
             </ng-template>
           </p-card>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-xs-12">
           <p-card
             [style]="{
               'background-color': '#2d907f',
@@ -426,9 +439,8 @@
             <ng-template pTemplate="header"></ng-template>
             <h1 class="fw-bold">Read our blog</h1>
             <p class="p-3">
-              Want to know what we’ve been up to lately? Check out the Lms
-              blog to get the scoop on the latest news, ideas and projects, and
-              more.
+              Want to know what we’ve been up to lately? Check out the Lms blog
+              to get the scoop on the latest news, ideas and projects, and more.
             </p>
             <ng-template pTemplate="footer">
               <a class="fs-4 text-decoration-none fw-bold text-white" href="#"
@@ -442,103 +454,108 @@
   </div>
   <!-- cards seciton end -->
   <!-- about section end -->
-</div>
-<!-- footer -->
-<div class="container-fluid bg-dark mt-5 footer">
-  <div class="row mt-3">
-    <div class="col-lg-8"></div>
-    <div class="col-lg-4">
-      <div class="text-white">
-        <div class="d-flex ;justify-space-around p-3">
-          <h3 class="mr-2">Follow us</h3>
-          <h3><i class="pi pi-linkedin fs-3 mr-4"></i></h3>
-          <h3><i class="pi pi-facebook fs-3 mr-4"></i></h3>
-          <h3><i class="pi pi-twitter fs-3 mr-4"></i></h3>
-          <h3><i class="pi pi-instagram fs-3 mr-4"></i></h3>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="h-line"></div>
-  <div class="row mt-5">
-    <div class="col-lg-9">
-      <div class="row ml-2">
-        <div class="col-lg-3 text-white p-3">
-          <h5 class="fs-5">
-            <a class="text-decoration-none text-white" href="">Lms Business</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Teach on Lms</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Get the app</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">About us</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Investors</a>
-          </h5>
-        </div>
-        <div class="col-lg-3 text-white p-3">
-          <h5 class="fs-5">
-            <a class="text-decoration-none text-white" href="">Careers</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Blog</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Help</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Affiliate</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white"
-              >Accessibility statement</a
-            >
-          </h5>
-        </div>
-        <div class="col-lg-3 text-white p-3">
-          <h5 class="fs-5">
-            <a class="text-decoration-none text-white" href="">Terms</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white"
-              >Privacy policy and cookie policy</a
-            >
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white">Sitemap</a>
-          </h5>
-          <h5 class="fs-5">
-            <a href="" class="text-decoration-none text-white"
-              >Featured topics</a
-            >
-          </h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 mt-5 position-relative">
-      <div class="position-absolute top-0 end-0">
-        <div class="footer-lang-btn">
-          <a href=""><i class="pi pi-globe p-2"></i>English</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row ml-2 mt-3">
-    <div class="col-lg-6">
-      <div class="justify-content-start">
-        <h1><a class="text-decoration-none text-white" href="">LMS</a></h1>
-      </div>
-    </div>
 
-    <div class="col-lg-6 position-relative">
-      <div class="position-absolute top-0 end-0">
-        <p class="text-white mr-5">@2023 LMS,Inc.</p>
+  <!-- footer -->
+  <div class="container-fluid bg-dark mt-5 footer">
+    <div class="row mt-3">
+      <div class="col-lg-8"></div>
+      <div class="col-lg-4">
+        <div class="text-white">
+          <div class="d-flex ;justify-space-around p-3">
+            <h3 class="mr-2">Follow us</h3>
+            <h3><i class="pi pi-linkedin fs-3 mr-4"></i></h3>
+            <h3><i class="pi pi-facebook fs-3 mr-4"></i></h3>
+            <h3><i class="pi pi-twitter fs-3 mr-4"></i></h3>
+            <h3><i class="pi pi-instagram fs-3 mr-4"></i></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="h-line"></div>
+    <div class="row mt-5">
+      <div class="col-lg-9">
+        <div class="row ml-2">
+          <div class="col-lg-3 text-white p-3">
+            <h5 class="fs-5">
+              <a class="text-decoration-none text-white" href=""
+                >Lms Business</a
+              >
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white"
+                >Teach on Lms</a
+              >
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Get the app</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">About us</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Investors</a>
+            </h5>
+          </div>
+          <div class="col-lg-3 text-white p-3">
+            <h5 class="fs-5">
+              <a class="text-decoration-none text-white" href="">Careers</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Blog</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Help</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Affiliate</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white"
+                >Accessibility statement</a
+              >
+            </h5>
+          </div>
+          <div class="col-lg-3 text-white p-3">
+            <h5 class="fs-5">
+              <a class="text-decoration-none text-white" href="">Terms</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white"
+                >Privacy policy and cookie policy</a
+              >
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white">Sitemap</a>
+            </h5>
+            <h5 class="fs-5">
+              <a href="" class="text-decoration-none text-white"
+                >Featured topics</a
+              >
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mt-5 position-relative">
+        <div class="position-absolute top-0 end-0">
+          <div class="footer-lang-btn">
+            <a href=""><i class="pi pi-globe p-2"></i>English</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ml-2 mt-3">
+      <div class="col-lg-6">
+        <div class="justify-content-start">
+          <h1><a class="text-decoration-none text-white" href="">LMS</a></h1>
+        </div>
+      </div>
+
+      <div class="col-lg-6 position-relative">
+        <div class="position-absolute top-0 end-0">
+          <p class="text-white mr-5">@2023 LMS,Inc.</p>
+        </div>
       </div>
     </div>
   </div>
+  <!-- footer -->
 </div>
-<!-- footer -->

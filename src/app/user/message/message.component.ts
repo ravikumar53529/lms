@@ -33,7 +33,7 @@ export class MessageComponent implements OnInit {
     category: '',
   };
   constructor(private messageServiceRef: MessagesService) {}
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getTextMessages();
     this.userMessagesCategory();
   }

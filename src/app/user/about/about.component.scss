@@ -122,6 +122,7 @@ $font-size: 50px;
 }
 
 .comment-cards {
+  padding: 10px;
   p {
     font-size: 25px;
     color: #1c1d1f;
@@ -133,8 +134,12 @@ $font-size: 50px;
   a {
     text-decoration: none;
   }
+  .comments-paragraph{
+    height: 200px;
+  }
 }
 .client-comments {
+  margin-top:50px;
   h2 {
     font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
     font-weight: bold;
