@@ -9,12 +9,6 @@ export interface Messages {
 export interface msgCategories{
     id:number,
     category:string,
-    items:{
-        name:string,
-        message:string
-        date:string,
-        image:string,
-        category:string
-    }[];
+    items:Messages[];
 }
 

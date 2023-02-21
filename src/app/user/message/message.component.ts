@@ -8,19 +8,18 @@ import { Messages, msgCategories } from '../../models/messages';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent implements OnInit {
- 
   public textMessage: string = '';
   public userMessage: string = '';
   public userMessages: Messages[] = [];
   public messagesCategories: msgCategories[] = [];
   public UnreadMessageslength:number=0;
-  public unreadMessages:{id:string,category:string,items:Messages[]}={
-    id: '',
+  public unreadMessages:msgCategories={
+    id:0,
     category: '',
     items:[]
   }
-  public selectedCategory:{id:string,category:string,items:Messages[]}={
-    id: '',
+  public selectedCategory:msgCategories={
+    id: 0,
     category: '',
     items:[]
   }
@@ -43,6 +42,7 @@ export class MessageComponent implements OnInit {
     try {
       this.messageServiceRef.getUserMessages().subscribe((data) => {
         this.userMessages = data;
+
       });
     } catch (error) {
       console.log('error', error);
@@ -53,6 +53,12 @@ export class MessageComponent implements OnInit {
     try {
       this.messageServiceRef.getMessagesCategories().subscribe((data) => {
         this.messagesCategories = data;
+        this.messagesCategories.filter((data)=>{
+        if(data.category==='Unread'){
+         this.unreadMessages=data
+         this.UnreadMessageslength=this.unreadMessages.items.length;
+        }
+        })
       });
     } catch (error) {
       console.log('error', error);
@@ -73,10 +79,6 @@ export class MessageComponent implements OnInit {
  public showCategory():void{
     this.userMessage=""
     this.userMessages=this.selectedCategory.items;
-  }
-  //importantMessages
-  importantMessages() {
-    
   }
   //compose
   public composeSection():void {
