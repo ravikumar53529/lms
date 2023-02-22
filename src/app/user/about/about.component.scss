@@ -7,6 +7,9 @@
 }
 .about {
   background-color: #f7f9fa;
+  .main-heading-image{
+    width: 100%;
+  }
 }
 $font-size: 50px;
 .main-heading {
@@ -15,10 +18,11 @@ $font-size: 50px;
     font-size: 3.2rem;
     color: #1c1d1f;
     text-align: left;
-    // font-family: "Prata", serif;
     font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
     line-height: 1.17;
     font-weight: 700;
+    width: 100%;
+   
   }
 }
 .heading-2 {
@@ -38,10 +42,16 @@ $font-size: 50px;
     line-height: 1.2;
     color: #1c1d1f;
     font-family: "IBM Plex Sans Arabic", sans-serif;
-    // font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
     margin: 0 auto 1.6rem;
     text-align: center;
   }
+}
+
+//media queries for video
+.embed-responsive{
+ video{
+  width: 100%;
+ }
 }
 
 .marketlpace-paragraph {
@@ -139,7 +149,7 @@ $font-size: 50px;
   }
 }
 .client-comments {
-  margin-top:50px;
+  margin-top:10px;
   h2 {
     font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
     font-weight: bold;
