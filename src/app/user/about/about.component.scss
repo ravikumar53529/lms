@@ -7,36 +7,40 @@
 }
 .about {
   background-color: #f7f9fa;
-  .main-heading-image{
+}
+.first-section-weshare {
+  background-color: #f7f9fa;
+  width: 100%;
+  .main-heading-image {
     width: 100%;
   }
-}
-$font-size: 50px;
-.main-heading {
-  margin-top: 50px;
-  .heading {
-    font-size: 3.2rem;
-    color: #1c1d1f;
-    text-align: left;
-    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-    line-height: 1.17;
-    font-weight: 700;
-    width: 100%;
-   
+  .main-heading {
+    margin-top: 50px;
+
+    .heading {
+      font-size: 3.2rem;
+      color: #1c1d1f;
+      text-align: left;
+      font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+      line-height: 1.17;
+      font-weight: 700;
+      width: 100%;
+    }
   }
 }
-.heading-2 {
-  margin-top: 40px;
-  font-size: 45px;
-  line-height: 1.2;
-  font-weight: 700;
-  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-  color: #1c1d1f;
-  text-align: center;
-}
+
 .improving {
   width: 100%;
   background-color: white;
+  .heading-2 {
+    margin-top: 40px;
+    font-size: 45px;
+    line-height: 1.2;
+    font-weight: 700;
+    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    color: #1c1d1f;
+    text-align: center;
+  }
   .about-paragraph {
     font-size: 20px;
     line-height: 1.2;
@@ -47,36 +51,32 @@ $font-size: 50px;
   }
 }
 
-//media queries for video
-.embed-responsive{
- video{
-  width: 100%;
- }
-}
+.video-content {
+  .embed-responsive {
+    video {
+      width: 100%;
+    }
+  }
 
-.marketlpace-paragraph {
-  font-size: 20px;
-  letter-spacing: 1px;
-  color: black;
-  text-align: start;
-}
-.content-heading {
-  text-align: start;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1c1d1f;
-  font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-}
-.content {
-  p {
-    color: #1c1d1f;
-    text-align: start;
-    font-size: 18px;
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-    letter-spacing: 1px;
-    line-height: 1.2;
+  .content {
+    .content-heading {
+      text-align: start;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1c1d1f;
+      font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+    }
+    p {
+      color: #1c1d1f;
+      text-align: start;
+      font-size: 18px;
+      font-family: "IBM Plex Sans Arabic", sans-serif;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
   }
 }
+
 
 .about-courses {
   background: #5624d0;
@@ -130,41 +130,47 @@ $font-size: 50px;
   width: 100%;
   background-color: #f7f9fa;
 }
+.comments-main-section {
+  background-color: white;
+  .comment-cards {
+    padding: 10px;
 
-.comment-cards {
-  padding: 10px;
-  p {
-    font-size: 25px;
-    color: #1c1d1f;
-    text-align: start;
-    font-family: "Oswald", sans-serif;
-    letter-spacing: 2px;
-    line-height: 30px;
-  }
-  a {
-    text-decoration: none;
-  }
-  .comments-paragraph{
-    height: 200px;
+    p {
+      font-size: 25px;
+      color: #1c1d1f;
+      text-align: start;
+      font-family: "Oswald", sans-serif;
+      letter-spacing: 2px;
+      line-height: 30px;
+    }
+    a {
+      text-decoration: none;
+    }
+    .comments-paragraph {
+      height: 200px;
+    }
+    .client-comments {
+      margin-top: 10px;
+      h2 {
+        font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
+        font-weight: bold;
+      }
+      p {
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: black;
+        text-align: start;
+        font-family: "IBM Plex Sans Arabic", sans-serif;
+      }
+      a {
+        text-decoration: none;
+        color: #5624d0;
+      }
+    }
   }
 }
-.client-comments {
-  margin-top:10px;
-  h2 {
-    font-family: Suisse Works, Georgia, Times, Times New Roman, serif;
-    font-weight: bold;
-  }
-  p {
-    font-size: 13px;
-    letter-spacing: 1px;
-    color: black;
-    text-align: start;
-    font-family: "IBM Plex Sans Arabic", sans-serif;
-  }
-  a {
-    text-decoration: none;
-    color: #5624d0;
-  }
+.cards-main-section {
+  background-color: white;
 }
 .footer {
   font-family: "Mukta", sans-serif;

@@ -16,6 +16,11 @@
   .messages-main-section-left {
     border-right: 1px solid rgb(199, 194, 194);
     height: 100%;
+    .dropdown-buttton{
+      width: 100%;
+      margin-left: 10px;
+      justify-content: center;
+    }
   }
   input {
     width: 100%;

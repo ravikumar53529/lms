@@ -44,6 +44,13 @@ export class UserComponent implements OnInit {
             icon: 'pi pi-key ',
             command: () => {},
           },
+          {
+            label:'Profile',
+            icon:'pi pi-user',
+            command:()=>{
+              this.openProfile();
+            }
+          }
         ],
       },
     ];
@@ -71,4 +78,14 @@ export class UserComponent implements OnInit {
       }
     });
   }
+
+
+  //open profile
+  public openProfile():void{
+ this.router.navigateByUrl('/user/profile')
+  }
+
+
+
+
 }

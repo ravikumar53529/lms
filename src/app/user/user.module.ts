@@ -25,9 +25,12 @@ import {  AvatarModule } from 'primeng/avatar';
 import { EditorModule } from 'primeng/editor';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
+import { ProfileComponent } from './profile/profile.component';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
-  declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent],
+  declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent, ProfileComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -50,7 +53,10 @@ import { TableModule } from 'primeng/table';
     AvatarModule,
     EditorModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    TabMenuModule,
+    TabViewModule
+    
   ],
 })
 export class UserModule {}
