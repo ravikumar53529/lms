@@ -1,34 +1,138 @@
-<div class="container-fluid"> 
-    <div class="profile-first-section"> 
+<div class="container-fluid">
+  <div class="profile-first-section">
+    <div class="col-lg-12">
+      <h1>Profile & settings</h1>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="profile-second-section">
+    <div class="row">
       <div class="col-lg-12">
-         <h1>Profile & settings</h1>
+        <p-tabView >
+          <p-tabPanel header="Lms profile">
+            <form [formGroup]="userProfileForm" (ngSubmit)="onUserProfileSubmit()">
+                <p-splitter [style]="{'height': 'auto','width':'100%'}">
+                    <ng-template pTemplate>
+                        <div class="p-fluid"  [style]="{'width': '100%','padding':'30px'}">
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">First Name</label>
+                                <input id="firstname1"   name="firstname"   formControlName="firstname" type="text" pInputText placeholder="G.Ravi"> 
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="lastname1" class="mb-2">Last Name</label>
+                                <input id="lastname1" name="lastname"    formControlName="lastname" type="text" pInputText placeholder="Kumar"> 
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="lastname1" class="mb-2">Headline</label>
+                                <input id="lastname1" name="headline" formControlName="headline" type="text" pInputText placeholder="Instructor at LMS(60)"> 
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="lastname1" class="mb-2">Biography</label>
+                                <p-editor  [style]="{'width': '100%','height':'80px'}" name="biography" formControlName="biography">
+                                    <ng-template pTemplate="header">
+                                      <span class="ql-formats">
+                                        <button
+                                          type="button"
+                                          class="ql-bold"
+                                          aria-label="Bold"
+                                        ></button>
+                                        <button
+                                          type="button"
+                                          class="ql-italic"
+                                          aria-label="Italic"
+                                        ></button>
+                                      </span>
+                                    </ng-template>
+                                  
+                                  </p-editor>
+                                  <p class="fs-6 lead" [style]="{'width': '100%','text-align':'justify'}"> <small> To help learners learn more about you,your bio should reflect your Credibility,Empathy,Passion and Persionality.Your Biography should have at least 50 words,links and coupon codes are not permitted.</small></p>
+                                </div>
+                            <div class="p-field mb-3">
+                                <label for="lastname1" class="mb-2">Lanquages</label>
+                                <p-multiSelect [options]="mainLanquages" name="lanquages" formControlName="selectedlanquages"  optionLabel="name"></p-multiSelect>
+                            </div>
+                            <div class="p-field ">
+                                <input type="submit" pButton value="Save" [style]="{'width': '80px','background-color':'black','color':'white'}">
+                            </div>
+                        </div>
+                       
+                    </ng-template>
+                     <ng-template pTemplate>
+                        <div class="p-fluid" [style]="{'width': '100%','padding':'30px'}">
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">Website</label>
+                                <input id="firstname1" name="website"  formControlName="website" type="text" pInputText placeholder="Url"> 
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">Twitter</label>
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon">http://www.twitter.com/</span>
+                                    <input type="text" name="twitter"  formControlName="twitter" pInputText placeholder="Username">      
+                                </div>
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">Facebook</label>
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon">http://www.facebook.com/</span>
+                                    <input type="text"   name="facebook"  formControlName="facebook"   pInputText placeholder="Username">      
+                                </div>
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">LinkedIn</label>
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon">http://www.linkedin.com/</span>
+                                    <input type="text"  name="linkedin"  formControlName="linkedin" pInputText placeholder="Resource ID">      
+                                </div>
+                            </div>
+                            <div class="p-field mb-3">
+                                <label for="firstname1" class="mb-2">Youtube</label>
+                                <div class="p-inputgroup">
+                                    <span class="p-inputgroup-addon">http://www.youtube.com/</span>
+                                    <input type="text"  name="youtube"  formControlName="youtube" pInputText placeholder="Username">      
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template> 
+                </p-splitter>
+                
+            </form>
+          </p-tabPanel>
+          <p-tabPanel header="Profile picture">
+            <div class="conatiner">
+                <h1 class="text-dark">Image Preview</h1>
+                <p>Minimun 200*200 pixels ,Maximum 6000*600 pixels</p>
+            </div>
+            <div class="conatiner">
+                <p-card [style]="{'width':'500px' ,'height':'200px'}">
+                    <div class="d-flex justify-content-center" >
+                        <img src="https://static.vecteezy.com/system/resources/previews/000/574/512/original/vector-sign-of-user-icon.jpg" alt=""
+                        width="130px" height="130px">
+                    </div>
+                   
+                </p-card>
+                
+                
+            </div>
+            <div class="p-field mt-2" >
+                <form action="" [formGroup]="userImageForm">
+                <input id="firstname1" type="file" class="inputfile" pInputText  [style]="{'width':'500px' ,'height':'60px'}" > <br>
+                <input type="submit" value="Save" pButton class="mt-3"  [style]="{'background-color':'black'}" >
+            </form>
+             </div>
+
+          </p-tabPanel>
+          <p-tabPanel header="Profile settings">
+            <div class="container">
+                    <form action="">  
+                    <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues" class="mb-2" label="Show your profile to the logged-in users"></p-checkbox><br>
+                    <p-checkbox name="groupname" value="val2" [(ngModel)]="selectedValues"   label="Show courses you're taking on your profile page"></p-checkbox><br>
+                    <input type="button" value="Save" pButton class="mt-3" (click)="getProfileSettingValues()" [style]="{'background-color':'black'}" >   
+                </form>
+            </div>
+          </p-tabPanel>
+        </p-tabView>
       </div>
     </div>
-</div>
-<div class="container-fluid"> 
-    <div class="profile-second-section">
-       <!-- <p-tabMenu [model]="items" [activeItem]="items[0]">
-         <ng-content>
-        
-         </ng-content>
-       </p-tabMenu> -->
-
-       <p-tabView>
-        <p-tabPanel header="Lms profile" >
-            <div class="p-fluid p-formgrid p-grid">
-                <div class="p-field p-col">
-                    <label for="firstname1">Firstname</label>
-                    <input id="firstname1" type="text" pInputText> 
-                </div>
-                <div class="p-field p-col">
-                    <label for="lastname1">Lastname</label>
-                    <input id="lastname1" type="text" pInputText> 
-                </div>
-            </div>
-        </p-tabPanel>
-        <p-tabPanel header="Profile picture" ></p-tabPanel>
-        <p-tabPanel header="Profile settings" ></p-tabPanel>
-       </p-tabView>
-    </div>
-
+  </div>
 </div>

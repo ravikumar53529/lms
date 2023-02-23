@@ -6,7 +6,7 @@ import { MenuModule } from 'primeng/menu';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -26,8 +26,11 @@ import { EditorModule } from 'primeng/editor';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { ProfileComponent } from './profile/profile.component';
-import {TabMenuModule} from 'primeng/tabmenu';
 import { TabViewModule } from 'primeng/tabview';
+import {SplitterModule} from 'primeng/splitter';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CheckboxModule} from 'primeng/checkbox';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent, ProfileComponent],
@@ -54,9 +57,13 @@ import { TabViewModule } from 'primeng/tabview';
     EditorModule,
     HttpClientModule,
     TableModule,
-    TabMenuModule,
-    TabViewModule
-    
+    TabViewModule,
+    SplitterModule,
+    MultiSelectModule,
+    CheckboxModule,
+    FileUploadModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
 })
 export class UserModule {}
