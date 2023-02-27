@@ -5,7 +5,6 @@ export interface Messages {
     image:string,
     category:string
 }
-
 export interface msgCategories{
     id:number,
     category:string,

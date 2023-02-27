@@ -9,126 +9,438 @@
   <div class="profile-second-section">
     <div class="row">
       <div class="col-lg-12">
-        <p-tabView >
+        <p-tabView>
           <p-tabPanel header="Lms profile">
-            <form [formGroup]="userProfileForm" (ngSubmit)="onUserProfileSubmit()">
-                <p-splitter [style]="{'height': 'auto','width':'100%'}">
-                    <ng-template pTemplate>
-                        <div class="p-fluid"  [style]="{'width': '100%','padding':'30px'}">
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">First Name</label>
-                                <input id="firstname1"   name="firstname"   formControlName="firstname" type="text" pInputText placeholder="G.Ravi"> 
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="lastname1" class="mb-2">Last Name</label>
-                                <input id="lastname1" name="lastname"    formControlName="lastname" type="text" pInputText placeholder="Kumar"> 
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="lastname1" class="mb-2">Headline</label>
-                                <input id="lastname1" name="headline" formControlName="headline" type="text" pInputText placeholder="Instructor at LMS(60)"> 
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="lastname1" class="mb-2">Biography</label>
-                                <p-editor  [style]="{'width': '100%','height':'80px'}" name="biography" formControlName="biography">
-                                    <ng-template pTemplate="header">
-                                      <span class="ql-formats">
-                                        <button
-                                          type="button"
-                                          class="ql-bold"
-                                          aria-label="Bold"
-                                        ></button>
-                                        <button
-                                          type="button"
-                                          class="ql-italic"
-                                          aria-label="Italic"
-                                        ></button>
-                                      </span>
-                                    </ng-template>
-                                  
-                                  </p-editor>
-                                  <p class="fs-6 lead" [style]="{'width': '100%','text-align':'justify'}"> <small> To help learners learn more about you,your bio should reflect your Credibility,Empathy,Passion and Persionality.Your Biography should have at least 50 words,links and coupon codes are not permitted.</small></p>
-                                </div>
-                            <div class="p-field mb-3">
-                                <label for="lastname1" class="mb-2">Lanquages</label>
-                                <p-multiSelect [options]="mainLanquages" name="lanquages" formControlName="selectedlanquages"  optionLabel="name"></p-multiSelect>
-                            </div>
-                            <div class="p-field ">
-                                <input type="submit" pButton value="Save" [style]="{'width': '80px','background-color':'black','color':'white'}">
-                            </div>
+            <form
+              [formGroup]="userProfileForm"
+              (ngSubmit)="onUserProfileSubmit()"
+            >
+              <p-splitter [style]="{ height: 'auto', width: '100%' }">
+                <ng-template pTemplate>
+                  <div
+                    class="p-fluid"
+                    [style]="{ width: '100%', padding: '30px' }"
+                  >
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">First Name</label>
+                      <input
+                        id="firstname1"
+                        name="firstname"
+                        formControlName="firstname"
+                        type="text"
+                        pInputText
+                        placeholder=""
+                      />
+                      <div
+                        *ngIf="
+                          firstname &&
+                          firstname.invalid &&
+                          (firstname.touched || firstname.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="firstname.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Firstname is required
                         </div>
-                       
-                    </ng-template>
-                     <ng-template pTemplate>
-                        <div class="p-fluid" [style]="{'width': '100%','padding':'30px'}">
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">Website</label>
-                                <input id="firstname1" name="website"  formControlName="website" type="text" pInputText placeholder="Url"> 
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">Twitter</label>
-                                <div class="p-inputgroup">
-                                    <span class="p-inputgroup-addon">http://www.twitter.com/</span>
-                                    <input type="text" name="twitter"  formControlName="twitter" pInputText placeholder="Username">      
-                                </div>
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">Facebook</label>
-                                <div class="p-inputgroup">
-                                    <span class="p-inputgroup-addon">http://www.facebook.com/</span>
-                                    <input type="text"   name="facebook"  formControlName="facebook"   pInputText placeholder="Username">      
-                                </div>
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">LinkedIn</label>
-                                <div class="p-inputgroup">
-                                    <span class="p-inputgroup-addon">http://www.linkedin.com/</span>
-                                    <input type="text"  name="linkedin"  formControlName="linkedin" pInputText placeholder="Resource ID">      
-                                </div>
-                            </div>
-                            <div class="p-field mb-3">
-                                <label for="firstname1" class="mb-2">Youtube</label>
-                                <div class="p-inputgroup">
-                                    <span class="p-inputgroup-addon">http://www.youtube.com/</span>
-                                    <input type="text"  name="youtube"  formControlName="youtube" pInputText placeholder="Username">      
-                                </div>
-                            </div>
+                        <div *ngIf="firstname.errors?.['minlength']">
+                          Firstname must have at least 8 characters
                         </div>
-                    </ng-template> 
-                </p-splitter>
-                
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="lastname1" class="mb-2">Last Name</label>
+                      <input
+                        id="lastname1"
+                        name="lastname"
+                        formControlName="lastname"
+                        type="text"
+                        pInputText
+                      />
+                      <div
+                        *ngIf="
+                          lastname &&
+                          lastname.invalid &&
+                          (lastname.touched || lastname.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="lastname.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Lastname is required
+                        </div>
+                        <div *ngIf="lastname.errors?.['minlength']">
+                          Lastname must have at least 8 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="lastname1" class="mb-2">Headline</label>
+                      <input
+                        id="lastname1"
+                        name="headline"
+                        formControlName="headline"
+                        type="text"
+                        pInputText
+                        placeholder="Instructor at LMS(60)"
+                      />
+                      <div
+                        *ngIf="
+                          headline &&
+                          headline.invalid &&
+                          (headline.touched || headline.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="headline.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Headline is required
+                        </div>
+                        <div *ngIf="headline.errors?.['minlength']">
+                          Headline must have at least 10 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="lastname1" class="mb-2">Biography</label>
+                      <p-editor
+                        [style]="{ width: '100%', height: '80px' }"
+                        name="biography"
+                        formControlName="biography"
+                      >
+                        <ng-template pTemplate="header">
+                          <span class="ql-formats">
+                            <button
+                              type="button"
+                              class="ql-bold"
+                              aria-label="Bold"
+                            ></button>
+                            <button
+                              type="button"
+                              class="ql-italic"
+                              aria-label="Italic"
+                            ></button>
+                          </span>
+                        </ng-template>
+                      </p-editor>
+                      <p
+                        class="fs-6 lead"
+                        [style]="{ width: '100%', 'text-align': 'justify' }"
+                      >
+                        <small>
+                          To help learners learn more about you,your bio should
+                          reflect your Credibility,Empathy,Passion and
+                          Persionality.Your Biography should have at least 50
+                          words,links and coupon codes are not permitted.</small
+                        >
+                      </p>
+                      <div
+                        *ngIf="
+                          biography &&
+                          biography.invalid &&
+                          (biography.touched || biography.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="biography.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Biography is required
+                        </div>
+                        <div *ngIf="biography.errors?.['minlength']">
+                          Biography must have at least 10 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="lastname1" class="mb-2">Lanquages</label>
+                      <p-multiSelect
+                        [options]="mainLanquages"
+                        name="lanquages"
+                        formControlName="selectedlanquages"
+                        optionLabel="name"
+                      ></p-multiSelect>
+                      <div
+                        *ngIf="
+                          selectedlanquages &&
+                          selectedlanquages.invalid &&
+                          (selectedlanquages.touched || selectedlanquages.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="selectedlanquages.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Lanquages is required
+                        </div>
+                        <div *ngIf="selectedlanquages.errors?.['minlength']">
+                          Lanquages field must have at least 2 vlaues
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field">
+                      <input
+                        type="submit"
+                        [disabled]="userProfileForm.invalid"
+                        pButton
+                        value="Save"
+                        [style]="{
+                          width: '80px',
+                          'background-color': 'black',
+                          color: 'white'
+                        }"
+                      />
+                    </div>
+                  </div>
+                </ng-template>
+                <ng-template pTemplate>
+                  <div
+                    class="p-fluid"
+                    [style]="{ width: '100%', padding: '30px' }"
+                  >
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">Website</label>
+                      <input
+                        id="firstname1"
+                        name="website"
+                        formControlName="website"
+                        type="text"
+                        pInputText
+                        placeholder="Url"
+                      />
+                      <div
+                        *ngIf="
+                          website &&
+                          website.invalid &&
+                          (website.touched || website.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="website.errors?.['required']"
+                          class="text-danger"
+                        >
+                          website is required
+                        </div>
+                        <div *ngIf="website.errors?.['minlength']">
+                          website field must have at least 5 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">Twitter</label>
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"
+                          >http://www.twitter.com/</span
+                        >
+                        <input
+                          type="text"
+                          name="twitter"
+                          formControlName="twitter"
+                          pInputText
+                          placeholder="Username"
+                        />
+                      </div>
+                      <div
+                        *ngIf="
+                          twitter &&
+                          twitter.invalid &&
+                          (twitter.touched || twitter.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="twitter.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Twitter is required
+                        </div>
+                        <div *ngIf="twitter.errors?.['minlength']">
+                          Twitter field must have at least 5 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">Facebook</label>
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"
+                          >http://www.facebook.com/</span
+                        >
+                        <input
+                          type="text"
+                          name="facebook"
+                          formControlName="facebook"
+                          pInputText
+                          placeholder="Username"
+                        />
+                      </div>
+                      <div
+                        *ngIf="
+                          facebook &&
+                          facebook.invalid &&
+                          (facebook.touched || facebook.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="facebook.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Facebook is required
+                        </div>
+                        <div *ngIf="facebook.errors?.['minlength']">
+                          Facebook field must have at least 5 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">LinkedIn</label>
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"
+                          >http://www.linkedin.com/</span
+                        >
+                        <input
+                          type="text"
+                          name="linkedin"
+                          formControlName="linkedin"
+                          pInputText
+                          placeholder="Resource ID"
+                        />
+                      </div>
+                      <div
+                        *ngIf="
+                          linkedin &&
+                          linkedin.invalid &&
+                          (linkedin.touched || linkedin.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="linkedin.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Linkedin is required
+                        </div>
+                        <div *ngIf="linkedin.errors?.['minlength']">
+                          Linkedin field must have at least 5 characters
+                        </div>
+                      </div>
+                    </div>
+                    <div class="p-field mb-3">
+                      <label for="firstname1" class="mb-2">Youtube</label>
+                      <div class="p-inputgroup">
+                        <span class="p-inputgroup-addon"
+                          >http://www.youtube.com/</span
+                        >
+                        <input
+                          type="text"
+                          name="youtube"
+                          formControlName="youtube"
+                          pInputText
+                          placeholder="Username"
+                        />
+                      </div>
+                      <div
+                        *ngIf="
+                          youtube &&
+                          youtube.invalid &&
+                          (youtube.touched || youtube.dirty)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="youtube.errors?.['required']"
+                          class="text-danger"
+                        >
+                          Youtube is required
+                        </div>
+                        <div *ngIf="youtube.errors?.['minlength']">
+                          Youtube field must have at least 5 characters
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </p-splitter>
             </form>
           </p-tabPanel>
           <p-tabPanel header="Profile picture">
             <div class="conatiner">
-                <h1 class="text-dark">Image Preview</h1>
-                <p>Minimun 200*200 pixels ,Maximum 6000*600 pixels</p>
+              <h1 class="text-dark">Image Preview</h1>
+              <p>Minimun 200*200 pixels ,Maximum 6000*600 pixels</p>
             </div>
             <div class="conatiner">
-                <p-card [style]="{'width':'500px' ,'height':'200px'}">
-                    <div class="d-flex justify-content-center" >
-                        <img src="https://static.vecteezy.com/system/resources/previews/000/574/512/original/vector-sign-of-user-icon.jpg" alt=""
-                        width="130px" height="130px">
-                    </div>
-                   
-                </p-card>
-                
-                
+              <p-card [style]="{ width: '500px', height: '200px' }">
+                <div
+                  *ngIf="imageFileSelected"
+                  class="d-flex justify-content-center"
+                >
+                  <img
+                    src="{{ imageData }}"
+                    alt=""
+                    width="450px"
+                    height="150px"
+                  />
+                </div>
+              </p-card>
             </div>
-            <div class="p-field mt-2" >
-                <form action="" [formGroup]="userImageForm">
-                <input id="firstname1" type="file" class="inputfile" pInputText  [style]="{'width':'500px' ,'height':'60px'}" > <br>
-                <input type="submit" value="Save" pButton class="mt-3"  [style]="{'background-color':'black'}" >
-            </form>
-             </div>
-
+            <div class="p-field mt-2">
+              <form [formGroup]="userImageForm" (ngSubmit)="saveImage()">
+                <input
+                  type="file"
+                  class="inputfile"
+                  pInputText
+                  name="image"
+                  [style]="{ width: '500px', height: '60px' }"
+                  (change)="onImageUpload($event)"
+                />
+                <br />
+                <input
+                  type="submit"
+                  value="Save"
+                  pButton
+                  class="mt-3"
+                  [style]="{ 'background-color': 'black' }"
+                />
+              </form>
+            </div>
           </p-tabPanel>
           <p-tabPanel header="Profile settings">
             <div class="container">
-                    <form action="">  
-                    <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues" class="mb-2" label="Show your profile to the logged-in users"></p-checkbox><br>
-                    <p-checkbox name="groupname" value="val2" [(ngModel)]="selectedValues"   label="Show courses you're taking on your profile page"></p-checkbox><br>
-                    <input type="button" value="Save" pButton class="mt-3" (click)="getProfileSettingValues()" [style]="{'background-color':'black'}" >   
-                </form>
+              <form>
+                <p-checkbox
+                  name="groupname"
+                  value="prfl-setting-val1"
+                  [(ngModel)]="selectedValues"
+                  class="mb-2"
+                  label="Show your profile to the logged-in users"
+                ></p-checkbox
+                ><br />
+                <p-checkbox
+                  name="groupname"
+                  value="prfl-setting-val2"
+                  [(ngModel)]="selectedValues"
+                  label="Show courses you're taking on your profile page"
+                ></p-checkbox
+                ><br />
+                <input
+                  type="button"
+                  [disabled]="selectedValues.length === 0"
+                  value="Save"
+                  pButton
+                  class="mt-3"
+                  (click)="savingProfileSettingValues()"
+                  [style]="{ 'background-color': 'black' }"
+                />
+              </form>
             </div>
           </p-tabPanel>
         </p-tabView>
