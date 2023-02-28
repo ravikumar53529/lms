@@ -375,12 +375,12 @@
           <p-tabPanel header="Profile picture">
             <div class="conatiner">
               <h1 class="text-dark">Image Preview</h1>
-              <p>Minimun 200*200 pixels ,Maximum 6000*600 pixels</p>
+              <p class="fs-6 fst-italic"> Minimun 200*200 pixels ,Maximum 6000*6000 pixels</p>
             </div>
             <div class="conatiner">
               <p-card [style]="{ width: '500px', height: '200px' }">
                 <div
-                  *ngIf="imageFileSelected"
+                  *ngIf="imageData"
                   class="d-flex justify-content-center"
                 >
                   <img

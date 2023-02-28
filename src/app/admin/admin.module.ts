@@ -45,7 +45,10 @@ import { MegaMenuModule } from 'primeng/megamenu';
 
 import {TabViewModule} from 'primeng/tabview';
 import {MenuItem} from 'primeng/api';
-
+import { ProfileComponent } from './profile/profile.component';
+import {SplitterModule} from 'primeng/splitter';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {CheckboxModule} from 'primeng/checkbox';
 
 
 
@@ -60,7 +63,8 @@ import {MenuItem} from 'primeng/api';
     CoursesComponent,
     DashboardComponent,
     SpinnerComponent,
-    ContentComponent
+    ContentComponent,
+    ProfileComponent
 
   ],
   imports: [
@@ -94,8 +98,10 @@ import {MenuItem} from 'primeng/api';
     ProgressBarModule,
     MegaMenuModule,
     TabViewModule,
-  
-    
+    SplitterModule,
+    MultiSelectModule,
+    CheckboxModule,
+   
   ],
   providers: [
     ApiService

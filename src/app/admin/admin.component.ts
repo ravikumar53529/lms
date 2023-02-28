@@ -45,6 +45,13 @@ export class AdminComponent implements OnInit {
                 command: () => {
 
                 }
+            },
+            {
+                label:'Profile',
+                icon:'pi pi-user',
+                command:()=>{
+                   this.onProfile()
+                }
             }
             ]
         },
@@ -55,5 +62,9 @@ export class AdminComponent implements OnInit {
         this.router.navigateByUrl('/login');
         localStorage.clear();
         location.reload();
+    }
+    //profile
+    public onProfile():void{
+        this.router.navigateByUrl('admin/profile')
     }
 }
