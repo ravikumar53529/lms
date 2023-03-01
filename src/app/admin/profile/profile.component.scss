@@ -14,9 +14,13 @@ h1{
     background: white;
     padding:8px;
     color: rgb(158, 157, 157);
-    position: absolute;
-    left: 650px;
     border: 1px solid rgb(200, 197, 197);
+    position: relative; 
+    left: 350px;
 }
 
-
+@media  screen and (max-width:1200px) {
+    ::-webkit-file-upload-button{
+    position:static;
+    }
+}
