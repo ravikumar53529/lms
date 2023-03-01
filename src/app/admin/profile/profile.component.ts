@@ -73,10 +73,10 @@ userProfileDataFromLocalStorage:userProfile={
   }
   //onUserProfileSubmition
  public  onUserProfileSubmit():void{
-    console.log(this.userProfileForm.value)
     localStorage.setItem("userProfileForm",JSON.stringify(this.userProfileForm.value));
     this.userProfileDataFromLocalStorage=JSON.parse(localStorage.getItem("userProfileForm") as string)
     this.userProfileForm.reset();
+    window.alert("Profile values saved")
   }
   //onImageFilesubmition
   public onImageUpload(event:Event):void{
@@ -103,7 +103,6 @@ userProfileDataFromLocalStorage:userProfile={
   }
   //saveProfileSettingValues
     public  savingProfileSettingValues():void{
-    console.log(this.selectedValues)
     localStorage.setItem("profileSettingValues",JSON.stringify(this.selectedValues));
     this.userProfileSettings=JSON.parse(localStorage.getItem("profileSettingValues") as string)
     alert("Setting values saved")

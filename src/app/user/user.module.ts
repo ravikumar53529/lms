@@ -31,6 +31,7 @@ import {SplitterModule} from 'primeng/splitter';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CheckboxModule} from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent, ProfileComponent],
@@ -63,7 +64,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     CheckboxModule,
     FileUploadModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DividerModule
   ],
 })
 export class UserModule {}

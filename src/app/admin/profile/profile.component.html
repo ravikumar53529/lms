@@ -3,28 +3,28 @@
       <div class="col-lg-12">
         <h1>Profile & settings</h1>
       </div>
-    </div>
-  </div>
+    </div> 
+</div>
   <div class="container-fluid">
     <div class="profile-second-section">
       <div class="row">
-        <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12">
           <p-tabView>
             <p-tabPanel header="Lms profile">
               <form
                 [formGroup]="userProfileForm"
                 (ngSubmit)="onUserProfileSubmit()"
               >
-                <p-splitter [style]="{ height: 'auto', width: '100%' }">
-                  <ng-template pTemplate>
+                    <div class="card">
+                    <div class="flex">
                     <div
                       class="p-fluid"
-                      [style]="{ width: '100%', padding: '30px' }"
+                      [style]="{'max-width': '48%', padding: '2%' }"
                     >
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">First Name</label>
+                        <label for="firstname" class="mb-2">First Name</label>
                         <input
-                          id="firstname1"
+                          id="firstname"
                           name="firstname"
                           formControlName="firstname"
                           type="text"
@@ -51,9 +51,9 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="lastname1" class="mb-2">Last Name</label>
+                        <label for="lastname" class="mb-2">Last Name</label>
                         <input
-                          id="lastname1"
+                          id="lastname"
                           name="lastname"
                           formControlName="lastname"
                           type="text"
@@ -79,9 +79,9 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="lastname1" class="mb-2">Headline</label>
+                        <label for="headline" class="mb-2">Headline</label>
                         <input
-                          id="lastname1"
+                          id="headline"
                           name="headline"
                           formControlName="headline"
                           type="text"
@@ -107,8 +107,8 @@
                           </div>
                         </div>
                       </div>
-                      <div class="p-field mb-3">
-                        <label for="lastname1" class="mb-2">Biography</label>
+                      <div class="p-field mb-3 overflow-hidden">
+                        <label for="biography" class="mb-2">Biography</label>
                         <p-editor
                           [style]="{ width: '100%', height: '80px' }"
                           name="biography"
@@ -160,7 +160,7 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="lastname1" class="mb-2">Lanquages</label>
+                        <label for="lanquages" class="mb-2">Lanquages</label>
                         <p-multiSelect
                           [options]="mainLanquages"
                           name="lanquages"
@@ -200,16 +200,16 @@
                         />
                       </div>
                     </div>
-                  </ng-template>
-                  <ng-template pTemplate>
+                    <p-divider layout="vertical"></p-divider>
+                  
                     <div
                       class="p-fluid"
-                      [style]="{ width: '100%', padding: '30px' }"
+                      [style]="{ 'max-width': '48%', padding: '2%' }"
                     >
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">Website</label>
+                        <label for="website" class="mb-2">Website</label>
                         <input
-                          id="firstname1"
+                          id="website"
                           name="website"
                           formControlName="website"
                           type="text"
@@ -235,10 +235,11 @@
                           </div>
                         </div>
                       </div>
+                      
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">Twitter</label>
-                        <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
+                        <label for="twitter" class="mb-2">Twitter</label>
+                        <div class="p-inputgroup overflow-hidden">
+                          <span class="p-inputgroup-addon fs-6"
                             >http://www.twitter.com/</span
                           >
                           <input
@@ -247,6 +248,7 @@
                             formControlName="twitter"
                             pInputText
                             placeholder="Username"
+                            class="p-inputtext"
                           />
                         </div>
                         <div
@@ -269,8 +271,8 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">Facebook</label>
-                        <div class="p-inputgroup">
+                        <label for="facebook" class="mb-2">Facebook</label>
+                        <div class="p-inputgroup overflow-hidden">
                           <span class="p-inputgroup-addon"
                             >http://www.facebook.com/</span
                           >
@@ -302,9 +304,9 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">LinkedIn</label>
+                        <label for="linkedin" class="mb-2">LinkedIn</label>
                         <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
+                          <span class="p-inputgroup-addon overflow-hidden"
                             >http://www.linkedin.com/</span
                           >
                           <input
@@ -335,9 +337,9 @@
                         </div>
                       </div>
                       <div class="p-field mb-3">
-                        <label for="firstname1" class="mb-2">Youtube</label>
+                        <label for="youtube" class="mb-2">Youtube</label>
                         <div class="p-inputgroup">
-                          <span class="p-inputgroup-addon"
+                          <span class="p-inputgroup-addon overflow-hidden"
                             >http://www.youtube.com/</span
                           >
                           <input
@@ -368,8 +370,8 @@
                         </div>
                       </div>
                     </div>
-                  </ng-template>
-                </p-splitter>
+                </div>
+              </div>
               </form>
             </p-tabPanel>
             <p-tabPanel header="Profile picture" >
