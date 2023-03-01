@@ -15,12 +15,16 @@
                 [formGroup]="userProfileForm"
                 (ngSubmit)="onUserProfileSubmit()"
               >
+              <div *ngIf="savedProfileInfo">
+                <p-messages [(value)]="savedProfileMessages"></p-messages>
+              </div>
                     <div class="card">
                     <div class="flex">
                     <div
                       class="p-fluid"
                       [style]="{'max-width': '48%', padding: '2%' }"
                     >
+
                       <div class="p-field mb-3">
                         <label for="firstname" class="mb-2">First Name</label>
                         <input
@@ -380,6 +384,9 @@
                 <p class="fs-6 fst-italic lead"> Minimun 200*200 pixels ,Maximum 6000*6000 pixels</p>
               </div>
               <div class="conatiner">
+                <div *ngIf="messageInfo">
+                  <p-messages [(value)]="msgs"></p-messages>
+                </div>
                 <p-card [style]="{ width: '60%', height: '200px' }">
                   <div
                     *ngIf="imageData"
@@ -420,6 +427,7 @@
                 </div>
                 
               </div>
+             
             </p-tabPanel>
             <p-tabPanel header="Profile settings">
               <div class="container">
@@ -456,4 +464,4 @@
       </div>
     </div>
   </div>
-  
+ 

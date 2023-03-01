@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup ,FormBuilder, Validators } from '@angular/forms';
-import {userProfile}from '../../models/profile'
+import {userProfile}from '../../models/profile';
+import { Message } from 'primeng/api';
 interface Lanquages{
   name:string
 }
@@ -18,7 +19,7 @@ public userImageForm!:FormGroup;
 public imageData:string='https://static.vecteezy.com/system/resources/previews/000/376/355/original/user-management-vector-icon.jpg'
 public reader!: FileReader;
 public userProfileSettings:string[]=[];
-userProfileDataFromLocalStorage:userProfile={
+public userProfileDataFromLocalStorage:userProfile={
   biography: '',
   facebook: '',
   firstname: '',
@@ -30,6 +31,10 @@ userProfileDataFromLocalStorage:userProfile={
   website: '',
   youtube: ''
 }
+public messageInfo:boolean=false;
+public savedProfileInfo:boolean=false;
+public savedProfileMessages:Message[]=[];
+public msgs:Message[]=[];
  constructor(private fb:FormBuilder){}
   ngOnInit(): void {
     this.getLanguages();
@@ -76,7 +81,7 @@ userProfileDataFromLocalStorage:userProfile={
     localStorage.setItem("userProfileForm",JSON.stringify(this.userProfileForm.value));
     this.userProfileDataFromLocalStorage=JSON.parse(localStorage.getItem("userProfileForm") as string)
     this.userProfileForm.reset();
-    window.alert("Profile values saved")
+    this.savedProfile();
   }
   //onImageFilesubmition
   public onImageUpload(event:Event):void{
@@ -90,16 +95,30 @@ userProfileDataFromLocalStorage:userProfile={
           imageControl:reader.result
         })
         this.imageData=this.userImageForm.value.imageControl;
+        this.messageInfo=false;
       }
-      alert("Image for preview")
+      
   }
   }
+
+//show messages
+ public showMessages():void{
+  this.messageInfo=true;
+  this.msgs.push({severity:'success',summary:'Image saved',detail:'Image saved successfully',life:3000})
+ }
+ //show message for saved profile data
+public savedProfile():void{
+ this.savedProfileInfo=true;
+ this.savedProfileMessages.push({severity:'success',summary:'Instructor profile details saved successfully',life:3000})
+}
+
+
     //save image
  public  saveImage():void{
     localStorage.setItem("userImageform",JSON.stringify(this.userImageForm.value.imageControl))
     this.imageData=''
     this.imageData=JSON.parse(localStorage.getItem("userImageform") as string)
-    window.alert("image saved")
+    this.showMessages();
   }
   //saveProfileSettingValues
     public  savingProfileSettingValues():void{
