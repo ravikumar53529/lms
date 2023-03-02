@@ -33,7 +33,7 @@
                     <li class="listbox-item">
                         <i class="pi pi-calendar me-2"></i> <span>Schedule</span>
                     </li>
-                    <li class="listbox-item">
+                    <li class="listbox-item" [class.active]="isActive('/admin/messages')" routerLink="/admin/messages">
                         <i class="pi pi-envelope me-2"></i> <span>Messages</span>
                     </li>
                     <li class="listbox-item">

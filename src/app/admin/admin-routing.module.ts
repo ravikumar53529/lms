@@ -5,6 +5,7 @@ import { ContentDetailsComponent } from './content-details/content-details.compo
 import { ContentComponent } from './content/content.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MessagesComponent } from './messages/messages.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuizComponent } from './quiz/quiz.component';
 
@@ -29,6 +30,9 @@ const routes: Routes = [
       },
       {
         path:'profile',component:ProfileComponent
+      },
+      {
+        path:'messages',component:MessagesComponent
       }
     ]
   },

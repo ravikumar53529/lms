@@ -49,6 +49,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {SplitterModule} from 'primeng/splitter';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CheckboxModule} from 'primeng/checkbox';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -64,7 +65,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     DashboardComponent,
     SpinnerComponent,
     ContentComponent,
-    ProfileComponent
+    ProfileComponent,
+    MessagesComponent
 
   ],
   imports: [

@@ -142,5 +142,19 @@
             }
 
         ]
+    },
+    {   "id":5,
+        "category":"automated",
+        "items":[
+            {
+                "name":"Mr.Ravikumar",
+                "message":"Hai This is ravikumar",
+                "date":"17/2/2023",
+                "image":"https://th.bing.com/th/id/OIP.w-f-qDRUjGt9e_SuPTcfcgHaHw?w=200&h=209&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+                "category":"All Messages"
+           
+            }
+            
+        ]
     }
 ]
