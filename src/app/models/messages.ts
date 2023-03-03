@@ -3,7 +3,8 @@ export interface Messages {
     message:string,
     date:string,
     image:string,
-    category:string
+    category:string,
+     ID?:number
 }
 export interface msgCategories{
     id:number,

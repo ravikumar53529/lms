@@ -1,12 +1,15 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit ,AfterViewChecked} from '@angular/core';
 import {msgCategories,Messages} from '../../models/messages';
 import {MessagesService} from '../../services/messages.service'
+interface multiSelectMsg{
+  name:string
+}
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.scss']
 })
-export class MessagesComponent implements OnInit {
+export class MessagesComponent implements OnInit ,AfterViewChecked{
   public displayDialog:boolean=false;
   public textMessageFromInstructor:string='';
   public textMessageFromInstructorFinal:string='';
@@ -19,19 +22,60 @@ export class MessagesComponent implements OnInit {
   public importantValue:boolean=false;
   public userNotAnsweredValue:boolean=false
   public userAutomatedValue:boolean=false;
+  public onSelectImportantMessageValue:boolean=false;
+  public onSelectedImportantMessages:Messages[]=[]
   public unreadMessages:Messages[]=[];
+  public importnatSelectedMessages:Messages[]=[];
+  public multiSelectMessages:multiSelectMsg[]=[]
+  public selectedMultiMsgs:multiSelectMsg[]=[];
+  public searchUsers:string='';
   public selectedMessage:Messages={
     name: '',
     message: '',
     date: '',
     image: '',
-    category: ''
+    category: '',
+    ID:0
   }
-  constructor(public msgService:MessagesService){}
+  constructor(private msgService:MessagesService){
+    this.multiSelectUserMessages();
+  }
    ngOnInit(): void {
      this.getAllMessages()
    }
+  //on chnages
+  public ngAfterViewChecked(): void {
+   this.multiSelectAndCheckBoxes();
 
+  }
+
+  //get multiSelectFunctionality and main checkboxes
+  public multiSelectAndCheckBoxes():void{
+    if(this.selectedMultiMsgs.length>0){
+      this.messageCategories.filter((data)=>{
+        if(data.category===this.selectedMultiMsgs[0].name){
+          this.tempMessageUsers=data.items;
+        }else if(data.category==="oldest"){
+          this.tempMessageUsers=data.items
+        }
+      })
+     }else if( this.unread===false && this.userNotAnsweredValue===false && this.userAutomatedValue==false && this.importantValue===false){
+      this.tempMessageUsers=this.allMessages
+     }
+    }
+  
+
+   //get multiSelectMessages
+   public multiSelectUserMessages():void{
+    this.multiSelectMessages=[
+      {
+        name:'Newest first'
+      },
+      {
+         name:'Oldest first'
+      }
+    ]
+   }
    //getAllMessages
    public getAllMessages():void{
       try{
@@ -61,9 +105,14 @@ export class MessagesComponent implements OnInit {
   }
   //messageFromInstructor
  public  messageFromInstructor():void{
-  this.instructorMessage=true;
-  this.textMessageFromInstructorFinal=this.textMessageFromInstructor;
-  this.textMessageFromInstructor='';
+  if(this.textMessageFromInstructor!=""){
+    this.instructorMessage=true;
+    this.textMessageFromInstructorFinal=this.textMessageFromInstructor;
+    this.textMessageFromInstructor='';
+  }else{
+    alert("please enter message")
+  }
+ 
 
  }
  //unreadMessages
@@ -128,8 +177,37 @@ this.messageCategories.filter((data)=>{
 
  //message from compose section
  public messageFromComposer():void{
-      this.instructorMessage=true;
-      this.displayDialog=false
-      this.textMessageFromInstructorFinal=this.messageFromCompose
+  if(this.messageFromCompose!=""){
+    this.instructorMessage=true;
+    this.displayDialog=false
+    this.textMessageFromInstructorFinal=this.messageFromCompose;
+    this.messageFromCompose="";
+  }else{
+    alert("please add data")
+  }
+     
  }
+ 
+
+ //importnat message
+//  public importantMessage(message:Messages,id:number):void{
+  
+// if(this.onSelectImportantMessageValue===false){
+// this.onSelectImportantMessageValue=true
+// this.onSelectedImportantMessages.push(message)
+//  console.log(this.onSelectImportantMessageValue)
+//  console.log(this.onSelectedImportantMessages)
+//  }
+//  else{
+//   this.onSelectImportantMessageValue=false
+//   console.log(this.onSelectImportantMessageValue)
+//    this.onSelectedImportantMessages.filter((data:Messages,index:number)=>{
+//    if(data.ID===id){
+//     this.onSelectedImportantMessages.splice(index,1)
+//     console.log(this.onSelectedImportantMessages)
+    
+//    }
+//   })
+// }
+//  }
 }

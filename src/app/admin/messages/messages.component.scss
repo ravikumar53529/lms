@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
 .heading{
     h1{
         font-family: 'Times New Roman', Times, serif;
@@ -15,9 +15,27 @@
     border-top: 1px solid rgb(176, 175, 175);
     padding: 10px;
     margin-top: 5px;
+    cursor:pointer;
 }
 .messages{   
     height: 250px;
     overflow: scroll;
     border-bottom: 1px solid rgb(176, 175, 175);
+}
+.p-table{
+    td{
+        font-family: 'Source Sans Pro', sans-serif;
+
+    }
+    .messagse {
+        width: 400px;
+    }
+}
+.messages-paragraph {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.instructormessage{
+    padding: 50px;
+    justify-content: center;
+   
 }
