@@ -50,7 +50,8 @@ import {SplitterModule} from 'primeng/splitter';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {CheckboxModule} from 'primeng/checkbox';
 import { MessagesComponent } from './messages/messages.component';
-
+import { UpcomingclassesComponent } from './upcomingclasses/upcomingclasses.component';
+import {DataViewModule} from 'primeng/dataview';
 
 
 
@@ -66,7 +67,8 @@ import { MessagesComponent } from './messages/messages.component';
     SpinnerComponent,
     ContentComponent,
     ProfileComponent,
-    MessagesComponent
+    MessagesComponent,
+    UpcomingclassesComponent,
 
   ],
   imports: [
@@ -103,6 +105,7 @@ import { MessagesComponent } from './messages/messages.component';
     SplitterModule,
     MultiSelectModule,
     CheckboxModule,
+    DataViewModule
    
   ],
   providers: [

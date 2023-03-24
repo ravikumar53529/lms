@@ -190,24 +190,22 @@ this.messageCategories.filter((data)=>{
  
 
  //importnat message
-//  public importantMessage(message:Messages,id:number):void{
-  
-// if(this.onSelectImportantMessageValue===false){
-// this.onSelectImportantMessageValue=true
-// this.onSelectedImportantMessages.push(message)
-//  console.log(this.onSelectImportantMessageValue)
-//  console.log(this.onSelectedImportantMessages)
-//  }
-//  else{
-//   this.onSelectImportantMessageValue=false
-//   console.log(this.onSelectImportantMessageValue)
-//    this.onSelectedImportantMessages.filter((data:Messages,index:number)=>{
-//    if(data.ID===id){
-//     this.onSelectedImportantMessages.splice(index,1)
-//     console.log(this.onSelectedImportantMessages)
-    
-//    }
-//   })
-// }
-//  }
+public importantMessage(message:Messages,id:number):void{
+if(this.onSelectImportantMessageValue===false){
+this.onSelectImportantMessageValue=true
+this.onSelectedImportantMessages.push(message)
+ console.log(this.onSelectImportantMessageValue)
+ console.log(this.onSelectedImportantMessages)
+ }
+ else{
+  this.onSelectImportantMessageValue=false
+  console.log(this.onSelectImportantMessageValue)
+   this.onSelectedImportantMessages.filter((data:Messages,index:number)=>{
+   if(data.ID===id){
+    this.onSelectedImportantMessages.splice(index,1)
+    console.log(this.onSelectedImportantMessages)
+   }
+  })
+  }
+ }
 }

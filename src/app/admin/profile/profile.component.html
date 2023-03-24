@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="profile-first-section">
       <div class="col-lg-12">
-        <h1>Profile & settings</h1>
+        <h1>Profile & Settings</h1>
       </div>
     </div> 
 </div>
@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-lg-12">
           <p-tabView>
-            <p-tabPanel header="Lms profile">
+            <p-tabPanel header="Profile">
               <form
                 [formGroup]="userProfileForm"
                 (ngSubmit)="onUserProfileSubmit()"
@@ -90,7 +90,7 @@
                           formControlName="headline"
                           type="text"
                           pInputText
-                          placeholder="Instructor at LMS(60)"
+                          placeholder="Instructor (60)"
                         />
                         <div
                           *ngIf="
@@ -106,6 +106,7 @@
                           >
                             Headline is required
                           </div>
+                          
                           <div *ngIf="headline.errors?.['minlength']">
                             Headline must have at least 10 characters
                           </div>
@@ -234,12 +235,11 @@
                           >
                             website is required
                           </div>
-                          <div *ngIf="website.errors?.['minlength']">
-                            website field must have at least 5 characters
+                          <div *ngIf="website.errors?.['pattern']">
+                            Please enter a valid Url
                           </div>
                         </div>
-                      </div>
-                      
+                      </div>                     
                       <div class="p-field mb-3">
                         <label for="twitter" class="mb-2">Twitter</label>
                         <div class="p-inputgroup overflow-hidden">
@@ -379,7 +379,7 @@
               </div>
               </form>
             </p-tabPanel>
-            <p-tabPanel header="Profile picture" >
+            <p-tabPanel header="Profile Picture" >
               <div class="conatiner">
                 <h1 class="text-dark heading-4">Image Preview</h1>
                 <p class="fs-6 fst-italic lead"> Minimun 200*200 pixels ,Maximum 6000*6000 pixels</p>
@@ -430,7 +430,7 @@
               </div>
              
             </p-tabPanel>
-            <p-tabPanel header="Profile settings">
+            <p-tabPanel header="Profile Settings">
               <div class="container">
                 <form>
                   <p-checkbox

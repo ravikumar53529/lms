@@ -76,8 +76,7 @@ let module = [
     
   ],
   providers: [
-    AuthService,AuthGuard,UserGuard,
-    
+    AuthService,AuthGuard,UserGuard, 
       {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

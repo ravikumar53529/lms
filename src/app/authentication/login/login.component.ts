@@ -45,6 +45,7 @@ export class LoginComponent {
   }
 
   public onSubmit(): void {
+    this.router.navigate(['admin']);
     console.log('form values', this.formgroup.value)
 
     this.body = {

@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:wght@700&family=Source+Sans+Pro:wght@600&display=swap');
 .message-section {
   margin-top: 25px;
   h1 {
     font-size: 42px;
-    font-family: "Gentium Book Plus", serif;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   h4 {
     font-size: 20px;
@@ -22,10 +22,11 @@
       margin-left: 10px;
       justify-content: center;
     }
+    input {
+      width: 100%;
+    }
   }
-  input {
-    width: 100%;
-  }
+
   .messages-left-scroll {
     overflow-y: scroll;
     overflow-x: hidden;
@@ -71,5 +72,6 @@
   height: 500px;
   overflow: scroll;
 }
+
 
 

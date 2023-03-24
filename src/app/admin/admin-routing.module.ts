@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ProfileComponent } from './profile/profile.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { UpcomingclassesComponent } from './upcomingclasses/upcomingclasses.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
       },
       {
         path:'messages',component:MessagesComponent
+      },
+      {
+        path:'upcomingclasses',component:UpcomingclassesComponent
       }
     ]
   },

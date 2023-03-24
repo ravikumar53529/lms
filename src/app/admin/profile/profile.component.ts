@@ -62,7 +62,8 @@ public msgs:Message[]=[];
       lastname:new FormControl('',[Validators.required,Validators.minLength(8)]),
       headline:new FormControl('',[Validators.required,Validators.minLength(10)]),
       biography:new FormControl('',[Validators.required,Validators.minLength(10)]),
-      website:new FormControl('',[Validators.required,Validators.minLength(5)]),
+      website:new FormControl('',[Validators.required,Validators.pattern('^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$')
+    ]),
       twitter:new FormControl('',[Validators.required,Validators.minLength(5)]),
       linkedin:new FormControl('',[Validators.required,Validators.minLength(5)]),
       facebook:new FormControl('',[Validators.required,Validators.minLength(5)]),

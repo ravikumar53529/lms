@@ -42,6 +42,8 @@ export class MessageComponent implements OnInit {
     try {
       this.messageServiceRef.getUserMessages().subscribe((data) => {
         this.userMessages = data;
+        this.selectedUserMessage=this.userMessages[0];
+        this.viewMessageStatus = true;
       });
     } catch (error) {
       console.log('error', error);

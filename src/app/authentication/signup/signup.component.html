@@ -76,10 +76,10 @@
                             <label class="mb-1 p-0">
                                 <h6 class="mb-0 text-sm">User Name</h6>
                             </label>
-                            <input class="mb-1" type="text" name="name" formControlName="name"
+                            <input class="mb-0" type="text" name="name" formControlName="name"
                                 [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
                                 placeholder="Enter a valid user name ">
-                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback px-0">
                                 <div *ngIf="name.errors?.['required']">
                                     This user name is required.
                                 </div>
@@ -96,11 +96,11 @@
                             <label class="mb-1 p-0">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
                             </label>
-                            <input class="mb-1" type="text" name="email" formControlName="email"
+                            <input class="mb-0" type="text" name="email" formControlName="email"
                                 [class.is-invalid]="email.invalid && (email.dirty || email.touched)"
                                 placeholder="Enter a valid email address">
 
-                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback px-0">
                                 <div *ngIf="email.errors?.['required']">
                                     Email Address is required.
                                 </div>
@@ -115,11 +115,11 @@
                             <label class="mb-1 p-0">
                                 <h6 class="mb-0 text-sm">Password</h6>
                             </label>
-                            <input type="password" formControlName="pwd" name="pwd"
+                            <input class="mb-0" type="password" formControlName="pwd" name="pwd"
                                 [class.is-invalid]="pwd.invalid && (pwd.dirty || pwd.touched)"
                                 placeholder="Enter password">
 
-                            <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="invalid-feedback">
+                            <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="invalid-feedback px-0">
                                 <div *ngIf="pwd.errors?.['required']">
                                     Password is required.
                                 </div>

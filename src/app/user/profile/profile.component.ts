@@ -57,7 +57,7 @@ userProfileDataFromLocalStorage:userProfile={
       lastname:new FormControl('',[Validators.required,Validators.minLength(8)]),
       headline:new FormControl('',[Validators.required,Validators.minLength(10)]),
       biography:new FormControl('',[Validators.required,Validators.minLength(10)]),
-      website:new FormControl('',[Validators.required,Validators.minLength(5)]),
+      website:new FormControl('',[Validators.required, Validators.pattern('^(http(s)?:\\/\\/)?(www\.)([a-zA-Z0-9]+\.)+[a-zA-Z0-9]+(\\/\\S*)?$')]),
       twitter:new FormControl('',[Validators.required,Validators.minLength(5)]),
       linkedin:new FormControl('',[Validators.required,Validators.minLength(5)]),
       facebook:new FormControl('',[Validators.required,Validators.minLength(5)]),
@@ -103,7 +103,6 @@ userProfileDataFromLocalStorage:userProfile={
   }
   //saveProfileSettingValues
     public  savingProfileSettingValues():void{
-    console.log(this.selectedValues)
     localStorage.setItem("profileSettingValues",JSON.stringify(this.selectedValues));
     this.userProfileSettings=JSON.parse(localStorage.getItem("profileSettingValues") as string)
     alert("Setting values saved")

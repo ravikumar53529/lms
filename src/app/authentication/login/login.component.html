@@ -22,33 +22,34 @@
                     <form [formGroup]="formgroup">
                         <div class="row mb-4 px-3">
                             <h1 class="mb-0 mr-4 mt-2">LOGIN</h1>
-
                         </div>
                         <!-- <div class="row px-3 mb-4">
                         <div class="line"></div>
                         <small class="or text-center">Or</small>
                         <div class="line"></div>
                     </div> -->
-                        <div class="row px-3">
-                            <label class="mb-1">
+                        <div class="row">
+                            <label class="mb-1 px-0">
                                 <h6 class="mb-0 text-sm">Email Address</h6>
                             </label>
-                            <input class="mb-1" type="text" name="name" formControlName="name"
+                            <input class="mb-0" type="text" name="name" formControlName="name"
                                 [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
                                 placeholder="Enter a valid email address">
+                                
                             <!-- <span *ngIf="formgroup.get('name')?.invalid && formgroup.get('name')?.touched"
                                 style="color: red;">User name or Email Address is
                                 required</span> -->
-                            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
-                                <div *ngIf="name.errors?.['required']">
+                            <div  *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback px-0">
+                                
+                                <span *ngIf="name.errors?.['required']">
                                     Email Address is required.
-                                </div>
+                                </span>
                                 <!-- <div *ngIf="email.errors?.['minlength']">
                                                                                                 This field must have at least 1 character.
                                                                                             </div>
                                                                                             <div *ngIf="email.errors?.['maxlength']">
                                                                                                 This field must have at most 250 characters.
-                                                                                            </div> -->
+                                                                            </div> -->
                                 <div *ngIf="!name.errors?.['required'] &&  name.errors?.['emailValidator']">
                                     Invalid email format.
                                 </div>
@@ -57,11 +58,11 @@
 
                         </div>
 
-                        <div class="row px-3">
-                            <label class="mb-1">
-                                <h6 class="mb-0 text-sm">Password</h6>
+                        <div class="row">
+                            <label class="mb-1 px-0">
+                                <h6 class="mb-0  text-sm">Password</h6>
                             </label>
-                            <input type="password" formControlName="pwd" name="pwd"
+                            <input class="mb-0" type="password" formControlName="pwd" name="pwd"
                                 [class.is-invalid]="pwd.invalid && (pwd.dirty || pwd.touched)"
                                 placeholder="Enter password">
 
@@ -69,7 +70,7 @@
                                 style="color: red;">Password is
                                 required</span> -->
 
-                            <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="invalid-feedback">
+                            <div *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)" class="invalid-feedback px-0">
                                 <div *ngIf="pwd.errors?.['required']">
                                     Password is required.
                                 </div>

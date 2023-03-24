@@ -1,0 +1,44 @@
+[
+    {
+        "id":"1",
+        "name":"Angular",
+        "description":"Angular clases will start soon",
+        "time":"9:30 AM to 10:30 AM",
+        "image":"https://th.bing.com/th/id/OIP.Ca8m7_pPKZlmP5bgC7UfCgHaH0?w=183&h=193&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aperiam corporis ducimus perspiciatis repudiandae consequuntur libero ipsum molestias maxime temporibus.",
+        "meetingId":"123-321-12",
+        "meetingLink":"http://localhost:4200/angular"
+    },
+    {
+        "id":"2",
+        "name":"React",
+        "description":"React clases will start soon",
+        "time":"10:45 AM to 12:00 PM",
+        "image":"https://th.bing.com/th/id/OIP.K-4RqDC6zFrpAG31ayDDOgHaHa?w=176&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aperiam corporis ducimus perspiciatis repudiandae consequuntur libero ipsum molestias maxime temporibus.",
+        "meetingId":"456-321-11",
+        "meetingLink":"http://localhost:4200/react"
+    },
+    {
+        "id":"3",
+        "name":"Node",
+        "description":"Node clases will start soon",
+        "time":"1:00 PM to 2:00 PM",
+        "image":"https://i.ytimg.com/vi/h6_gg7KchPw/maxresdefault.jpg",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aperiam corporis ducimus perspiciatis repudiandae consequuntur libero ipsum molestias maxime temporibus.",
+        "meetingId":"556-321-12",
+        "meetingLink":"http://localhost:4200/node"
+    },
+    {
+        "id":"4",
+        "name":"PHP",
+        "description":"PHP clases will start soon",
+        "time":"2:00 PM to 3:00 PM",
+        "image":"https://www.qualitydevs.com/wp-content/uploads/2021/05/PHP-Quality-Devs-1.jpg",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum aperiam corporis ducimus perspiciatis repudiandae consequuntur libero ipsum molestias maxime temporibus.",
+        "meetingId":"334-321-12",
+        "meetingLink":"http://localhost:4200/php"
+
+    }
+
+]
