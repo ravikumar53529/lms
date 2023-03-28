@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup ,FormBuilder, Validators } from '@angular/forms';
 import {userProfile}from '../../models/profile';
 import { Message } from 'primeng/api';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 interface Lanquages{
   name:string
 }
@@ -35,6 +36,11 @@ public messageInfo:boolean=false;
 public savedProfileInfo:boolean=false;
 public savedProfileMessages:Message[]=[];
 public msgs:Message[]=[];
+
+//image crop 
+imgChangeEvt: any = '';
+cropImgPreview: any = 'https://static.vecteezy.com/system/resources/previews/000/376/355/original/user-management-vector-icon.jpg';
+visiblePopup:boolean=false;
  constructor(private fb:FormBuilder){}
   ngOnInit(): void {
     this.getLanguages();
@@ -62,7 +68,7 @@ public msgs:Message[]=[];
       lastname:new FormControl('',[Validators.required,Validators.minLength(8)]),
       headline:new FormControl('',[Validators.required,Validators.minLength(10)]),
       biography:new FormControl('',[Validators.required,Validators.minLength(10)]),
-      website:new FormControl('',[Validators.required,Validators.pattern('^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$')
+      website:new FormControl('',[Validators.required,Validators.pattern('^(http(s)?:\\/\\/)?(www\.)([a-zA-Z0-9]+\.)+[a-zA-Z0-9]+(\\/\\S*)?$')
     ]),
       twitter:new FormControl('',[Validators.required,Validators.minLength(5)]),
       linkedin:new FormControl('',[Validators.required,Validators.minLength(5)]),
@@ -86,20 +92,21 @@ public msgs:Message[]=[];
   }
   //onImageFilesubmition
   public onImageUpload(event:Event):void{
-  const target=event.target as HTMLInputElement;
-  const file:File=(target.files as FileList)[0];
-  const reader=new FileReader();
-  if(target.files && target.files.length){
-  reader.readAsDataURL(file);
-   reader.onload=()=>{
-        this.userImageForm.patchValue({
-          imageControl:reader.result
-        })
-        this.imageData=this.userImageForm.value.imageControl;
-        this.messageInfo=false;
-      }
-      
-  }
+    this.imgChangeEvt=event;
+    this.visiblePopup=true
+  // const target=event.target as HTMLInputElement;
+  // const file:File=(target.files as FileList)[0];
+  // const reader=new FileReader();
+  // if(target.files && target.files.length){
+  // reader.readAsDataURL(file);
+  //  reader.onload=()=>{
+  //       this.userImageForm.patchValue({
+  //         imageControl:reader.result
+  //       })
+  //       this.imageData=this.userImageForm.value.imageControl;
+  //       this.messageInfo=false;
+  //     }   
+  // }
   }
 
 //show messages
@@ -116,7 +123,7 @@ public savedProfile():void{
 
     //save image
  public  saveImage():void{
-    localStorage.setItem("userImageform",JSON.stringify(this.userImageForm.value.imageControl))
+    localStorage.setItem("userImageform",JSON.stringify(this.cropImgPreview))
     this.imageData=''
     this.imageData=JSON.parse(localStorage.getItem("userImageform") as string)
     this.showMessages();
@@ -166,5 +173,28 @@ public get imageControl(){
   return this.userProfileForm.get('imageControl')
 }
 
+
+
+//image crop
+onFileChange(event: any): void {
+  this.imgChangeEvt = event;
+}
+cropImg(e: ImageCroppedEvent) {
+  this.cropImgPreview = e.base64;
+}
+imgLoad() {
+  // display cropper tool
+}
+initCropper() {
+  // init cropper
+}
+
+imgFailed() {
+  // error msg
+}
+//onPopupClose
+public onPopupClose(){
+  this.visiblePopup=false
+}
   
 }

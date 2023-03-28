@@ -126,10 +126,6 @@
     }
   }
 }
-.companies {
-  width: 100%;
-  background-color: #f7f9fa;
-}
 .comments-main-section {
   background-color: white;
   .comment-cards {
@@ -190,6 +186,9 @@
       color: white;
       font-size: 20px;
       justify-content: end;
+    }
+    a:hover{
+      background-color: rgb(145, 150, 145);
     }
   }
 }

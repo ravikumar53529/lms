@@ -18,7 +18,6 @@ import { RippleModule } from 'primeng/ripple';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
- 
 import { ContentDetailsComponent } from './content-details/content-details.component';
 import { HeaderComponent } from './header/header.component';
 import { QuizComponent } from './quiz/quiz.component';
@@ -52,7 +51,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { MessagesComponent } from './messages/messages.component';
 import { UpcomingclassesComponent } from './upcomingclasses/upcomingclasses.component';
 import {DataViewModule} from 'primeng/dataview';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 @NgModule({
@@ -68,7 +67,7 @@ import {DataViewModule} from 'primeng/dataview';
     ContentComponent,
     ProfileComponent,
     MessagesComponent,
-    UpcomingclassesComponent,
+    UpcomingclassesComponent
 
   ],
   imports: [
@@ -105,7 +104,8 @@ import {DataViewModule} from 'primeng/dataview';
     SplitterModule,
     MultiSelectModule,
     CheckboxModule,
-    DataViewModule
+    DataViewModule,
+    ImageCropperModule
    
   ],
   providers: [

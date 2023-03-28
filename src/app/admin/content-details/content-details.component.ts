@@ -42,7 +42,4 @@ export class ContentDetailsComponent implements OnInit {
     // });
   }
 
-
-
-
 }

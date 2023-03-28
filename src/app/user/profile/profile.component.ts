@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { FormControl, FormGroup ,FormBuilder, Validators } from '@angular/forms';
-import {userProfile}from '../../models/profile'
+import {userProfile}from '../../models/profile';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 interface Lanquages{
   name:string
 }
@@ -30,6 +31,12 @@ userProfileDataFromLocalStorage:userProfile={
   website: '',
   youtube: ''
 }
+
+
+//image crop 
+imgChangeEvt: any = '';
+cropImgPreview: any = 'https://static.vecteezy.com/system/resources/previews/000/376/355/original/user-management-vector-icon.jpg';
+visible:boolean=false;
  constructor(private fb:FormBuilder){}
   ngOnInit(): void {
     this.getLanguages();
@@ -80,25 +87,28 @@ userProfileDataFromLocalStorage:userProfile={
   }
   //onImageFilesubmition
   public onImageUpload(event:Event):void{
-  const target=event.target as HTMLInputElement;
-  const file:File=(target.files as FileList)[0];
-  const reader=new FileReader();
-  if(target.files && target.files.length){
-  reader.readAsDataURL(file);
-   reader.onload=()=>{
-        this.userImageForm.patchValue({
-          imageControl:reader.result
-        })
-        this.imageData=this.userImageForm.value.imageControl;
-      }
-      alert("Image for preview")
-  }
+    this.imgChangeEvt=event;
+    this.visible=true
+  // const target=event.target as HTMLInputElement;
+  // const file:File=(target.files as FileList)[0];
+  // const reader=new FileReader();
+  // if(target.files && target.files.length){
+  // reader.readAsDataURL(file);
+  //  reader.onload=()=>{
+  //       this.userImageForm.patchValue({
+  //         imageControl:reader.result
+  //       })
+  //       this.imageData=this.userImageForm.value.imageControl;
+  //     }
+  //     alert("Image for preview")
+  // }
   }
     //save image
  public  saveImage():void{
-    localStorage.setItem("userImageform",JSON.stringify(this.userImageForm.value.imageControl))
-    this.imageData=''
-    this.imageData=JSON.parse(localStorage.getItem("userImageform") as string)
+   this.visible=false
+    // localStorage.setItem("userImageform",JSON.stringify(this.userImageForm.value.imageControl))
+    // this.imageData=''
+    // this.imageData=JSON.parse(localStorage.getItem("userImageform") as string)
     window.alert("image saved")
   }
   //saveProfileSettingValues
@@ -146,5 +156,27 @@ public get imageControl(){
   return this.userProfileForm.get('imageControl')
 }
 
+
+//image crop
+onFileChange(event: any): void {
+  this.imgChangeEvt = event;
+}
+cropImg(e: ImageCroppedEvent) {
+  this.cropImgPreview = e.base64;
+}
+imgLoad() {
+  // display cropper tool
+}
+initCropper() {
+  // init cropper
+}
+
+imgFailed() {
+  // error msg
+}
+//onPopupClose
+public onPopupClose(){
+  this.visible=false
+}
   
 }

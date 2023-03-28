@@ -10,15 +10,16 @@ import {Upcomingclasses} from '../../models/upcoming-classes';
 export class UpcomingclassesComponent {
  public upcomingClassesData:Upcomingclasses[]=[];
  public selectedClasses:Upcomingclasses={}
+
   constructor(private upcomingclassesRef:UpcomingclassesService){
   }
   ngOnInit(){
     this.getUpcomingClassesData() 
   }
 
-  getUpcomingClassesData():void{
+  public getUpcomingClassesData():void{
     try{
-      this.upcomingclassesRef.getUpcomingClasses().subscribe((data)=>{
+      this.upcomingclassesRef.getUpcomingClasses().subscribe((data)=>{      
         this.upcomingClassesData=data
         this.selectedClasses=data[0]
       })
@@ -30,4 +31,6 @@ export class UpcomingclassesComponent {
   public onSelectClasses(data:Upcomingclasses):void{
    this.selectedClasses=data 
   }
+
+ 
 }

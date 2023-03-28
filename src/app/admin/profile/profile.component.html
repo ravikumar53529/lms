@@ -390,13 +390,13 @@
                 </div>
                 <p-card [style]="{ width: '60%', height: '200px' }">
                   <div
-                    *ngIf="imageData"
+                    *ngIf="cropImgPreview"
                     class="d-flex justify-content-center"
                   >
                     <img
-                      src="{{ imageData }}"
+                      src="{{cropImgPreview}}"
                       alt=""
-                      width="63%"
+                      width="450px"
                       height="150px"
                     />
                   </div>
@@ -465,4 +465,20 @@
       </div>
     </div>
   </div>
- 
+ <!-- image cropper -->
+<p-dialog header="Image Preview" [(visible)]="visiblePopup" [style]="{width: '50vw'}">
+  <image-cropper 
+  [imageChangedEvent]="imgChangeEvt" 
+  [maintainAspectRatio]="true" 
+  [aspectRatio]="4 / 4"
+  [resizeToWidth]="256" 
+  format="png" 
+  (imageCropped)="cropImg($event)" 
+  (imageLoaded)="imgLoad()"
+  (cropperReady)="initCropper()" 
+  (loadImageFailed)="imgFailed()">
+</image-cropper>
+ <div class="float-end">
+<button pButton class="p-button-secondary" (click)="onPopupClose()">OK</button>
+ </div>
+</p-dialog>

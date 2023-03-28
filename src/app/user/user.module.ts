@@ -33,6 +33,7 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DividerModule } from 'primeng/divider';
 import { MegaMenuModule } from 'primeng/megamenu';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [UserComponent, MyLibraryComponent, AboutComponent, MessageComponent, ProfileComponent],
@@ -67,7 +68,8 @@ import { MegaMenuModule } from 'primeng/megamenu';
     ReactiveFormsModule,
     FormsModule,
     DividerModule,
-    MegaMenuModule
+    MegaMenuModule,
+    ImageCropperModule
   ],
 })
 export class UserModule {}
